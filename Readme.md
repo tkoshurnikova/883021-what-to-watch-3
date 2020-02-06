@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Таня Кошурникова](https://up.htmlacademy.ru/react/3/user/883021).
-* Наставник: `Неизвестно`.
+* Наставник: [Семён Якушев](https://htmlacademy.ru/profile/id1118791).
 
 ---
 
