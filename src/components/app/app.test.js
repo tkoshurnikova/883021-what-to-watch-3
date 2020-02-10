@@ -42,4 +42,4 @@ it(`Render App`, () => {
     .toJSON();
 
   expect(tree).toMatchSnapshot();
-})
+});

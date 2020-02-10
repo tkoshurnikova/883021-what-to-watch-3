@@ -38,8 +38,9 @@ it(`Render Main`, () => {
       filmGenre={FilmDetails.GENRE}
       filmReleaseDate={FilmDetails.RELEASE_DATE}
       allFilms={allFilms}
+      onFilmTitleClick={() => {}}
     />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
-})
+});
