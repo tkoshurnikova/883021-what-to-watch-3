@@ -6,12 +6,23 @@ class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      cardWithHover:
-      {
-        title: null,
-        image: null
-      }
+      cardWithHover: null
     };
+
+    this._onCardHover = this._onCardHover.bind(this);
+    this._onCardHoverOut = this._onCardHoverOut.bind(this);
+  }
+
+  _onCardHover(film) {
+    this.setState({
+      cardWithHover: film
+    });
+  }
+
+  _onCardHoverOut() {
+    this.setState({
+      cardWithHover: null
+    });
   }
 
   render() {
@@ -24,24 +35,8 @@ class MoviesList extends PureComponent {
             <MovieCard
               film={film}
               key={film.title}
-              onHover={() => {
-                this.setState({
-                  cardWithHover:
-                  {
-                    title: film.title,
-                    image: film.image
-                  }
-                });
-              }}
-              onHoverOut={() => {
-                this.setState({
-                  cardWithHover:
-                  {
-                    title: null,
-                    image: null
-                  }
-                });
-              }}
+              onCardHover={this._onCardHover}
+              onCardHoverOut={this._onCardHoverOut}
             />
           ))}
         </div>

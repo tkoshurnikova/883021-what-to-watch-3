@@ -7,18 +7,22 @@ class MovieCard extends PureComponent {
   }
 
   render() {
-    const {film, onHover, onHoverOut} = this.props;
+    const {film, onCardHover, onCardHoverOut} = this.props;
 
     return (
       <React.Fragment>
-        <article className="small-movie-card catalog__movies-card">
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseOver={() => {
+            onCardHover(film);
+          }}
+          onMouseOut={onCardHoverOut}
+        >
           <div className="small-movie-card__image">
             <img src={film.image} alt={film.title} width="280" height="175" />
           </div>
           <h3 className="small-movie-card__title">
             <a
-              onMouseOver={onHover}
-              onMouseOut={onHoverOut}
               className="small-movie-card__link"
               href="movie-page.html">
               {film.title}
@@ -31,8 +35,8 @@ class MovieCard extends PureComponent {
 }
 
 MovieCard.propTypes = {
-  onHover: PropTypes.func.isRequired,
-  onHoverOut: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired,
+  onCardHoverOut: PropTypes.func.isRequired,
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired

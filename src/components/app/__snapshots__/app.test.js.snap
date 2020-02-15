@@ -259,6 +259,8 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -276,8 +278,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             >
               The No Flowers
             </a>
@@ -285,6 +285,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -302,8 +304,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             >
               Rings of Cloud
             </a>
@@ -311,6 +311,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -328,8 +330,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             >
               The Sword's Memory
             </a>
@@ -337,6 +337,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -354,8 +356,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             >
               The Voyagers of the Words
             </a>
@@ -363,6 +363,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -380,8 +382,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             >
               Shores in the Heart
             </a>
@@ -389,6 +389,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -406,8 +408,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             >
               Missing Illusion
             </a>
@@ -415,6 +415,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -432,8 +434,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             >
               The Unwilling Man
             </a>
@@ -441,6 +441,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -458,8 +460,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             >
               Teacher in the Hunter
             </a>

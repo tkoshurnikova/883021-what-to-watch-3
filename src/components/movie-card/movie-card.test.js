@@ -11,6 +11,8 @@ it(`Render MovieCard`, () => {
   const tree = renderer
     .create(<MovieCard
       film={film}
+      onCardHover={() => {}}
+      onCardHoverOut={() => {}}
     />)
     .toJSON();
 
