@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCard from "./movie-card.jsx";
+import MoviePage from "./movie-page.jsx";
 
 const film = {
   title: `The No Flowers`,
@@ -14,13 +14,10 @@ const film = {
   year: 1900
 };
 
-it(`Render MovieCard`, () => {
+it(`Render MoviePage`, () => {
   const tree = renderer
-    .create(<MovieCard
+    .create(<MoviePage
       film={film}
-      onCardHover={() => {}}
-      onCardHoverOut={() => {}}
-      onCardClick={() => {}}
     />)
     .toJSON();
 

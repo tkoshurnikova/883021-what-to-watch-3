@@ -26,7 +26,7 @@ class MoviesList extends PureComponent {
   }
 
   render() {
-    const {films} = this.props;
+    const {films, onCardClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -36,6 +36,7 @@ class MoviesList extends PureComponent {
             key={film.title}
             onCardHover={this._onCardHover}
             onCardHoverOut={this._onCardHoverOut}
+            onCardClick={onCardClick}
           />
         ))}
       </div>
@@ -44,7 +45,8 @@ class MoviesList extends PureComponent {
 }
 
 MoviesList.propTypes = {
-  films: PropTypes.array.isRequired
+  films: PropTypes.array.isRequired,
+  onCardClick: PropTypes.func.isRequired
 };
 
 export default MoviesList;

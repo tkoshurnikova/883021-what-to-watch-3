@@ -6,6 +6,7 @@ exports[`Render MoviesList 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -24,7 +25,8 @@ exports[`Render MoviesList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="movie-page"
+        onClick={[Function]}
       >
         The No Flowers
       </a>
@@ -32,6 +34,7 @@ exports[`Render MoviesList 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -50,7 +53,8 @@ exports[`Render MoviesList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="movie-page"
+        onClick={[Function]}
       >
         Rings of Cloud
       </a>
@@ -58,6 +62,7 @@ exports[`Render MoviesList 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -76,7 +81,8 @@ exports[`Render MoviesList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="movie-page"
+        onClick={[Function]}
       >
         The Sword's Memory
       </a>
@@ -84,6 +90,7 @@ exports[`Render MoviesList 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -102,7 +109,8 @@ exports[`Render MoviesList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="movie-page"
+        onClick={[Function]}
       >
         The Voyagers of the Words
       </a>
@@ -110,6 +118,7 @@ exports[`Render MoviesList 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -128,7 +137,8 @@ exports[`Render MoviesList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="movie-page"
+        onClick={[Function]}
       >
         Shores in the Heart
       </a>
@@ -136,6 +146,7 @@ exports[`Render MoviesList 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -154,7 +165,8 @@ exports[`Render MoviesList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="movie-page"
+        onClick={[Function]}
       >
         Missing Illusion
       </a>
@@ -162,6 +174,7 @@ exports[`Render MoviesList 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -180,7 +193,8 @@ exports[`Render MoviesList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="movie-page"
+        onClick={[Function]}
       >
         The Unwilling Man
       </a>
@@ -188,6 +202,7 @@ exports[`Render MoviesList 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
@@ -206,7 +221,8 @@ exports[`Render MoviesList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="movie-page"
+        onClick={[Function]}
       >
         Teacher in the Hunter
       </a>

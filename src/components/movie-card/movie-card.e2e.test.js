@@ -5,7 +5,14 @@ import MovieCard from "./movie-card.jsx";
 
 const film = {
   title: `The No Flowers`,
-  image: `http://placehold.it/280x175`
+  image: `http://placehold.it/280x175`,
+  description: `qwerty`,
+  rating: 1.0,
+  numberOfVotes: 1982,
+  director: `Taika Di Caprio`,
+  actors: `Ashley Cooper`,
+  genre: `Dramas`,
+  year: 1900
 };
 
 Enzyme.configure({
@@ -21,6 +28,7 @@ it(`Should film details be shown`, () => {
         film={film}
         onCardHover={onCardHover}
         onCardHoverOut={onCardHoverOut}
+        onCardClick={() => {}}
       />
   );
 
@@ -30,4 +38,26 @@ it(`Should film details be shown`, () => {
 
   expect(onCardHover.mock.calls.length).toBe(1);
   expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
+});
+
+it(`Should film card be clicked`, () => {
+  const onCardClick = jest.fn();
+
+  const movieCard = shallow(
+      <MovieCard
+        film={film}
+        onCardHover={() => {}}
+        onCardHoverOut={() => {}}
+        onCardClick={onCardClick}
+      />
+  );
+
+  const cardLink = movieCard.find(`.small-movie-card__link`);
+  const linkPrevention = jest.fn();
+  cardLink.simulate(`click`, {
+    preventDefault: linkPrevention
+  });
+
+  expect(onCardClick).toHaveBeenCalledTimes(1);
+  expect(linkPrevention).toHaveBeenCalledTimes(1);
 });

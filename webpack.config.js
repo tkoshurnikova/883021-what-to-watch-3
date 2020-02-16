@@ -9,6 +9,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, `public`),
     open: false,
+    historyApiFallback: true
   },
   module: {
     rules: [
