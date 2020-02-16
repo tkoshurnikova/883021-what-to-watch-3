@@ -3,6 +3,7 @@
 exports[`Render MovieCard 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onClick={[Function]}
   onMouseOut={[Function]}
   onMouseOver={[Function]}
 >
@@ -21,7 +22,8 @@ exports[`Render MovieCard 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="movie-page"
+      onClick={[Function]}
     >
       The No Flowers
     </a>
