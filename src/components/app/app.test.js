@@ -8,27 +8,39 @@ const FilmDetails = {
   RELEASE_DATE: 1995
 };
 
-const allFilms = [
-  `The No Flowers`,
-  `Rings of Cloud`,
-  `The Sword's Memory`,
-  `The Voyagers of the Words`,
-  `Shores in the Heart`,
-  `Missing Illusion`,
-  `The Unwilling Man`,
-  `Thorn of Soul`,
-  `The Sons's Obsession`,
-  `The Crying of the Souls`,
-  `Sons in the Silk`,
-  `Living Heat`,
-  `The Prized Moon`,
-  `Destruction of Predator`,
-  `The Truth's Danger`,
-  `The Tears of the Wizard`,
-  `Teacher in the Hunter`,
-  `Hidden Husband`,
-  `The Luscious Truth`,
-  `Gift of Female`
+const films = [
+  {
+    title: `The No Flowers`,
+    image: `http://placehold.it/280x175`
+  },
+  {
+    title: `Rings of Cloud`,
+    image: `http://placehold.it/280x175`
+  },
+  {
+    title: `The Sword's Memory`,
+    image: `http://placehold.it/280x175`
+  },
+  {
+    title: `The Voyagers of the Words`,
+    image: `http://placehold.it/280x175`
+  },
+  {
+    title: `Shores in the Heart`,
+    image: `http://placehold.it/280x175`
+  },
+  {
+    title: `Missing Illusion`,
+    image: `http://placehold.it/280x175`
+  },
+  {
+    title: `The Unwilling Man`,
+    image: `http://placehold.it/280x175`
+  },
+  {
+    title: `Teacher in the Hunter`,
+    image: `http://placehold.it/280x175`
+  }
 ];
 
 it(`Render App`, () => {
@@ -37,7 +49,7 @@ it(`Render App`, () => {
       filmName={FilmDetails.NAME}
       filmGenre={FilmDetails.GENRE}
       filmReleaseDate={FilmDetails.RELEASE_DATE}
-      allFilms={allFilms}
+      films={films}
     />)
     .toJSON();
 

@@ -1,12 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main.jsx";
-
-const FilmDetails = {
-  NAME: `Whispering Mist`,
-  GENRE: `Comedy`,
-  RELEASE_DATE: 1995
-};
+import MoviesList from "./movies-list.jsx";
 
 const films = [
   {
@@ -43,12 +37,9 @@ const films = [
   }
 ];
 
-it(`Render Main`, () => {
+it(`Render MoviesList`, () => {
   const tree = renderer
-    .create(<Main
-      filmName={FilmDetails.NAME}
-      filmGenre={FilmDetails.GENRE}
-      filmReleaseDate={FilmDetails.RELEASE_DATE}
+    .create(<MoviesList
       films={films}
     />)
     .toJSON();

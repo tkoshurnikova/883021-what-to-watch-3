@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render MoviesList 1`] = `
+<div
+  className="catalog__movies-list"
+>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="The No Flowers"
+        height="175"
+        src="http://placehold.it/280x175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        The No Flowers
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Rings of Cloud"
+        height="175"
+        src="http://placehold.it/280x175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Rings of Cloud
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="The Sword's Memory"
+        height="175"
+        src="http://placehold.it/280x175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        The Sword's Memory
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="The Voyagers of the Words"
+        height="175"
+        src="http://placehold.it/280x175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        The Voyagers of the Words
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Shores in the Heart"
+        height="175"
+        src="http://placehold.it/280x175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Shores in the Heart
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Missing Illusion"
+        height="175"
+        src="http://placehold.it/280x175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Missing Illusion
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="The Unwilling Man"
+        height="175"
+        src="http://placehold.it/280x175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        The Unwilling Man
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Teacher in the Hunter"
+        height="175"
+        src="http://placehold.it/280x175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Teacher in the Hunter
+      </a>
+    </h3>
+  </article>
+</div>
+`;

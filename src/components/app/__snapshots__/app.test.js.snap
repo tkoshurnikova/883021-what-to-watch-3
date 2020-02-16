@@ -259,12 +259,14 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="{film}"
+              alt="The No Flowers"
               height="175"
               src="http://placehold.it/280x175"
               width="280"
@@ -276,7 +278,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
             >
               The No Flowers
             </a>
@@ -284,12 +285,14 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="{film}"
+              alt="Rings of Cloud"
               height="175"
               src="http://placehold.it/280x175"
               width="280"
@@ -301,7 +304,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
             >
               Rings of Cloud
             </a>
@@ -309,12 +311,14 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="{film}"
+              alt="The Sword's Memory"
               height="175"
               src="http://placehold.it/280x175"
               width="280"
@@ -326,7 +330,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
             >
               The Sword's Memory
             </a>
@@ -334,12 +337,14 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="{film}"
+              alt="The Voyagers of the Words"
               height="175"
               src="http://placehold.it/280x175"
               width="280"
@@ -351,7 +356,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
             >
               The Voyagers of the Words
             </a>
@@ -359,12 +363,14 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="{film}"
+              alt="Shores in the Heart"
               height="175"
               src="http://placehold.it/280x175"
               width="280"
@@ -376,7 +382,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
             >
               Shores in the Heart
             </a>
@@ -384,12 +389,14 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="{film}"
+              alt="Missing Illusion"
               height="175"
               src="http://placehold.it/280x175"
               width="280"
@@ -401,7 +408,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
             >
               Missing Illusion
             </a>
@@ -409,12 +415,14 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="{film}"
+              alt="The Unwilling Man"
               height="175"
               src="http://placehold.it/280x175"
               width="280"
@@ -426,7 +434,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
             >
               The Unwilling Man
             </a>
@@ -434,12 +441,14 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="{film}"
+              alt="Teacher in the Hunter"
               height="175"
               src="http://placehold.it/280x175"
               width="280"
@@ -451,313 +460,11 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
-            >
-              Thorn of Soul
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              The Sons's Obsession
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              The Crying of the Souls
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Sons in the Silk
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Living Heat
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              The Prized Moon
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Destruction of Predator
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              The Truth's Danger
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              The Tears of the Wizard
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
             >
               Teacher in the Hunter
             </a>
           </h3>
         </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Hidden Husband
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              The Luscious Truth
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="{film}"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Gift of Female
-            </a>
-          </h3>
-        </article>
-        ;
       </div>
       <div
         className="catalog__more"
