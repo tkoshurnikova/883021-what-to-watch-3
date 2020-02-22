@@ -6,29 +6,16 @@ export default class VideoPlayer extends PureComponent {
     super(props);
 
     this._videoRef = createRef();
-
-    this.state = {
-      progress: 0,
-    };
   }
 
   componentDidMount() {
     const {film} = this.props;
     const video = this._videoRef.current;
-
     video.src = film.preview;
-
-    video.ontimeupdate = () => {
-      this.setState({
-        progress: video.currentTime
-      });
-    };
   }
 
   componentWillUnmount() {
     const video = this._videoRef.current;
-
-    video.ontimeupdate = null;
     video.src = ``;
   }
 
