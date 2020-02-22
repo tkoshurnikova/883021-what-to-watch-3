@@ -13,7 +13,7 @@ class MovieCard extends PureComponent {
 
   render() {
     const {film, onCardHover, onCardHoverOut, onCardClick} = this.props;
-    const timerForPreviewPlaying = () => {};
+    let timerForPreviewPlaying = () => {};
 
     return (
       <article
