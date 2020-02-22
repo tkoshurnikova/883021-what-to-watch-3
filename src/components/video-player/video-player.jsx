@@ -57,3 +57,19 @@ export default class VideoPlayer extends PureComponent {
     }
   }
 }
+
+VideoPlayer.propTypes = {
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    numberOfVotes: PropTypes.number.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+    preview: PropTypes.string.isRequired
+  }).isRequired,
+  isPlaying: PropTypes.bool.isRequired
+};

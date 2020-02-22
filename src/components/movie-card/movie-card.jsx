@@ -73,7 +73,8 @@ MovieCard.propTypes = {
     director: PropTypes.string.isRequired,
     actors: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired
+    year: PropTypes.number.isRequired,
+    preview: PropTypes.string.isRequired
   }).isRequired,
   onCardClick: PropTypes.func.isRequired
 };
