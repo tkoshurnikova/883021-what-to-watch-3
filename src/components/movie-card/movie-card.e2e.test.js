@@ -12,7 +12,8 @@ const film = {
   director: `Taika Di Caprio`,
   actors: `Ashley Cooper`,
   genre: `Dramas`,
-  year: 1900
+  year: 1900,
+  preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
 };
 
 Enzyme.configure({

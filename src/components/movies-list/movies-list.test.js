@@ -12,7 +12,8 @@ const films = [
     director: `Taika Di Caprio`,
     actors: `Ashley Cooper`,
     genre: `Dramas`,
-    year: 1900
+    year: 1900,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Rings of Cloud`,
@@ -23,7 +24,8 @@ const films = [
     director: `Taika Di Caprio`,
     actors: `Ashley Cooper`,
     genre: `Dramas`,
-    year: 1900
+    year: 1900,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `The Sword's Memory`,
@@ -34,7 +36,8 @@ const films = [
     director: `Taika Di Caprio`,
     actors: `Ashley Cooper`,
     genre: `Dramas`,
-    year: 1900
+    year: 1900,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `The Voyagers of the Words`,
@@ -45,7 +48,8 @@ const films = [
     director: `Taika Di Caprio`,
     actors: `Ashley Cooper`,
     genre: `Dramas`,
-    year: 1900
+    year: 1900,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Shores in the Heart`,
@@ -56,7 +60,8 @@ const films = [
     director: `Taika Di Caprio`,
     actors: `Ashley Cooper`,
     genre: `Dramas`,
-    year: 1900
+    year: 1900,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Missing Illusion`,
@@ -67,7 +72,8 @@ const films = [
     director: `Taika Di Caprio`,
     actors: `Ashley Cooper`,
     genre: `Dramas`,
-    year: 1900
+    year: 1900,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `The Unwilling Man`,
@@ -78,7 +84,8 @@ const films = [
     director: `Taika Di Caprio`,
     actors: `Ashley Cooper`,
     genre: `Dramas`,
-    year: 1900
+    year: 1900,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Teacher in the Hunter`,
@@ -89,7 +96,8 @@ const films = [
     director: `Taika Di Caprio`,
     actors: `Ashley Cooper`,
     genre: `Dramas`,
-    year: 1900
+    year: 1900,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   }
 ];
 

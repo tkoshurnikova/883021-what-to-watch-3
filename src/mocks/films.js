@@ -8,7 +8,8 @@ export default [
     director: `David Yates`,
     actors: `Eddie Redmayne, Katherine Waterston, Dan Fogler`,
     genre: `Kids & Family`,
-    year: 2018
+    year: 2018,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Bohemian Rhapsody`,
@@ -19,7 +20,8 @@ export default [
     director: `Bryan Singer`,
     actors: `Rami Malek, Lucy Boynton, Gwilym Lee`,
     genre: `Dramas`,
-    year: 2018
+    year: 2018,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `What We Do in the Shadows`,
@@ -30,7 +32,8 @@ export default [
     director: `Jemaine Clement, Taika Waititi`,
     actors: `Jemaine Clement, Taika Waititi, Cori Gonzalez-Macuer`,
     genre: `Comedies`,
-    year: 2014
+    year: 2014,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Pulp Fiction`,
@@ -41,7 +44,8 @@ export default [
     director: `Quentin Tarantino`,
     actors: `John Travolta, Uma Thurman, Samuel L. Jackson`,
     genre: `Dramas`,
-    year: 1994
+    year: 1994,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Dardjeeling Limited`,
@@ -52,7 +56,8 @@ export default [
     director: `Wes Anderson`,
     actors: `Owen Wilson, Adrien Brody, Jason Schwartzman`,
     genre: `Comedies`,
-    year: 2007
+    year: 2007,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Aviator`,
@@ -63,7 +68,8 @@ export default [
     director: `Martin Scorsese`,
     actors: `Leonardo DiCaprio, Cate Blanchett, Kate Beckinsale`,
     genre: `Dramas`,
-    year: 2004
+    year: 2004,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Revenant`,
@@ -74,7 +80,8 @@ export default [
     director: `Alejandro G. Iñárritu`,
     actors: `Leonardo DiCaprio, Tom Hardy, Will Poulter`,
     genre: `Dramas`,
-    year: 2015
+    year: 2015,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Johnny English`,
@@ -85,6 +92,7 @@ export default [
     director: `Peter Howitt`,
     actors: `Rowan Atkinson, John Malkovich, Natalie Imbruglia`,
     genre: `Comedies`,
-    year: 2003
+    year: 2003,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];

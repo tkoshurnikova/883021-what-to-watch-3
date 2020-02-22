@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCard from "./movie-card.jsx";
+import VideoPlayer from "./video-player.jsx";
 
 const film = {
   title: `The No Flowers`,
@@ -15,15 +15,16 @@ const film = {
   preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
 };
 
-it(`Render MovieCard`, () => {
+it(`Render VideoPlayer`, () => {
   const tree = renderer
-    .create(<MovieCard
+    .create(<VideoPlayer
       film={film}
-      onCardHover={() => {}}
-      onCardHoverOut={() => {}}
-      onCardClick={() => {}}
-    />)
-    .toJSON();
+      isPlaying={true}
+    />, {
+      createNodeMock: () => {
+        return {};
+      }
+    }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
