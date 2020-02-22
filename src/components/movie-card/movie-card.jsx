@@ -1,25 +1,49 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import VideoPlayer from "../video-player/video-player.jsx";
 
 class MovieCard extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isPreviewPlaying: false
+    };
   }
 
   render() {
     const {film, onCardHover, onCardHoverOut, onCardClick} = this.props;
+    const timerForPreviewPlaying = () => {};
 
     return (
       <article
         className="small-movie-card catalog__movies-card"
         onMouseOver={() => {
           onCardHover(film);
+
+          timerForPreviewPlaying = setTimeout(() => {
+            this.setState({
+              isPreviewPlaying: true
+            });
+          }, 1000);
         }}
-        onMouseOut={onCardHoverOut}
+        onMouseOut={() => {
+          onCardHoverOut();
+
+          clearTimeout(timerForPreviewPlaying);
+          this.setState({
+            isPreviewPlaying: false
+          });
+        }}
         onClick={() => onCardClick(film)}
       >
         <div className="small-movie-card__image">
-          <img src={film.image} alt={film.title} width="280" height="175" />
+          {(this.state.isPreviewPlaying)
+            ? <VideoPlayer
+              film={film}
+              isPlaying={this.state.isPreviewPlaying}
+            />
+            : <img src={film.image} alt={film.title} width="280" height="175" />}
         </div>
         <h3 className="small-movie-card__title">
           <a
