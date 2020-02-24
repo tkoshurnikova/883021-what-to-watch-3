@@ -16,6 +16,12 @@ class MoviePage extends PureComponent {
     };
   }
 
+  _onTabClick(tab) {
+    this.setState({
+      activeTab: tab
+    });
+  }
+
   render() {
     const {film} = this.props;
     const {activeTab}=this.state;
@@ -90,17 +96,38 @@ class MoviePage extends PureComponent {
               <div className="movie-card__desc">
                 <nav className="movie-nav movie-card__nav">
                   <ul className="movie-nav__list">
-                    <li className="movie-nav__item movie-nav__item--active">
+                    <li
+                      className="movie-nav__item movie-nav__item--active"
+                      onClick={(evt) => {
+                        this._onTabClick(TabName.OVERVIEW);
+                        document.querySelector(`.movie-nav__item--active`).classList.remove(`movie-nav__item--active`);
+                        evt.target.parentNode.classList.add(`movie-nav__item--active`);
+                      }}
+                    >
                       <a href="#" className="movie-nav__link">
                         Overview
                       </a>
                     </li>
-                    <li className="movie-nav__item">
+                    <li
+                      className="movie-nav__item"
+                      onClick={(evt) => {
+                        this._onTabClick(TabName.DETAILS);
+                        document.querySelector(`.movie-nav__item--active`).classList.remove(`movie-nav__item--active`);
+                        evt.target.parentNode.classList.add(`movie-nav__item--active`);
+                      }}
+                    >
                       <a href="#" className="movie-nav__link">
                         Details
                       </a>
                     </li>
-                    <li className="movie-nav__item">
+                    <li
+                      className="movie-nav__item"
+                      onClick={(evt) => {
+                        this._onTabClick(TabName.REVIEWS);
+                        document.querySelector(`.movie-nav__item--active`).classList.remove(`movie-nav__item--active`);
+                        evt.target.parentNode.classList.add(`movie-nav__item--active`);
+                      }}
+                    >
                       <a href="#" className="movie-nav__link">
                         Reviews
                       </a>
