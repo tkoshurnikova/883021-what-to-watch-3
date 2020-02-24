@@ -1,12 +1,16 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
+import MoviesList from "../movies-list/movies-list.jsx";
+import films from "../../mocks/films.js";
 
 const TabName = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
   REVIEWS: `Reviews`
 };
+
+const SIMILAR_FILMS_LENGTH = 4;
 
 class MoviePage extends PureComponent {
   constructor(props) {
@@ -23,8 +27,24 @@ class MoviePage extends PureComponent {
   }
 
   render() {
-    const {film} = this.props;
+    const {film, onCardClick} = this.props;
     const {activeTab} = this.state;
+
+    const getSimilarFilms = () => {
+      let similarFilms = films.filter((item) => item.genre === film.genre);
+
+      if (similarFilms.length < SIMILAR_FILMS_LENGTH + 1) {
+        const additionalFilmsLength = SIMILAR_FILMS_LENGTH + 1 - similarFilms.length;
+        for (let i = 0; i < additionalFilmsLength; i++) {
+          similarFilms.push(films[i]);
+        }
+      }
+
+      const index = similarFilms.indexOf(film);
+      similarFilms = [].concat(similarFilms.slice(0, index), similarFilms.slice(index + 1));
+
+      return similarFilms;
+    };
 
     return (
       <React.Fragment>
@@ -145,58 +165,10 @@ class MoviePage extends PureComponent {
         <div className="page-content">
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
-            <div className="catalog__movies-list">
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img
-                    src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-                    alt="Fantastic Beasts: The Crimes of Grindelwald"
-                    width={280}
-                    height={175}
-                  />
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">
-                    Fantastic Beasts: The Crimes of Grindelwald
-                  </a>
-                </h3>
-              </article>
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img
-                    src="img/bohemian-rhapsody.jpg"
-                    alt="Bohemian Rhapsody"
-                    width={280}
-                    height={175}
-                  />
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">
-                    Bohemian Rhapsody
-                  </a>
-                </h3>
-              </article>
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/macbeth.jpg" alt="Macbeth" width={280} height={175} />
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">
-                    Macbeth
-                  </a>
-                </h3>
-              </article>
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/aviator.jpg" alt="Aviator" width={280} height={175} />
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">
-                    Aviator
-                  </a>
-                </h3>
-              </article>
-            </div>
+            <MoviesList
+              films={getSimilarFilms()}
+              onCardClick={onCardClick}
+            />
           </section>
           <footer className="page-footer">
             <div className="logo">
@@ -228,6 +200,7 @@ MoviePage.propTypes = {
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired
   }).isRequired,
+  onCardClick: PropTypes.func.isRequired
 };
 
 export default MoviePage;

@@ -28,6 +28,7 @@ class App extends PureComponent {
       return (
         <MoviePage
           film={clickedCard}
+          onCardClick={this._onCardClick}
         />
       );
     }
