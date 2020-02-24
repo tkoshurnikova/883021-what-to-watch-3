@@ -24,7 +24,7 @@ class MoviePage extends PureComponent {
 
   render() {
     const {film} = this.props;
-    const {activeTab}=this.state;
+    const {activeTab} = this.state;
 
     return (
       <React.Fragment>
@@ -134,10 +134,10 @@ class MoviePage extends PureComponent {
                     </li>
                   </ul>
                 </nav>
-              <Tabs
-                film={film}
-                activeTab={activeTab}
-              />
+                <Tabs
+                  film={film}
+                  activeTab={activeTab}
+                />
               </div>
             </div>
           </div>

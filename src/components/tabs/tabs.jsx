@@ -20,10 +20,12 @@ const getFilmRatingDescription = (rating) => {
 };
 
 const Tabs = ({film, activeTab}) => {
+  let returnFragment;
+
   switch (activeTab) {
     case TabName.OVERVIEW:
-      return (
-        <React.Fragment>
+      returnFragment =
+        (<React.Fragment>
           <div className="movie-rating">
             <div className="movie-rating__score">{film.rating.toFixed(1)}</div>
             <p className="movie-rating__meta">
@@ -45,48 +47,48 @@ const Tabs = ({film, activeTab}) => {
               </strong>
             </p>
           </div>
-        </React.Fragment>
-      );
+        </React.Fragment>);
+      break;
     case TabName.DETAILS:
-      return (
-        <React.Fragment>
-            <div className="movie-card__text movie-card__row">
-              <div className="movie-card__text-col">
-                <p className="movie-card__details-item">
-                  <strong className="movie-card__details-name">Director</strong>
-                  <span className="movie-card__details-value">{film.director}</span>
-                </p>
-                <p className="movie-card__details-item">
-                  <strong className="movie-card__details-name">Starring</strong>
-                  <span className="movie-card__details-value">
-                    {film.actors}
-                  </span>
-                </p>
-              </div>
-            </div>
+      returnFragment =
+        (<React.Fragment>
+          <div className="movie-card__text movie-card__row">
             <div className="movie-card__text-col">
               <p className="movie-card__details-item">
-                <strong className="movie-card__details-name">Run Time</strong>
-                <span className="movie-card__details-value">1h 39m</span>
+                <strong className="movie-card__details-name">Director</strong>
+                <span className="movie-card__details-value">{film.director}</span>
               </p>
               <p className="movie-card__details-item">
-                <strong className="movie-card__details-name">Genre</strong>
-                <span className="movie-card__details-value">{film.genre}</span>
-              </p>
-              <p className="movie-card__details-item">
-                <strong className="movie-card__details-name">Released</strong>
-                <span className="movie-card__details-value">{film.year}</span>
+                <strong className="movie-card__details-name">Starring</strong>
+                <span className="movie-card__details-value">
+                  {film.actors}
+                </span>
               </p>
             </div>
-        </React.Fragment>
-      );
+          </div>
+          <div className="movie-card__text-col">
+            <p className="movie-card__details-item">
+              <strong className="movie-card__details-name">Run Time</strong>
+              <span className="movie-card__details-value">1h 39m</span>
+            </p>
+            <p className="movie-card__details-item">
+              <strong className="movie-card__details-name">Genre</strong>
+              <span className="movie-card__details-value">{film.genre}</span>
+            </p>
+            <p className="movie-card__details-item">
+              <strong className="movie-card__details-name">Released</strong>
+              <span className="movie-card__details-value">{film.year}</span>
+            </p>
+          </div>
+        </React.Fragment>);
+      break;
     case TabName.REVIEWS:
-      return (
-        <div className="movie-card__reviews movie-card__row">
+      returnFragment =
+        (<div className="movie-card__reviews movie-card__row">
           <div className="movie-card__reviews-col">
             <div className="review">
               <blockquote className="review__quote">
-                <p className="review__text">Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.</p>
+                <p className="review__text">Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director{`'`}s funniest and most exquisitely designed movies in years.</p>
                 <footer className="review__details">
                   <cite className="review__author">Kate Muir</cite>
                   <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
@@ -96,7 +98,7 @@ const Tabs = ({film, activeTab}) => {
             </div>
             <div className="review">
               <blockquote className="review__quote">
-                <p className="review__text">Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.</p>
+                <p className="review__text">Anderson{`'`}s films are too precious for some, but for those of us willing to lose ourselves in them, they{`'`}re a delight. {`"`}The Grand Budapest Hotel{`"`} is no different, except that he has added a hint of gravitas to the mix, improving the recipe.</p>
                 <footer className="review__details">
                   <cite className="review__author">Bill Goodykoontz</cite>
                   <time className="review__date" dateTime="2015-11-18">November 18, 2015</time>
@@ -106,7 +108,7 @@ const Tabs = ({film, activeTab}) => {
             </div>
             <div className="review">
               <blockquote className="review__quote">
-                <p className="review__text">I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.</p>
+                <p className="review__text">I didn{`'`}t find it amusing, and while I can appreciate the creativity, it{`'`}s an hour and 40 minutes I wish I could take back.</p>
                 <footer className="review__details">
                   <cite className="review__author">Amanda Greever</cite>
                   <time className="review__date" dateTime="2015-11-18">November 18, 2015</time>
@@ -147,9 +149,25 @@ const Tabs = ({film, activeTab}) => {
               <div className="review__rating">7,0</div>
             </div>
           </div>
-        </div>
-      );
+        </div>);
+      break;
   }
-}
+  return returnFragment;
+};
+
+Tabs.propTypes = {
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    numberOfVotes: PropTypes.number.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired
+  }).isRequired,
+  activeTab: PropTypes.string.isRequired
+};
 
 export default Tabs;
