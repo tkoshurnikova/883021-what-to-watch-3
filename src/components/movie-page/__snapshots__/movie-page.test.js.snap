@@ -161,7 +161,7 @@ Array [
               className="movie-nav__list"
             >
               <li
-                className="movie-nav__item movie-nav__item--active"
+                className="movie-nav__item movie-nav__item"
                 onClick={[Function]}
               >
                 <a
@@ -172,7 +172,7 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item movie-nav__item"
                 onClick={[Function]}
               >
                 <a
@@ -183,7 +183,7 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item movie-nav__item"
                 onClick={[Function]}
               >
                 <a

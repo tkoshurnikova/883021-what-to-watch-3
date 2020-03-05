@@ -18,6 +18,7 @@ class MoviePage extends PureComponent {
     this.state = {
       activeTab: TabName.OVERVIEW
     };
+    this._onTabClick = this._onTabClick.bind(this);
   }
 
   _onTabClick(tab) {
@@ -114,49 +115,10 @@ class MoviePage extends PureComponent {
                 />
               </div>
               <div className="movie-card__desc">
-                <nav className="movie-nav movie-card__nav">
-                  <ul className="movie-nav__list">
-                    <li
-                      className="movie-nav__item movie-nav__item--active"
-                      onClick={(evt) => {
-                        this._onTabClick(TabName.OVERVIEW);
-                        document.querySelector(`.movie-nav__item--active`).classList.remove(`movie-nav__item--active`);
-                        evt.target.parentNode.classList.add(`movie-nav__item--active`);
-                      }}
-                    >
-                      <a href="#" className="movie-nav__link">
-                        Overview
-                      </a>
-                    </li>
-                    <li
-                      className="movie-nav__item"
-                      onClick={(evt) => {
-                        this._onTabClick(TabName.DETAILS);
-                        document.querySelector(`.movie-nav__item--active`).classList.remove(`movie-nav__item--active`);
-                        evt.target.parentNode.classList.add(`movie-nav__item--active`);
-                      }}
-                    >
-                      <a href="#" className="movie-nav__link">
-                        Details
-                      </a>
-                    </li>
-                    <li
-                      className="movie-nav__item"
-                      onClick={(evt) => {
-                        this._onTabClick(TabName.REVIEWS);
-                        document.querySelector(`.movie-nav__item--active`).classList.remove(`movie-nav__item--active`);
-                        evt.target.parentNode.classList.add(`movie-nav__item--active`);
-                      }}
-                    >
-                      <a href="#" className="movie-nav__link">
-                        Reviews
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
                 <Tabs
                   film={film}
                   activeTab={activeTab}
+                  onTabClick={this._onTabClick}
                 />
               </div>
             </div>
