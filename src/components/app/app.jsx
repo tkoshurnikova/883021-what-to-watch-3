@@ -28,6 +28,7 @@ class App extends PureComponent {
       return (
         <MoviePage
           film={clickedCard}
+          onCardClick={this._onCardClick}
         />
       );
     }
@@ -57,6 +58,7 @@ class App extends PureComponent {
           <Route exact path="/movie-page">
             <MoviePage
               film={film}
+              onCardClick={this._onCardClick}
             />
           </Route>
         </Switch>

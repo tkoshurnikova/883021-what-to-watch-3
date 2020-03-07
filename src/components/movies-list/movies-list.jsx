@@ -7,7 +7,6 @@ class MoviesList extends PureComponent {
     super(props);
     this.state = {
       cardWithHover: null,
-      // isPreviewPlaying: false
     };
 
     this._onCardHover = this._onCardHover.bind(this);
@@ -17,20 +16,17 @@ class MoviesList extends PureComponent {
   _onCardHover(film) {
     this.setState({
       cardWithHover: film,
-      // isPreviewPlaying: true
     });
   }
 
   _onCardHoverOut() {
     this.setState({
       cardWithHover: null,
-      // isPreviewPlaying: false
     });
   }
 
   render() {
     const {films, onCardClick} = this.props;
-    // const {isPreviewPlaying} = this.state
 
     return (
       <div className="catalog__movies-list">
@@ -41,7 +37,6 @@ class MoviesList extends PureComponent {
             onCardHover={this._onCardHover}
             onCardHoverOut={this._onCardHoverOut}
             onCardClick={onCardClick}
-            // isPreviewPlaying={isPreviewPlaying}
           />
         ))}
       </div>

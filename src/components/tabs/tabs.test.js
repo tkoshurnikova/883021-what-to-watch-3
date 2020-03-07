@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviePage from "./movie-page.jsx";
+import Tabs from "./tabs.jsx";
 
 const film = {
   title: `The No Flowers`,
@@ -14,11 +14,14 @@ const film = {
   year: 1900
 };
 
-it(`Render MoviePage`, () => {
+const activeTab = `Overview`;
+
+it(`Render Tabs`, () => {
   const tree = renderer
-    .create(<MoviePage
+    .create(<Tabs
       film={film}
-      onCardClick={() => {}}
+      activeTab={activeTab}
+      onTabClick={() => {}}
     />)
     .toJSON();
 
