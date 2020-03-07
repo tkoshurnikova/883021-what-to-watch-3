@@ -1,11 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-
-const TabName = {
-  OVERVIEW: `Overview`,
-  DETAILS: `Details`,
-  REVIEWS: `Reviews`
-};
+import {TabName} from "../../const.js";
 
 const getFilmRatingDescription = (rating) => {
   let ratingDescription = ``;

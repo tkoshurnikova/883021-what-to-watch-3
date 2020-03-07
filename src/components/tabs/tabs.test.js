@@ -21,6 +21,7 @@ it(`Render Tabs`, () => {
     .create(<Tabs
       film={film}
       activeTab={activeTab}
+      onTabClick={() => {}}
     />)
     .toJSON();
 

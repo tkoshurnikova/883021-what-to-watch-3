@@ -3,14 +3,7 @@ import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import films from "../../mocks/films.js";
-
-const TabName = {
-  OVERVIEW: `Overview`,
-  DETAILS: `Details`,
-  REVIEWS: `Reviews`
-};
-
-const SIMILAR_FILMS_LENGTH = 4;
+import {TabName} from "../../const.js";
 
 class MoviePage extends PureComponent {
   constructor(props) {
@@ -31,21 +24,7 @@ class MoviePage extends PureComponent {
     const {film, onCardClick} = this.props;
     const {activeTab} = this.state;
 
-    const getSimilarFilms = () => {
-      let similarFilms = films.filter((item) => item.genre === film.genre);
-
-      if (similarFilms.length < SIMILAR_FILMS_LENGTH + 1) {
-        const additionalFilmsLength = SIMILAR_FILMS_LENGTH + 1 - similarFilms.length;
-        for (let i = 0; i < additionalFilmsLength; i++) {
-          similarFilms.push(films[i]);
-        }
-      }
-
-      const index = similarFilms.indexOf(film);
-      similarFilms = [].concat(similarFilms.slice(0, index), similarFilms.slice(index + 1));
-
-      return similarFilms;
-    };
+    const similarFilms = films.filter((item) => item.genre === film.genre && item.title !== film.title).slice(0, 4);
 
     return (
       <React.Fragment>
@@ -128,7 +107,7 @@ class MoviePage extends PureComponent {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
             <MoviesList
-              films={getSimilarFilms()}
+              films={similarFilms}
               onCardClick={onCardClick}
             />
           </section>
