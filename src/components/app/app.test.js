@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import {App} from "./app.jsx";
 
 const FilmDetails = {
   NAME: `Whispering Mist`,
@@ -114,6 +114,9 @@ it(`Render App`, () => {
       filmGenre={FilmDetails.GENRE}
       filmReleaseDate={FilmDetails.RELEASE_DATE}
       films={films}
+      genre={``}
+      filteredFilms={films}
+      onGenreChange={() => {}}
     />)
     .toJSON();
 
