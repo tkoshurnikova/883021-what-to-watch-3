@@ -16,3 +16,5 @@ export const Genre = {
   SCI_FI: `Sci-Fi`,
   THRILLERS: `Thrillers`
 };
+
+export const CARDS_TO_SHOW = 8;
