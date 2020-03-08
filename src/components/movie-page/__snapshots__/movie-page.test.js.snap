@@ -29,7 +29,6 @@ Array [
         >
           <a
             className="logo__link"
-            href="main.html"
           >
             <span
               className="logo__letter logo__letter--1"
@@ -56,9 +55,9 @@ Array [
           >
             <img
               alt="User avatar"
-              height={63}
+              height="63"
               src="img/avatar.jpg"
-              width={63}
+              width="63"
             />
           </div>
         </div>
@@ -383,7 +382,6 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
-          href="main.html"
         >
           <span
             className="logo__letter logo__letter--1"
