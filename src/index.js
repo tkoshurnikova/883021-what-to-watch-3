@@ -5,7 +5,7 @@ import {Provider} from "react-redux";
 import App from "./components/app/app.jsx";
 import {reducer} from "./reducer.js";
 
-const FilmDetails = {
+const PromoFilm = {
   NAME: `The Grand Budapest Hotel`,
   GENRE: `Drama`,
   RELEASE_DATE: 2014
@@ -19,9 +19,7 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
       <App
-        filmName={FilmDetails.NAME}
-        filmGenre={FilmDetails.GENRE}
-        filmReleaseDate={FilmDetails.RELEASE_DATE}
+        PromoFilm={PromoFilm}
       />
     </Provider>,
     document.querySelector(`#root`)

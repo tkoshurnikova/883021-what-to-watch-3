@@ -1,16 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from 'react-redux';
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 
-const Main = ({
-  filmName, filmGenre, filmReleaseDate,
-  films,
-  filteredFilms,
-  genre,
-  onGenreChange,
-  onCardClick
-}) => {
+const Main = ({PromoFilm, filteredFilms, onCardClick}) => {
 
   return (
     <React.Fragment>
@@ -44,10 +38,10 @@ const Main = ({
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{filmName}</h2>
+              <h2 className="movie-card__title">{PromoFilm.NAME}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{filmGenre}</span>
-                <span className="movie-card__year">{filmReleaseDate}</span>
+                <span className="movie-card__genre">{PromoFilm.GENRE}</span>
+                <span className="movie-card__year">{PromoFilm.RELEASE_DATE}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -73,11 +67,7 @@ const Main = ({
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenresList
-            films={films}
-            genre={genre}
-            onGenreChange={onGenreChange}
-          />
+          <GenresList/>
 
           <MoviesList
             films={filteredFilms}
@@ -108,14 +98,14 @@ const Main = ({
 };
 
 Main.propTypes = {
-  filmName: PropTypes.string.isRequired,
-  filmGenre: PropTypes.string.isRequired,
-  filmReleaseDate: PropTypes.number.isRequired,
-  films: PropTypes.array.isRequired,
-  genre: PropTypes.string.isRequired,
+  PromoFilm: PropTypes.object.isRequired,
   filteredFilms: PropTypes.array.isRequired,
-  onGenreChange: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  filteredFilms: state.filteredFilms
+});
+
+export {Main};
+export default connect(mapStateToProps)(Main);
