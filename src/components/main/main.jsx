@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
+import ShowMoreBtn from "../show-more-btn/show-more-btn.jsx";
 
 const Main = ({PromoFilm, filteredFilms, onCardClick}) => {
 
@@ -74,9 +75,7 @@ const Main = ({PromoFilm, filteredFilms, onCardClick}) => {
             onCardClick={onCardClick}
           />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <ShowMoreBtn/>
         </section>
 
         <footer className="page-footer">
