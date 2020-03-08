@@ -94,5 +94,29 @@ export default [
     genre: `Comedies`,
     year: 2003,
     preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  },
+  {
+    title: `Macbeth`,
+    image: `img/macbeth.jpg`,
+    description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
+    rating: 6.6,
+    numberOfVotes: 50728,
+    director: `Justin Kurzel`,
+    actors: `Michael Fassbender, Marion Cotillard, Jack Madigan`,
+    genre: `Dramas`,
+    year: 2015,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  },
+  {
+    title: `Seven Years in Tibet`,
+    image: `img/seven-years-in-tibet.jpg`,
+    description: `True story of Heinrich Harrer, an Austrian mountain climber who became friends with the Dalai Lama at the time of China's takeover of Tibet.`,
+    rating: 7.1,
+    numberOfVotes: 119123,
+    director: `Jean-Jacques Annaud`,
+    actors: `Brad Pitt, David Thewlis, BD Wong`,
+    genre: `Dramas`,
+    year: 2015,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];
