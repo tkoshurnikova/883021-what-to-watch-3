@@ -5,7 +5,7 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import ShowMoreBtn from "../show-more-btn/show-more-btn.jsx";
 
-const Main = ({PromoFilm, filteredFilms, onCardClick}) => {
+const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick}) => {
 
   return (
     <React.Fragment>
@@ -75,7 +75,8 @@ const Main = ({PromoFilm, filteredFilms, onCardClick}) => {
             onCardClick={onCardClick}
           />
 
-          <ShowMoreBtn/>
+          {cardsToShow >= filteredFilms.length || <ShowMoreBtn/>}
+
         </section>
 
         <footer className="page-footer">
@@ -99,11 +100,13 @@ const Main = ({PromoFilm, filteredFilms, onCardClick}) => {
 Main.propTypes = {
   PromoFilm: PropTypes.object.isRequired,
   filteredFilms: PropTypes.array.isRequired,
-  onCardClick: PropTypes.func.isRequired
+  onCardClick: PropTypes.func.isRequired,
+  cardsToShow: PropTypes.number.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  filteredFilms: state.filteredFilms
+  filteredFilms: state.filteredFilms,
+  cardsToShow: state.cardsToShow
 });
 
 export {Main};

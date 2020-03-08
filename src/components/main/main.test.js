@@ -125,6 +125,7 @@ it(`Render Main`, () => {
             PromoFilm={FilmDetails}
             filteredFilms={films}
             onCardClick={() => {}}
+            cardsToShow={8}
           />)
         </Provider>, {
           createNodeMock: () => {
