@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MoviePage from "./movie-page.jsx";
+import {Provider} from 'react-redux';
+import configureMockStore from 'redux-mock-store';
 
 const film = {
   title: `The No Flowers`,
@@ -14,12 +16,28 @@ const film = {
   year: 1900
 };
 
+const mockStore = configureMockStore([]);
+let store = mockStore({
+  filteredFilms: [],
+  films: [],
+  genre: ``,
+  cardsToShow: 8
+});
+
+
 it(`Render MoviePage`, () => {
   const tree = renderer
-    .create(<MoviePage
-      film={film}
-      onCardClick={() => {}}
-    />)
+    .create(
+        <Provider store={store}>
+          <MoviePage
+            film={film}
+            onCardClick={() => {}}
+          />)
+        </Provider>, {
+          createNodeMock: () => {
+            return {};
+          }
+        })
     .toJSON();
 
   expect(tree).toMatchSnapshot();

@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from 'react-redux';
+import {ActionCreator} from "../../reducer.js";
 
 const GenresList = ({films, genre, onGenreChange}) => {
   const genres = [...new Set([`All genres`, ...films.map((film) => film.genre)])];
@@ -35,4 +37,18 @@ GenresList.propTypes = {
   onGenreChange: PropTypes.func.isRequired
 };
 
-export default GenresList;
+const mapStateToProps = (state) => ({
+  genre: state.genre,
+  films: state.films,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenreChange(genre, films) {
+    dispatch(ActionCreator.changeGenre(genre));
+    dispatch(ActionCreator.getFilmsByGenre(genre, films));
+    dispatch(ActionCreator.resetCardsCount());
+  }
+});
+
+export {GenresList};
+export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

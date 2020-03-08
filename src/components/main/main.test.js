@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main.jsx";
+import {Main} from "./main.jsx";
+import {Provider} from 'react-redux';
+import configureMockStore from 'redux-mock-store';
 
 const FilmDetails = {
   NAME: `Whispering Mist`,
@@ -107,19 +109,29 @@ const films = [
   }
 ];
 
+const mockStore = configureMockStore([]);
+let store = mockStore({
+  filteredFilms: [],
+  films,
+  genre: ``,
+  cardsToShow: 8
+});
 
 it(`Render Main`, () => {
   const tree = renderer
-    .create(<Main
-      filmName={FilmDetails.NAME}
-      filmGenre={FilmDetails.GENRE}
-      filmReleaseDate={FilmDetails.RELEASE_DATE}
-      films={films}
-      genre={``}
-      filteredFilms={films}
-      onGenreChange={() => {}}
-      onCardClick={() => {}}
-    />)
+    .create(
+        <Provider store={store}>
+          <Main
+            PromoFilm={FilmDetails}
+            filteredFilms={films}
+            onCardClick={() => {}}
+            cardsToShow={8}
+          />)
+        </Provider>, {
+          createNodeMock: () => {
+            return {};
+          }
+        })
     .toJSON();
 
   expect(tree).toMatchSnapshot();
