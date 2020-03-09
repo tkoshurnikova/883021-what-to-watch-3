@@ -1,11 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render VideoPlayer 1`] = `
-<video
-  autoPlay={true}
-  height="175"
-  muted={true}
-  poster="http://placehold.it/280x175"
-  width="280"
-/>
-`;
+exports[`Render VideoPlayer 1`] = `<video />`;

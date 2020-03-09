@@ -1,6 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import VideoPlayer from "../video-player/video-player.jsx";
+import Player from "../video-player/video-player.jsx";
+import withVideo from "../../hocs/with-video/with-video.jsx";
+
+const VideoPlayer = withVideo(Player);
 
 class MovieCard extends PureComponent {
   constructor(props) {
