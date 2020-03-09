@@ -1,7 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import VideoPlayer from "./video-player.jsx";
-
 const film = {
   title: `The No Flowers`,
   image: `http://placehold.it/280x175`,
@@ -17,17 +16,14 @@ const film = {
 
 it(`Render VideoPlayer`, () => {
   const tree = renderer
-    .create(
-        <VideoPlayer
-          film={film}
-          isPlaying={true}
-        >
-          <video />
-        </VideoPlayer>, {
-          createNodeMock: () => {
-            return {};
-          }
-        }).toJSON();
+    .create(<VideoPlayer
+      film={film}
+      isPlaying={true}
+    />, {
+      createNodeMock: () => {
+        return {};
+      }
+    }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

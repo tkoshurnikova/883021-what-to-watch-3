@@ -1,9 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Player from "../video-player/video-player.jsx";
-import withVideo from "../../hocs/with-video/with-video.jsx";
-
-const VideoPlayer = withVideo(Player);
+import VideoPlayer from "../video-player/video-player.jsx";
 
 const MovieCard = ({film, onCardHover, onCardHoverOut, onCardClick, activeCard}) => {
   let timerForPreviewPlaying = () => {};
