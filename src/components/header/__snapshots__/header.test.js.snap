@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Footer 1`] = `
+exports[`Render Header 1`] = `
 <header
   className="page-header movie-card__head"
 >

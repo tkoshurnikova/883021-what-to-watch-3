@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Header from "./header.jsx";
 
-it(`Render Footer`, () => {
+it(`Render Header`, () => {
   const tree = renderer
     .create(<Header/>)
     .toJSON();
