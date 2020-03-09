@@ -1,29 +1,26 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 import {connect} from "react-redux";
 
-class MoviesList extends PureComponent {
-  render() {
-    const {films, onCardClick, cardsToShow, activeItem, onActiveItemChange} = this.props;
-    const showedFilms = films.slice(0, cardsToShow);
+const MoviesList = ({films, onCardClick, cardsToShow, activeItem, onActiveItemChange}) => {
+  const showedFilms = films.slice(0, cardsToShow);
 
-    return (
-      <div className="catalog__movies-list">
-        {showedFilms.map((film) => (
-          <MovieCard
-            film={film}
-            key={film.title}
-            onCardHover={onActiveItemChange}
-            onCardHoverOut={onActiveItemChange}
-            onCardClick={onCardClick}
-            activeCard={activeItem}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {showedFilms.map((film) => (
+        <MovieCard
+          film={film}
+          key={film.title}
+          onCardHover={onActiveItemChange}
+          onCardHoverOut={onActiveItemChange}
+          onCardClick={onCardClick}
+          activeCard={activeItem}
+        />
+      ))}
+    </div>
+  );
+};
 
 MoviesList.propTypes = {
   films: PropTypes.array.isRequired,

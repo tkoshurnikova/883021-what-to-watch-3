@@ -1,56 +1,49 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Player from "../video-player/video-player.jsx";
 import withVideo from "../../hocs/with-video/with-video.jsx";
 
 const VideoPlayer = withVideo(Player);
 
-class MovieCard extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const MovieCard = ({film, onCardHover, onCardHoverOut, onCardClick, activeCard}) => {
+  let timerForPreviewPlaying = () => {};
 
-  render() {
-    const {film, onCardHover, onCardHoverOut, onCardClick, activeCard} = this.props;
-    let timerForPreviewPlaying = () => {};
-
-    return (
-      <article
-        className="small-movie-card catalog__movies-card"
-        onMouseOver={() => {
-          timerForPreviewPlaying = setTimeout(() => {
-            onCardHover(film);
-          }, 1000);
-        }}
-        onMouseOut={() => {
-          clearTimeout(timerForPreviewPlaying);
-          onCardHoverOut({});
-        }}
-        onClick={() => onCardClick(film)}
-      >
-        <div className="small-movie-card__image">
-          {(activeCard === film)
-            ? <VideoPlayer
-              film={film}
-              isPlaying={activeCard === film}
-            />
-            : <img src={film.image} alt={film.title} width="280" height="175" />}
-        </div>
-        <h3 className="small-movie-card__title">
-          <a
-            className="small-movie-card__link"
-            onClick={(evt) => {
-              evt.preventDefault();
-              onCardClick(film);
-            }}
-            href="movie-page">
-            {film.title}
-          </a>
-        </h3>
-      </article>
-    );
-  }
-}
+  return (
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseOver={() => {
+        timerForPreviewPlaying = setTimeout(() => {
+          onCardHover(film);
+        }, 1000);
+      }}
+      onMouseOut={() => {
+        clearTimeout(timerForPreviewPlaying);
+        onCardHoverOut({});
+      }}
+      onClick={() => onCardClick(film)}
+    >
+      <div className="small-movie-card__image">
+        {(activeCard === film)
+          ? <VideoPlayer
+            film={film}
+            isPlaying={activeCard === film}
+          />
+          : <img src={film.image} alt={film.title} width="280" height="175" />}
+      </div>
+      <h3 className="small-movie-card__title">
+        <a
+          className="small-movie-card__link"
+          onClick={(evt) => {
+            evt.preventDefault();
+            onCardClick(film);
+          }}
+          href="movie-page">
+          {film.title}
+        </a>
+      </h3>
+    </article>
+  );
+};
 
 MovieCard.propTypes = {
   onCardHover: PropTypes.func.isRequired,
