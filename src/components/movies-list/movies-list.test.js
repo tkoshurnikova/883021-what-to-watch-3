@@ -119,6 +119,8 @@ it(`Render MoviesList`, () => {
             films={films}
             onCardClick={() => {}}
             cardsToShow={8}
+            activeItem={films[0]}
+            onActiveItemChange={() => {}}
           />)
         </Provider>, {
           createNodeMock: () => {

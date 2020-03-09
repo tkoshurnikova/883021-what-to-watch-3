@@ -4,62 +4,36 @@ import {connect} from 'react-redux';
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import ShowMoreBtn from "../show-more-btn/show-more-btn.jsx";
+import Footer from "../footer/footer.jsx";
+import Header from "../header/header.jsx";
+import HeaderFilm from "../header-film/header-film.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
+
+
+const WrappedMoviesList = withActiveItem(MoviesList);
 
 const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick}) => {
-
   return (
     <React.Fragment>
       <section className="movie-card">
+
         <div className="movie-card__bg">
           <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
         </div>
-
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
+        <Header/>
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
               <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
-
-            <div className="movie-card__desc">
-              <h2 className="movie-card__title">{PromoFilm.NAME}</h2>
-              <p className="movie-card__meta">
-                <span className="movie-card__genre">{PromoFilm.GENRE}</span>
-                <span className="movie-card__year">{PromoFilm.RELEASE_DATE}</span>
-              </p>
-
-              <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
-              </div>
-            </div>
+            <HeaderFilm
+              title={PromoFilm.NAME}
+              genre={PromoFilm.GENRE}
+              year={PromoFilm.RELEASE_DATE}
+            />
           </div>
         </div>
       </section>
@@ -69,29 +43,14 @@ const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick}) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenresList/>
-
-          <MoviesList
+          <WrappedMoviesList
             films={filteredFilms}
             onCardClick={onCardClick}
           />
-
           {cardsToShow >= filteredFilms.length || <ShowMoreBtn/>}
 
         </section>
-
-        <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer/>
       </div>
     </React.Fragment>
   );

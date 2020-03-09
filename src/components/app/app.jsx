@@ -2,34 +2,22 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from 'react-redux';
+import {ActionCreator} from "../../reducer.js";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
+
+const WrappedMoviePage = withActiveItem(MoviePage);
 
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clickedCard: null
-    };
-
-    this._onCardClick = this._onCardClick.bind(this);
-  }
-
-  _onCardClick(film) {
-    this.setState({
-      clickedCard: film
-    });
-  }
-
   _renderApp() {
-    const {PromoFilm} = this.props;
-    const {clickedCard} = this.state;
+    const {PromoFilm, clickedCard, onCardClick} = this.props;
 
     if (clickedCard) {
       return (
-        <MoviePage
+        <WrappedMoviePage
           film={clickedCard}
-          onCardClick={this._onCardClick}
+          onCardClick={onCardClick}
         />
       );
     }
@@ -37,14 +25,13 @@ class App extends PureComponent {
     return (
       <Main
         PromoFilm={PromoFilm}
-        onCardClick={this._onCardClick}
+        onCardClick={onCardClick}
       />
     );
   }
 
   render() {
-    const {clickedCard} = this.state;
-    const {films} = this.props;
+    const {films, clickedCard, onCardClick} = this.props;
     const film = (clickedCard) ? clickedCard : films[0];
 
     return (
@@ -54,9 +41,9 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/movie-page">
-            <MoviePage
+            <WrappedMoviePage
               film={film}
-              onCardClick={this._onCardClick}
+              onCardClick={onCardClick}
             />
           </Route>
         </Switch>
@@ -67,12 +54,21 @@ class App extends PureComponent {
 
 App.propTypes = {
   films: PropTypes.array.isRequired,
-  PromoFilm: PropTypes.object.isRequired
+  PromoFilm: PropTypes.object.isRequired,
+  clickedCard: PropTypes.object,
+  onCardClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   films: state.films,
+  clickedCard: state.clickedCard
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCardClick(card) {
+    dispatch(ActionCreator.setClickedCard(card));
+  }
 });
 
 export {App};
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

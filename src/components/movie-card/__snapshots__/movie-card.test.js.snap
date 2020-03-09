@@ -10,10 +10,11 @@ exports[`Render MovieCard 1`] = `
   <div
     className="small-movie-card__image"
   >
-    <img
-      alt="The No Flowers"
+    <video
+      autoPlay={true}
       height="175"
-      src="http://placehold.it/280x175"
+      muted={true}
+      poster="http://placehold.it/280x175"
       width="280"
     />
   </div>

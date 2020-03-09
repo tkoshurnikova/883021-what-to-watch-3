@@ -1,7 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import VideoPlayer from "./video-player.jsx";
-
 const film = {
   title: `The No Flowers`,
   image: `http://placehold.it/280x175`,

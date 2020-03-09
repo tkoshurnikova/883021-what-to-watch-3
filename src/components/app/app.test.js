@@ -124,6 +124,8 @@ it(`Render App`, () => {
           <App
             PromoFilm={FilmDetails}
             films={films}
+            onCardClick={() => {}}
+            clickedCard={films[0]}
           />
         </Provider>, {
           createNodeMock: () => {

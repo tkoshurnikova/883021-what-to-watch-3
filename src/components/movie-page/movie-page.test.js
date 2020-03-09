@@ -32,6 +32,8 @@ it(`Render MoviePage`, () => {
           <MoviePage
             film={film}
             onCardClick={() => {}}
+            onActiveItemChange={() => {}}
+            activeItem={``}
           />)
         </Provider>, {
           createNodeMock: () => {
