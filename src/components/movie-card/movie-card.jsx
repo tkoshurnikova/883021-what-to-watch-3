@@ -8,43 +8,31 @@ const VideoPlayer = withVideo(Player);
 class MovieCard extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isPreviewPlaying: false
-    };
   }
 
   render() {
-    const {film, onCardHover, onCardHoverOut, onCardClick} = this.props;
+    const {film, onCardHover, onCardHoverOut, onCardClick, activeCard} = this.props;
     let timerForPreviewPlaying = () => {};
 
     return (
       <article
         className="small-movie-card catalog__movies-card"
         onMouseOver={() => {
-          onCardHover(film);
-
           timerForPreviewPlaying = setTimeout(() => {
-            this.setState({
-              isPreviewPlaying: true
-            });
+            onCardHover(film);
           }, 1000);
         }}
         onMouseOut={() => {
-          onCardHoverOut();
-
           clearTimeout(timerForPreviewPlaying);
-          this.setState({
-            isPreviewPlaying: false
-          });
+          onCardHoverOut({});
         }}
         onClick={() => onCardClick(film)}
       >
         <div className="small-movie-card__image">
-          {(this.state.isPreviewPlaying)
+          {(activeCard === film)
             ? <VideoPlayer
               film={film}
-              isPlaying={this.state.isPreviewPlaying}
+              isPlaying={activeCard === film}
             />
             : <img src={film.image} alt={film.title} width="280" height="175" />}
         </div>
@@ -79,7 +67,8 @@ MovieCard.propTypes = {
     year: PropTypes.number.isRequired,
     preview: PropTypes.string.isRequired
   }).isRequired,
-  onCardClick: PropTypes.func.isRequired
+  onCardClick: PropTypes.func.isRequired,
+  activeCard: PropTypes.object
 };
 
 export default MovieCard;

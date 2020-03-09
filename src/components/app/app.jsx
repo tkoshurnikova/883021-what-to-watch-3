@@ -5,6 +5,9 @@ import {connect} from 'react-redux';
 import {ActionCreator} from "../../reducer.js";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
+
+const WrappedMoviePage = withActiveItem(MoviePage);
 
 class App extends PureComponent {
   _renderApp() {
@@ -12,7 +15,7 @@ class App extends PureComponent {
 
     if (clickedCard) {
       return (
-        <MoviePage
+        <WrappedMoviePage
           film={clickedCard}
           onCardClick={onCardClick}
         />
@@ -38,7 +41,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/movie-page">
-            <MoviePage
+            <WrappedMoviePage
               film={film}
               onCardClick={onCardClick}
             />
@@ -52,7 +55,7 @@ class App extends PureComponent {
 App.propTypes = {
   films: PropTypes.array.isRequired,
   PromoFilm: PropTypes.object.isRequired,
-  clickedCard: PropTypes.object.isRequired,
+  clickedCard: PropTypes.object,
   onCardClick: PropTypes.func.isRequired
 };
 

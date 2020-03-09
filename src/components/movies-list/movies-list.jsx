@@ -4,30 +4,8 @@ import MovieCard from "../movie-card/movie-card.jsx";
 import {connect} from "react-redux";
 
 class MoviesList extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cardWithHover: null,
-    };
-
-    this._onCardHover = this._onCardHover.bind(this);
-    this._onCardHoverOut = this._onCardHoverOut.bind(this);
-  }
-
-  _onCardHover(film) {
-    this.setState({
-      cardWithHover: film,
-    });
-  }
-
-  _onCardHoverOut() {
-    this.setState({
-      cardWithHover: null,
-    });
-  }
-
   render() {
-    const {films, onCardClick, cardsToShow} = this.props;
+    const {films, onCardClick, cardsToShow, activeItem, onActiveItemChange} = this.props;
     const showedFilms = films.slice(0, cardsToShow);
 
     return (
@@ -36,9 +14,10 @@ class MoviesList extends PureComponent {
           <MovieCard
             film={film}
             key={film.title}
-            onCardHover={this._onCardHover}
-            onCardHoverOut={this._onCardHoverOut}
+            onCardHover={onActiveItemChange}
+            onCardHoverOut={onActiveItemChange}
             onCardClick={onCardClick}
+            activeCard={activeItem}
           />
         ))}
       </div>
@@ -49,7 +28,9 @@ class MoviesList extends PureComponent {
 MoviesList.propTypes = {
   films: PropTypes.array.isRequired,
   onCardClick: PropTypes.func.isRequired,
-  cardsToShow: PropTypes.number.isRequired
+  cardsToShow: PropTypes.number.isRequired,
+  activeItem: PropTypes.object,
+  onActiveItemChange: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

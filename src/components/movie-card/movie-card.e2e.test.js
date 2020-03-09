@@ -35,10 +35,11 @@ it(`Should film details be shown`, () => {
 
   const card = movieCard.find(`article`);
   card.simulate(`mouseOver`);
-  card.simulate(`mouseOut`);
 
-  expect(onCardHover.mock.calls.length).toBe(1);
-  expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
+  setTimeout(() => {
+    expect(onCardHover.mock.calls.length).toBe(1);
+    expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
+  }, 1100);
 });
 
 it(`Should film card be clicked`, () => {

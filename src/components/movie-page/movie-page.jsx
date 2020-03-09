@@ -6,27 +6,13 @@ import films from "../../mocks/films.js";
 import {TabName} from "../../const.js";
 import Footer from "../footer/footer.jsx";
 import Header from "../header/header.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
 
+const WrappedMoviesList = withActiveItem(MoviesList);
 
 class MoviePage extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeTab: TabName.OVERVIEW
-    };
-    this._onTabClick = this._onTabClick.bind(this);
-  }
-
-  _onTabClick(tab) {
-    this.setState({
-      activeTab: tab
-    });
-  }
-
   render() {
-    const {film, onCardClick} = this.props;
-    const {activeTab} = this.state;
-
+    const {film, onCardClick, activeItem = TabName.OVERVIEW, onActiveItemChange} = this.props;
     const similarFilms = films.filter((item) => item.genre === film.genre && item.title !== film.title).slice(0, 4);
 
     return (
@@ -81,8 +67,8 @@ class MoviePage extends PureComponent {
               <div className="movie-card__desc">
                 <Tabs
                   film={film}
-                  activeTab={activeTab}
-                  onTabClick={this._onTabClick}
+                  activeTab={activeItem}
+                  onTabClick={onActiveItemChange}
                 />
               </div>
             </div>
@@ -91,7 +77,7 @@ class MoviePage extends PureComponent {
         <div className="page-content">
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
-            <MoviesList
+            <WrappedMoviesList
               films={similarFilms}
               onCardClick={onCardClick}
             />
@@ -115,7 +101,9 @@ MoviePage.propTypes = {
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired
   }).isRequired,
-  onCardClick: PropTypes.func.isRequired
+  onCardClick: PropTypes.func.isRequired,
+  activeItem: PropTypes.string,
+  onActiveItemChange: PropTypes.func.isRequired
 };
 
 export default MoviePage;

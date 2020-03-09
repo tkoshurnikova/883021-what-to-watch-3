@@ -6,9 +6,11 @@ import GenresList from "../genres-list/genres-list.jsx";
 import ShowMoreBtn from "../show-more-btn/show-more-btn.jsx";
 import Footer from "../footer/footer.jsx";
 import Header from "../header/header.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
+
+const WrappedMoviesList = withActiveItem(MoviesList);
 
 const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick}) => {
-
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -57,7 +59,7 @@ const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick}) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenresList/>
-          <MoviesList
+          <WrappedMoviesList
             films={filteredFilms}
             onCardClick={onCardClick}
           />

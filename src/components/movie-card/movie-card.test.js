@@ -17,12 +17,20 @@ const film = {
 
 it(`Render MovieCard`, () => {
   const tree = renderer
-    .create(<MovieCard
-      film={film}
-      onCardHover={() => {}}
-      onCardHoverOut={() => {}}
-      onCardClick={() => {}}
-    />)
+    .create(
+        <MovieCard
+          film={film}
+          onCardHover={() => {}}
+          onCardHoverOut={() => {}}
+          onCardClick={() => {}}
+          activeCard={film}
+        />,
+        {
+          createNodeMock: () => {
+            return {};
+          }
+        }
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();
