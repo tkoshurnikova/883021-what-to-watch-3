@@ -6,14 +6,16 @@ const initialState = {
   films,
   filteredFilms: films,
   genre: Genre.ALL_GENRES,
-  cardsToShow: CARDS_TO_SHOW
+  cardsToShow: CARDS_TO_SHOW,
+  clickedCard: null
 };
 
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
   SHOW_MORE_FILMS: `SHOW_MORE_FILMS`,
-  RESET_CARDS_COUNT: `RESET_CARDS_COUNT`
+  RESET_CARDS_COUNT: `RESET_CARDS_COUNT`,
+  SET_CLICKED_CARD: `SET_CLICKED_CARD`
 };
 
 export const ActionCreator = {
@@ -31,6 +33,10 @@ export const ActionCreator = {
   }),
   resetCardsCount: () => ({
     type: ActionType.RESET_CARDS_COUNT,
+  }),
+  setClickedCard: (clickedCard) => ({
+    type: ActionType.SET_CLICKED_CARD,
+    payload: clickedCard
   })
 };
 
@@ -54,6 +60,11 @@ export const reducer = (state = initialState, action) => {
     case ActionType.RESET_CARDS_COUNT:
       return extend(state, {
         cardsToShow: CARDS_TO_SHOW
+      });
+
+    case ActionType.SET_CLICKED_CARD:
+      return extend(state, {
+        clickedCard: action.payload
       });
   }
 
