@@ -126,6 +126,7 @@ it(`Render App`, () => {
             films={films}
             onCardClick={() => {}}
             clickedCard={films[0]}
+            onPlayOrExitButtonClick={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {

@@ -8,7 +8,8 @@ import {reducer} from "./reducer.js";
 const PromoFilm = {
   NAME: `The Grand Budapest Hotel`,
   GENRE: `Drama`,
-  RELEASE_DATE: 2014
+  RELEASE_DATE: 2014,
+  SRC: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
 const store = createStore(

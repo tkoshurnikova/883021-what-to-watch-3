@@ -12,7 +12,7 @@ import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
 
 const WrappedMoviesList = withActiveItem(MoviesList);
 
-const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick}) => {
+const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick, onPlayOrExitButtonClick}) => {
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -33,6 +33,8 @@ const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick}) => {
               title={PromoFilm.NAME}
               genre={PromoFilm.GENRE}
               year={PromoFilm.RELEASE_DATE}
+              src={PromoFilm.SRC}
+              onPlayOrExitButtonClick={onPlayOrExitButtonClick}
             />
           </div>
         </div>
@@ -60,7 +62,8 @@ Main.propTypes = {
   PromoFilm: PropTypes.object.isRequired,
   filteredFilms: PropTypes.array.isRequired,
   onCardClick: PropTypes.func.isRequired,
-  cardsToShow: PropTypes.number.isRequired
+  cardsToShow: PropTypes.number.isRequired,
+  onPlayOrExitButtonClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
