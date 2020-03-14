@@ -19,6 +19,7 @@ const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveIt
     return (
       <FullscreenPlayer
         onPlayOrExitButtonClick={onPlayOrExitButtonClick}
+        film={chosenFilm}
       />
     );
   }

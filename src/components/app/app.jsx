@@ -29,6 +29,7 @@ class App extends PureComponent {
       return (
         <FullscreenPlayer
           onPlayOrExitButtonClick={onPlayOrExitButtonClick}
+          film={chosenFilm}
         />
       );
     }
