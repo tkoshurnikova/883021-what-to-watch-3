@@ -73,7 +73,7 @@ App.propTypes = {
   PromoFilm: PropTypes.object.isRequired,
   clickedCard: PropTypes.object,
   onCardClick: PropTypes.func.isRequired,
-  chosenFilm: PropTypes.string,
+  chosenFilm: PropTypes.object,
   onPlayOrExitButtonClick: PropTypes.func.isRequired
 };
 

@@ -19,15 +19,7 @@ export default class FullscreenPlayer extends PureComponent {
   componentDidMount() {
     const {film} = this.props;
     const video = this._videoRef.current;
-    video.src = film;
-
-    video.onplay = () => this.setState({
-      isPlaying: true
-    });
-
-    video.onpause = () => this.setState({
-      isPlaying: false
-    });
+    video.src = film.video;
 
     video.ontimeupdate = () => this.setState({
       timeProgressInPercents: (video.currentTime / video.duration) * 100,
@@ -69,7 +61,7 @@ export default class FullscreenPlayer extends PureComponent {
   }
 
   render() {
-    const {onPlayOrExitButtonClick} = this.props;
+    const {onPlayOrExitButtonClick, film} = this.props;
     const {isPlaying, isFullscreen, timeProgressInPercents, timeLeft} = this.state;
 
     return (
@@ -114,7 +106,7 @@ export default class FullscreenPlayer extends PureComponent {
                 </React.Fragment>
               )}
             </button>
-            <div className="player__name">Transpotting</div>
+            <div className="player__name">{film.title}</div>
             <button
               type="button"
               className="player__full-screen"
@@ -125,7 +117,7 @@ export default class FullscreenPlayer extends PureComponent {
                     isFullscreen: false
                   });
                 } else {
-                  this._videoRef.current.requestFullscreen();
+                  this._videoRef.current.parentNode.requestFullscreen();
                   this.setState({
                     isFullscreen: true
                   });
@@ -145,6 +137,6 @@ export default class FullscreenPlayer extends PureComponent {
 }
 
 FullscreenPlayer.propTypes = {
-  film: PropTypes.string.isRequired,
+  film: PropTypes.object.isRequired,
   onPlayOrExitButtonClick: PropTypes.func.isRequired
 };

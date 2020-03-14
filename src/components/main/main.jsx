@@ -30,10 +30,7 @@ const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick, onPlayOrExitB
               <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
             <HeaderFilm
-              title={PromoFilm.NAME}
-              genre={PromoFilm.GENRE}
-              year={PromoFilm.RELEASE_DATE}
-              src={PromoFilm.SRC}
+              film={PromoFilm}
               onPlayOrExitButtonClick={onPlayOrExitButtonClick}
             />
           </div>

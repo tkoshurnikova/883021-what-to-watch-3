@@ -38,10 +38,7 @@ const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveIt
           <Header/>
           <div className="movie-card__wrap">
             <HeaderFilm
-              title={film.title}
-              genre={film.genre}
-              year={film.year}
-              src={film.preview}
+              film={film}
               onPlayOrExitButtonClick={onPlayOrExitButtonClick}
             />
           </div>
@@ -97,7 +94,7 @@ MoviePage.propTypes = {
   activeItem: PropTypes.string,
   onActiveItemChange: PropTypes.func.isRequired,
   onPlayOrExitButtonClick: PropTypes.func.isRequired,
-  chosenFilm: PropTypes.string
+  chosenFilm: PropTypes.object
 };
 
 export default MoviePage;
