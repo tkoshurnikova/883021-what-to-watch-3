@@ -9,15 +9,17 @@ import Header from "../header/header.jsx";
 import HeaderFilm from "../header-film/header-film.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
 import FullscreenPlayer from "../fullscreen-player/fullscreen-player.jsx";
+import withFulscreenVideo from "../../hocs/with-fullscreen-video/with-fullscreen-video.jsx";
 
 const WrappedMoviesList = withActiveItem(MoviesList);
+const WrappedFulscreenPlayer = withFulscreenVideo(FullscreenPlayer);
 
 const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveItemChange, onPlayOrExitButtonClick, chosenFilm}) => {
   const similarFilms = films.filter((item) => item.genre === film.genre && item.title !== film.title).slice(0, 4);
 
   if (chosenFilm) {
     return (
-      <FullscreenPlayer
+      <WrappedFulscreenPlayer
         onPlayOrExitButtonClick={onPlayOrExitButtonClick}
         film={chosenFilm}
       />

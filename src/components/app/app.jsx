@@ -7,8 +7,10 @@ import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
 import FullscreenPlayer from "../fullscreen-player/fullscreen-player.jsx";
+import withFulscreenVideo from "../../hocs/with-fullscreen-video/with-fullscreen-video.jsx";
 
 const WrappedMoviePage = withActiveItem(MoviePage);
+const WrappedFulscreenPlayer = withFulscreenVideo(FullscreenPlayer);
 
 class App extends PureComponent {
   _renderApp() {
@@ -27,7 +29,7 @@ class App extends PureComponent {
 
     if (chosenFilm) {
       return (
-        <FullscreenPlayer
+        <WrappedFulscreenPlayer
           onPlayOrExitButtonClick={onPlayOrExitButtonClick}
           film={chosenFilm}
         />

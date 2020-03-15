@@ -5,72 +5,25 @@ import {convertSecondsToHours} from "../../utils.js";
 export default class FullscreenPlayer extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isPlaying: false,
-      isFullscreen: false,
-      timeProgressInPercents: 0,
-      timeLeft: 0
-    };
-
-    this._videoRef = createRef();
-  }
-
-  componentDidMount() {
-    const {film} = this.props;
-    const video = this._videoRef.current;
-    video.src = film.video;
-
-    video.ontimeupdate = () => this.setState({
-      timeProgressInPercents: (video.currentTime / video.duration) * 100,
-      timeLeft: Math.floor(video.duration - video.currentTime)
-    });
-  }
-
-  componentDidUpdate() {
-    const video = this._videoRef.current;
-    const {isPlaying} = this.state;
-
-    if (video.ended) {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          this.setState({
-            isPlaying: false
-          });
-        })
-        .catch((err) => {
-          throw new Error(err);
-        });
-      }
-    }
-
-    if (isPlaying) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  }
-
-  componentWillUnmount() {
-    const video = this._videoRef.current;
-    video.src = ``;
-    video.onplay = null;
-    video.onpause = null;
-    video.ontimeupdate = null;
+    this._videoBlockRef = createRef();
   }
 
   render() {
-    const {onPlayOrExitButtonClick, film} = this.props;
-    const {isPlaying, isFullscreen, timeProgressInPercents, timeLeft} = this.state;
+    const {
+      children,
+      onPlayOrExitButtonClick,
+      film,
+      isPlaying,
+      isFullscreen,
+      timeProgressInPercents,
+      timeLeft,
+      onFullscreenButtonClick,
+      onPlayButtonClick
+    } = this.props;
 
     return (
-      <div className="player">
-        <video
-          className="player__video"
-          poster="img/player-poster.jpg"
-          ref={this._videoRef}
-        />
+      <div className="player" ref={this._videoBlockRef}>
+        {children}
         <button type="button" className="player__exit" onClick={() => onPlayOrExitButtonClick(null)}>
           Exit
         </button>
@@ -86,7 +39,7 @@ export default class FullscreenPlayer extends PureComponent {
           </div>
           <div className="player__controls-row">
             <button
-              onClick={() => this.setState({isPlaying: !this.state.isPlaying})}
+              onClick={() => onPlayButtonClick()}
               type="button"
               className="player__play"
             >
@@ -113,14 +66,10 @@ export default class FullscreenPlayer extends PureComponent {
               onClick={() => {
                 if (isFullscreen) {
                   document.exitFullscreen();
-                  this.setState({
-                    isFullscreen: false
-                  });
+                  onFullscreenButtonClick();
                 } else {
-                  this._videoRef.current.parentNode.requestFullscreen();
-                  this.setState({
-                    isFullscreen: true
-                  });
+                  this._videoBlockRef.current.requestFullscreen();
+                  onFullscreenButtonClick();
                 }
               }}
             >
@@ -138,5 +87,15 @@ export default class FullscreenPlayer extends PureComponent {
 
 FullscreenPlayer.propTypes = {
   film: PropTypes.object.isRequired,
-  onPlayOrExitButtonClick: PropTypes.func.isRequired
+  onPlayOrExitButtonClick: PropTypes.func.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+  isFullscreen: PropTypes.bool.isRequired,
+  timeProgressInPercents: PropTypes.number.isRequired,
+  timeLeft: PropTypes.number.isRequired,
+  onFullscreenButtonClick: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.node.isRequired,
+    PropTypes.arrayOf(PropTypes.node)
+  ]).isRequired,
 };

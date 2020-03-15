@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render withFullscreenVideo 1`] = `
+<div>
+  <video
+    className="player__video"
+    poster="img/player-poster.jpg"
+  />
+</div>
+`;
