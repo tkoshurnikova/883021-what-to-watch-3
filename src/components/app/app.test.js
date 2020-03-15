@@ -5,9 +5,10 @@ import {Provider} from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 
 const FilmDetails = {
-  NAME: `Whispering Mist`,
-  GENRE: `Comedy`,
-  RELEASE_DATE: 1995
+  title: `Whispering Mist`,
+  genre: `Comedy`,
+  year: 1995,
+  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
 };
 
 const films = [
@@ -21,7 +22,8 @@ const films = [
     actors: `Ashley Cooper`,
     genre: `Dramas`,
     year: 1900,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Rings of Cloud`,
@@ -33,7 +35,8 @@ const films = [
     actors: `Ashley Cooper`,
     genre: `Dramas`,
     year: 1900,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `The Sword's Memory`,
@@ -45,7 +48,8 @@ const films = [
     actors: `Ashley Cooper`,
     genre: `Dramas`,
     year: 1900,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `The Voyagers of the Words`,
@@ -57,7 +61,8 @@ const films = [
     actors: `Ashley Cooper`,
     genre: `Dramas`,
     year: 1900,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Shores in the Heart`,
@@ -69,7 +74,8 @@ const films = [
     actors: `Ashley Cooper`,
     genre: `Dramas`,
     year: 1900,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Missing Illusion`,
@@ -81,7 +87,8 @@ const films = [
     actors: `Ashley Cooper`,
     genre: `Dramas`,
     year: 1900,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `The Unwilling Man`,
@@ -93,7 +100,8 @@ const films = [
     actors: `Ashley Cooper`,
     genre: `Dramas`,
     year: 1900,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Teacher in the Hunter`,
@@ -105,7 +113,8 @@ const films = [
     actors: `Ashley Cooper`,
     genre: `Dramas`,
     year: 1900,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   }
 ];
 
@@ -126,6 +135,7 @@ it(`Render App`, () => {
             films={films}
             onCardClick={() => {}}
             clickedCard={films[0]}
+            onPlayOrExitButtonClick={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {

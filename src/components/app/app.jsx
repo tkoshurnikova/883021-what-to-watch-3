@@ -6,18 +6,32 @@ import {ActionCreator} from "../../reducer.js";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
+import FullscreenPlayer from "../fullscreen-player/fullscreen-player.jsx";
+import withFulscreenVideo from "../../hocs/with-fullscreen-video/with-fullscreen-video.jsx";
 
 const WrappedMoviePage = withActiveItem(MoviePage);
+const WrappedFulscreenPlayer = withFulscreenVideo(FullscreenPlayer);
 
 class App extends PureComponent {
   _renderApp() {
-    const {PromoFilm, clickedCard, onCardClick} = this.props;
+    const {PromoFilm, clickedCard, chosenFilm, onCardClick, onPlayOrExitButtonClick} = this.props;
 
     if (clickedCard) {
       return (
         <WrappedMoviePage
           film={clickedCard}
           onCardClick={onCardClick}
+          onPlayOrExitButtonClick={onPlayOrExitButtonClick}
+          chosenFilm={chosenFilm}
+        />
+      );
+    }
+
+    if (chosenFilm) {
+      return (
+        <WrappedFulscreenPlayer
+          onPlayOrExitButtonClick={onPlayOrExitButtonClick}
+          film={chosenFilm}
         />
       );
     }
@@ -26,13 +40,15 @@ class App extends PureComponent {
       <Main
         PromoFilm={PromoFilm}
         onCardClick={onCardClick}
+        onPlayOrExitButtonClick={onPlayOrExitButtonClick}
       />
     );
   }
 
   render() {
-    const {films, clickedCard, onCardClick} = this.props;
+    const {films, clickedCard, onCardClick, onPlayOrExitButtonClick, chosenFilm} = this.props;
     const film = (clickedCard) ? clickedCard : films[0];
+    const src = (chosenFilm) ? chosenFilm : films[0].src;
 
     return (
       <BrowserRouter>
@@ -44,6 +60,8 @@ class App extends PureComponent {
             <WrappedMoviePage
               film={film}
               onCardClick={onCardClick}
+              onPlayOrExitButtonClick={onPlayOrExitButtonClick}
+              chosenFilm={src}
             />
           </Route>
         </Switch>
@@ -56,17 +74,23 @@ App.propTypes = {
   films: PropTypes.array.isRequired,
   PromoFilm: PropTypes.object.isRequired,
   clickedCard: PropTypes.object,
-  onCardClick: PropTypes.func.isRequired
+  onCardClick: PropTypes.func.isRequired,
+  chosenFilm: PropTypes.object,
+  onPlayOrExitButtonClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   films: state.films,
-  clickedCard: state.clickedCard
+  clickedCard: state.clickedCard,
+  chosenFilm: state.chosenFilm
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCardClick(card) {
     dispatch(ActionCreator.setClickedCard(card));
+  },
+  onPlayOrExitButtonClick(item) {
+    dispatch(ActionCreator.setChosenFilm(item));
   }
 });
 

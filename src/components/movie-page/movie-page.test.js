@@ -13,7 +13,8 @@ const film = {
   director: `Taika Di Caprio`,
   actors: `Ashley Cooper`,
   genre: `Dramas`,
-  year: 1900
+  year: 1900,
+  preview: ``
 };
 
 const mockStore = configureMockStore([]);
@@ -34,6 +35,7 @@ it(`Render MoviePage`, () => {
             onCardClick={() => {}}
             onActiveItemChange={() => {}}
             activeItem={``}
+            onPlayOrExitButtonClick={() => {}}
           />)
         </Provider>, {
           createNodeMock: () => {

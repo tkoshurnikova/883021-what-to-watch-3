@@ -8,11 +8,23 @@ import Footer from "../footer/footer.jsx";
 import Header from "../header/header.jsx";
 import HeaderFilm from "../header-film/header-film.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
+import FullscreenPlayer from "../fullscreen-player/fullscreen-player.jsx";
+import withFulscreenVideo from "../../hocs/with-fullscreen-video/with-fullscreen-video.jsx";
 
 const WrappedMoviesList = withActiveItem(MoviesList);
+const WrappedFulscreenPlayer = withFulscreenVideo(FullscreenPlayer);
 
-const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveItemChange}) => {
+const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveItemChange, onPlayOrExitButtonClick, chosenFilm}) => {
   const similarFilms = films.filter((item) => item.genre === film.genre && item.title !== film.title).slice(0, 4);
+
+  if (chosenFilm) {
+    return (
+      <WrappedFulscreenPlayer
+        onPlayOrExitButtonClick={onPlayOrExitButtonClick}
+        film={chosenFilm}
+      />
+    );
+  }
 
   return (
     <React.Fragment>
@@ -28,9 +40,8 @@ const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveIt
           <Header/>
           <div className="movie-card__wrap">
             <HeaderFilm
-              title={film.title}
-              genre={film.genre}
-              year={film.year}
+              film={film}
+              onPlayOrExitButtonClick={onPlayOrExitButtonClick}
             />
           </div>
         </div>
@@ -78,11 +89,14 @@ MoviePage.propTypes = {
     director: PropTypes.string.isRequired,
     actors: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired
+    year: PropTypes.number.isRequired,
+    preview: PropTypes.string.isRequired
   }).isRequired,
   onCardClick: PropTypes.func.isRequired,
   activeItem: PropTypes.string,
-  onActiveItemChange: PropTypes.func.isRequired
+  onActiveItemChange: PropTypes.func.isRequired,
+  onPlayOrExitButtonClick: PropTypes.func.isRequired,
+  chosenFilm: PropTypes.object
 };
 
 export default MoviePage;

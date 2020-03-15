@@ -80,28 +80,23 @@ Array [
         >
           <h2
             className="movie-card__title"
-          >
-            Whispering Mist
-          </h2>
+          />
           <p
             className="movie-card__meta"
           >
             <span
               className="movie-card__genre"
-            >
-              Comedy
-            </span>
+            />
             <span
               className="movie-card__year"
-            >
-              1995
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg

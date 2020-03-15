@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const HeaderFilm = ({title, genre, year}) => {
+const HeaderFilm = ({film, onPlayOrExitButtonClick}) => {
+  const {title, genre, year} = film;
+
   return (
     <div className="movie-card__desc">
       <h2 className="movie-card__title">{title}</h2>
@@ -10,7 +12,13 @@ const HeaderFilm = ({title, genre, year}) => {
         <span className="movie-card__year">{year}</span>
       </p>
       <div className="movie-card__buttons">
-        <button className="btn btn--play movie-card__button" type="button">
+        <button
+          className="btn btn--play movie-card__button"
+          type="button"
+          onClick={() => {
+            onPlayOrExitButtonClick(film);
+          }}
+        >
           <svg viewBox="0 0 19 19" width={19} height={19}>
             <use xlinkHref="#play-s" />
           </svg>
@@ -31,9 +39,8 @@ const HeaderFilm = ({title, genre, year}) => {
 };
 
 HeaderFilm.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired
+  film: PropTypes.object.isRequired,
+  onPlayOrExitButtonClick: PropTypes.func.isRequired
 };
 
 export default HeaderFilm;
