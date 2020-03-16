@@ -8,6 +8,8 @@ import Footer from "../footer/footer.jsx";
 import Header from "../header/header.jsx";
 import HeaderFilm from "../header-film/header-film.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
+import {getFilteredFilms} from "../../reducer/data/selectors.js";
+import {getCardsToShow} from "../../reducer/app/selectors.js";
 
 
 const WrappedMoviesList = withActiveItem(MoviesList);
@@ -64,8 +66,8 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  filteredFilms: state.filteredFilms,
-  cardsToShow: state.cardsToShow
+  filteredFilms: getFilteredFilms(state),
+  cardsToShow: getCardsToShow(state)
 });
 
 export {Main};

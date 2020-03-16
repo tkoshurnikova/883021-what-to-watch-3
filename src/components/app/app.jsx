@@ -2,12 +2,14 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from 'react-redux';
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/app/app.js";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
 import FullscreenPlayer from "../fullscreen-player/fullscreen-player.jsx";
 import withFulscreenVideo from "../../hocs/with-fullscreen-video/with-fullscreen-video.jsx";
+import {getFilms} from "../../reducer/data/selectors.js";
+import {getClickedCard, getChosenFilm} from "../../reducer/app/selectors.js";
 
 const WrappedMoviePage = withActiveItem(MoviePage);
 const WrappedFulscreenPlayer = withFulscreenVideo(FullscreenPlayer);
@@ -80,9 +82,9 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  films: state.films,
-  clickedCard: state.clickedCard,
-  chosenFilm: state.chosenFilm
+  films: getFilms(state),
+  clickedCard: getClickedCard(state),
+  chosenFilm: getChosenFilm(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

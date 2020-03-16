@@ -111,10 +111,13 @@ const films = [
 
 const mockStore = configureMockStore([]);
 let store = mockStore({
-  filteredFilms: [],
-  films,
-  genre: ``,
-  cardsToShow: 8
+  APP: {
+    genre: ``,
+    cardsToShow: 8
+  },
+  DATA: {
+    films,
+  }
 });
 
 it(`Render Main`, () => {

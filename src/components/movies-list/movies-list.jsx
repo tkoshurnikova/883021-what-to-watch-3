@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 import {connect} from "react-redux";
+import {getCardsToShow} from "../../reducer/app/selectors.js";
 
 const MoviesList = ({films, onCardClick, cardsToShow, activeItem, onActiveItemChange}) => {
   const showedFilms = films.slice(0, cardsToShow);
@@ -31,7 +32,7 @@ MoviesList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  cardsToShow: state.cardsToShow
+  cardsToShow: getCardsToShow(state)
 });
 
 export {MoviesList};
