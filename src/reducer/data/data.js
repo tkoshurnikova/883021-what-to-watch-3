@@ -1,8 +1,9 @@
 import {extend} from "../../utils.js";
-import films from "../../mocks/films.js";
+// import films from "../../mocks/films.js";
+import dataAdapter from "./adapter.js";
 
 const initialState = {
-  films
+  films: []
 };
 
 export const ActionType = {
@@ -14,6 +15,16 @@ export const ActionCreator = {
     type: ActionType.LOAD_FILMS,
     payload: movies
   })
+};
+
+export const Operation = {
+  loadFilms: () => (dispatch, getState, api) => {
+    return api.get(`/films`)
+      .then((response) => {
+        const adaptedData = dataAdapter(response.data);
+        dispatch(ActionCreator.loadFilms(adaptedData));
+      });
+  },
 };
 
 export const reducer = (state = initialState, action) => {

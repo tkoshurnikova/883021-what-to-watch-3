@@ -52,7 +52,7 @@ MovieCard.propTypes = {
     rating: PropTypes.number.isRequired,
     numberOfVotes: PropTypes.number.isRequired,
     director: PropTypes.string.isRequired,
-    actors: PropTypes.string.isRequired,
+    actors: PropTypes.array.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     preview: PropTypes.string.isRequired

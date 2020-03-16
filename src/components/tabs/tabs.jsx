@@ -79,8 +79,9 @@ class Tabs extends PureComponent {
               </p>
               <p className="movie-card__starring">
                 <strong>
-                  Starring: {film.actors} and
-                  other
+                  Starring: {film.actors.map((actor) => {
+                    return actor;
+                  }).join(`,\n`)} and other
                 </strong>
               </p>
             </div>
@@ -98,7 +99,9 @@ class Tabs extends PureComponent {
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Starring</strong>
                   <span className="movie-card__details-value">
-                    {film.actors}
+                    {film.actors.map((actor) => {
+                      return actor;
+                    }).join(`,\n`)}
                   </span>
                 </p>
               </div>
@@ -213,7 +216,7 @@ Tabs.propTypes = {
     rating: PropTypes.number.isRequired,
     numberOfVotes: PropTypes.number.isRequired,
     director: PropTypes.string.isRequired,
-    actors: PropTypes.string.isRequired,
+    actors: PropTypes.array.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired
   }).isRequired,

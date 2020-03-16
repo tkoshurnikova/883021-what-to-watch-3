@@ -9,7 +9,7 @@ const film = {
   rating: 1.0,
   numberOfVotes: 1982,
   director: `Taika Di Caprio`,
-  actors: `Ashley Cooper`,
+  actors: [`Ashley Cooper`],
   genre: `Dramas`,
   year: 1900
 };

@@ -49,8 +49,8 @@ class App extends PureComponent {
 
   render() {
     const {films, clickedCard, onCardClick, onPlayOrExitButtonClick, chosenFilm} = this.props;
-    const film = (clickedCard) ? clickedCard : films[0];
-    const src = (chosenFilm) ? chosenFilm : films[0].src;
+    const card = (clickedCard) ? clickedCard : films[0];
+    const film = (chosenFilm) ? chosenFilm : films[0];
 
     return (
       <BrowserRouter>
@@ -60,10 +60,10 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/movie-page">
             <WrappedMoviePage
-              film={film}
+              film={card}
               onCardClick={onCardClick}
               onPlayOrExitButtonClick={onPlayOrExitButtonClick}
-              chosenFilm={src}
+              chosenFilm={film}
             />
           </Route>
         </Switch>

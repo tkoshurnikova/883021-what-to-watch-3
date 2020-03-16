@@ -22,6 +22,9 @@ let store = mockStore({
   APP: {
     genre: ``,
     cardsToShow: 8
+  },
+  DATA: {
+    films: []
   }
 });
 
