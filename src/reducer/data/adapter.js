@@ -22,13 +22,3 @@ export default (data) => {
   });
   return adaptedData;
 };
-
-
-// {
-//   "id": 1,
-//   "poster_image": "img/the-grand-budapest-hotel-poster.jpg",
-//   "background_image": "img/the-grand-budapest-hotel-bg.jpg",
-//   "background_color": "#ffffff",
-//   "run_time": 99,
-//   "is_favorite": false
-// }

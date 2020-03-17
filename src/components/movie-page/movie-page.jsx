@@ -84,15 +84,7 @@ const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveIt
 MoviePage.propTypes = {
   film: PropTypes.shape({
     "title": PropTypes.string.isRequired,
-    "image": PropTypes.string.isRequired,
-    "description": PropTypes.string.isRequired,
-    "rating": PropTypes.number.isRequired,
-    "numberOfVotes": PropTypes.number.isRequired,
-    "director": PropTypes.string.isRequired,
-    "actors": PropTypes.array.isRequired,
     "genre": PropTypes.string.isRequired,
-    "year": PropTypes.number.isRequired,
-    "preview": PropTypes.string.isRequired,
     "background_color": PropTypes.string.isRequired,
     "background_image": PropTypes.string.isRequired,
     "poster_image": PropTypes.string.isRequired

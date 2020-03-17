@@ -210,8 +210,6 @@ class Tabs extends PureComponent {
 
 Tabs.propTypes = {
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     numberOfVotes: PropTypes.number.isRequired,
