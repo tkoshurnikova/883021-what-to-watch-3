@@ -12,7 +12,7 @@ const MoviesList = ({films, onCardClick, cardsToShow, activeItem, onActiveItemCh
       {showedFilms.map((film) => (
         <MovieCard
           film={film}
-          key={film.title}
+          key={film.name}
           onCardHover={onActiveItemChange}
           onCardHoverOut={onActiveItemChange}
           onCardClick={onCardClick}

@@ -21,7 +21,7 @@ const withFullscreenVideo = (Component) => {
     componentDidMount() {
       const {film} = this.props;
       const video = this._videoRef.current;
-      video.src = film.video;
+      video.src = film.video_link;
 
       video.ontimeupdate = () => this.setState({
         timeProgressInPercents: (video.currentTime / video.duration) * 100,

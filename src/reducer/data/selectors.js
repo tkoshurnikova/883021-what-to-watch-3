@@ -16,3 +16,7 @@ export const getFilteredFilms = createSelector(
       return genre === Genre.ALL_GENRES ? films : films.filter((film) => film.genre === genre);
     }
 );
+
+export const getPromoFilm = (state) => {
+  return state[NAME_SPACE].promoFilm;
+};

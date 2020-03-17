@@ -10,12 +10,12 @@ import {Operation as DataOperation} from "./reducer/data/data.js";
 
 const api = createAPI();
 
-const PromoFilm = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  year: 2014,
-  video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
-};
+// const PromoFilm = {
+//   title: `The Grand Budapest Hotel`,
+//   genre: `Drama`,
+//   year: 2014,
+//   video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+// };
 
 const store = createStore(
     reducer,
@@ -26,11 +26,12 @@ const store = createStore(
 );
 
 store.dispatch(DataOperation.loadFilms());
+store.dispatch(DataOperation.loadPromoFilm());
 
 ReactDOM.render(
     <Provider store={store}>
       <App
-        PromoFilm={PromoFilm}
+        // PromoFilm={PromoFilm}
       />
     </Provider>,
     document.querySelector(`#root`)

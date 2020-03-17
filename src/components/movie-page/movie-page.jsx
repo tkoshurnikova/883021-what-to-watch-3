@@ -17,7 +17,7 @@ const WrappedMoviesList = withActiveItem(MoviesList);
 const WrappedFulscreenPlayer = withFulscreenVideo(FullscreenPlayer);
 
 const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveItemChange, onPlayOrExitButtonClick, chosenFilm, films}) => {
-  const similarFilms = films.filter((item) => item.genre === film.genre && item.title !== film.title).slice(0, 4);
+  const similarFilms = films.filter((item) => item.genre === film.genre && item.name !== film.name).slice(0, 4);
 
   if (chosenFilm) {
     return (
@@ -35,7 +35,7 @@ const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveIt
           <div className="movie-card__bg">
             <img
               src={film.background_image}
-              alt={film.title}
+              alt={film.name}
             />
           </div>
           <h1 className="visually-hidden">WTW</h1>
@@ -52,7 +52,7 @@ const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveIt
             <div className="movie-card__poster movie-card__poster--big">
               <img
                 src={film.poster_image}
-                alt={film.title}
+                alt={film.name}
                 width={218}
                 height={327}
               />
@@ -83,7 +83,7 @@ const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveIt
 
 MoviePage.propTypes = {
   film: PropTypes.shape({
-    "title": PropTypes.string.isRequired,
+    "name": PropTypes.string.isRequired,
     "genre": PropTypes.string.isRequired,
     "background_color": PropTypes.string.isRequired,
     "background_image": PropTypes.string.isRequired,

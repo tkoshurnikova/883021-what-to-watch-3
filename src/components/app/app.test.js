@@ -13,6 +13,7 @@ let store = mockStore({
   },
   DATA: {
     films,
+    promoFilm: FilmDetails
   }
 });
 
@@ -21,7 +22,7 @@ it(`Render App`, () => {
     .create(
         <Provider store={store}>
           <App
-            PromoFilm={FilmDetails}
+            promoFilm={FilmDetails}
             films={films}
             onCardClick={() => {}}
             clickedCard={films[0]}

@@ -8,7 +8,7 @@ import MoviePage from "../movie-page/movie-page.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
 import FullscreenPlayer from "../fullscreen-player/fullscreen-player.jsx";
 import withFulscreenVideo from "../../hocs/with-fullscreen-video/with-fullscreen-video.jsx";
-import {getFilms} from "../../reducer/data/selectors.js";
+import {getFilms, getPromoFilm} from "../../reducer/data/selectors.js";
 import {getClickedCard, getChosenFilm} from "../../reducer/app/selectors.js";
 
 const WrappedMoviePage = withActiveItem(MoviePage);
@@ -16,7 +16,7 @@ const WrappedFulscreenPlayer = withFulscreenVideo(FullscreenPlayer);
 
 class App extends PureComponent {
   _renderApp() {
-    const {PromoFilm, clickedCard, chosenFilm, onCardClick, onPlayOrExitButtonClick} = this.props;
+    const {promoFilm, clickedCard, chosenFilm, onCardClick, onPlayOrExitButtonClick} = this.props;
 
     if (clickedCard) {
       return (
@@ -40,7 +40,7 @@ class App extends PureComponent {
 
     return (
       <Main
-        PromoFilm={PromoFilm}
+        PromoFilm={promoFilm}
         onCardClick={onCardClick}
         onPlayOrExitButtonClick={onPlayOrExitButtonClick}
       />
@@ -74,7 +74,7 @@ class App extends PureComponent {
 
 App.propTypes = {
   films: PropTypes.array.isRequired,
-  PromoFilm: PropTypes.object.isRequired,
+  promoFilm: PropTypes.object.isRequired,
   clickedCard: PropTypes.object,
   onCardClick: PropTypes.func.isRequired,
   chosenFilm: PropTypes.object,
@@ -84,7 +84,8 @@ App.propTypes = {
 const mapStateToProps = (state) => ({
   films: getFilms(state),
   clickedCard: getClickedCard(state),
-  chosenFilm: getChosenFilm(state)
+  chosenFilm: getChosenFilm(state),
+  promoFilm: getPromoFilm(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
