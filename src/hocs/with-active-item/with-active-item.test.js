@@ -1,12 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import withActiveItem from "./with-active-item.jsx";
-
-const FilmDetails = {
-  NAME: `Whispering Mist`,
-  GENRE: `Comedy`,
-  RELEASE_DATE: 1995
-};
+import {FilmDetails} from "../../mocks-for-tests.js";
 
 const MockComponent = () => <div />;
 const MockComponentWrapped = withActiveItem(MockComponent);

@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const HeaderFilm = ({film, onPlayOrExitButtonClick}) => {
-  const {title, genre, year} = film;
+  const {name, genre, released} = film;
 
   return (
     <div className="movie-card__desc">
-      <h2 className="movie-card__title">{title}</h2>
+      <h2 className="movie-card__title">{name}</h2>
       <p className="movie-card__meta">
         <span className="movie-card__genre">{genre}</span>
-        <span className="movie-card__year">{year}</span>
+        <span className="movie-card__year">{released}</span>
       </p>
       <div className="movie-card__buttons">
         <button

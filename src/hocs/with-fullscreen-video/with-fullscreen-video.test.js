@@ -2,13 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import withFullscreenVideo from "./with-fullscreen-video.jsx";
 import PropTypes from "prop-types";
-
-const FilmDetails = {
-  title: `Whispering Mist`,
-  genre: `Comedy`,
-  year: 1995,
-  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-};
+import {FilmDetails} from "../../mocks-for-tests.js";
 
 const MockComponent = (props) => {
   const {children} = props;

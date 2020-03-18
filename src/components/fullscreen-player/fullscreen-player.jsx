@@ -59,7 +59,7 @@ export default class FullscreenPlayer extends PureComponent {
                 </React.Fragment>
               )}
             </button>
-            <div className="player__name">{film.title}</div>
+            <div className="player__name">{film.name}</div>
             <button
               type="button"
               className="player__full-screen"

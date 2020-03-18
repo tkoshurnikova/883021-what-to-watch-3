@@ -8,6 +8,8 @@ import Footer from "../footer/footer.jsx";
 import Header from "../header/header.jsx";
 import HeaderFilm from "../header-film/header-film.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
+import {getFilteredFilms} from "../../reducer/data/selectors.js";
+import {getCardsToShow} from "../../reducer/app/selectors.js";
 
 
 const WrappedMoviesList = withActiveItem(MoviesList);
@@ -18,7 +20,7 @@ const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick, onPlayOrExitB
       <section className="movie-card">
 
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={PromoFilm.background_image} alt={PromoFilm.name} />
         </div>
         <h1 className="visually-hidden">WTW</h1>
 
@@ -27,7 +29,7 @@ const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick, onPlayOrExitB
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={PromoFilm.poster_image} alt={PromoFilm.name} width="218" height="327" />
             </div>
             <HeaderFilm
               film={PromoFilm}
@@ -64,8 +66,8 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  filteredFilms: state.filteredFilms,
-  cardsToShow: state.cardsToShow
+  filteredFilms: getFilteredFilms(state),
+  cardsToShow: getCardsToShow(state)
 });
 
 export {Main};

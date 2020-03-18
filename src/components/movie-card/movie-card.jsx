@@ -25,7 +25,7 @@ const MovieCard = ({film, onCardHover, onCardHoverOut, onCardClick, activeCard})
             film={film}
             isPlaying={activeCard === film}
           />
-          : <img src={film.image} alt={film.title} width="280" height="175" />}
+          : <img src={film.image} alt={film.name} width="280" height="175" />}
       </div>
       <h3 className="small-movie-card__title">
         <a
@@ -35,7 +35,7 @@ const MovieCard = ({film, onCardHover, onCardHoverOut, onCardClick, activeCard})
             onCardClick(film);
           }}
           href="movie-page">
-          {film.title}
+          {film.name}
         </a>
       </h3>
     </article>
@@ -46,16 +46,8 @@ MovieCard.propTypes = {
   onCardHover: PropTypes.func.isRequired,
   onCardHoverOut: PropTypes.func.isRequired,
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    numberOfVotes: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    preview: PropTypes.string.isRequired
   }).isRequired,
   onCardClick: PropTypes.func.isRequired,
   activeCard: PropTypes.object

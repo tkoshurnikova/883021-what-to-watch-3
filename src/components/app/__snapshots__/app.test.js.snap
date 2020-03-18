@@ -4,6 +4,11 @@ exports[`Render App 1`] = `
 Array [
   <section
     className="movie-card movie-card--full"
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+      }
+    }
   >
     <div
       className="movie-card__hero"
@@ -12,8 +17,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="The Grand Budapest Hotel"
-          src="img/bg-the-grand-budapest-hotel.jpg"
+          alt="The No Flowers"
+          src="some image"
         />
       </div>
       <h1
@@ -145,9 +150,9 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="The No Flowers"
             height={327}
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="some image"
             width={218}
           />
         </div>
@@ -238,7 +243,8 @@ Array [
             >
               <strong>
                 Starring: 
-                Ashley Cooper
+                Ashley Cooper,
+Ramona Flowers
                  and other
               </strong>
             </p>
@@ -271,9 +277,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Bohemian Rhapsody"
+              alt="Rings of Cloud"
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              src="http://placehold.it/280x175"
               width="280"
             />
           </div>
@@ -285,7 +291,7 @@ Array [
               href="movie-page"
               onClick={[Function]}
             >
-              Bohemian Rhapsody
+              Rings of Cloud
             </a>
           </h3>
         </article>
@@ -299,9 +305,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Pulp Fiction"
+              alt="The Sword's Memory"
               height="175"
-              src="img/pulp-fiction.jpg"
+              src="http://placehold.it/280x175"
               width="280"
             />
           </div>
@@ -313,7 +319,7 @@ Array [
               href="movie-page"
               onClick={[Function]}
             >
-              Pulp Fiction
+              The Sword's Memory
             </a>
           </h3>
         </article>
@@ -327,9 +333,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Aviator"
+              alt="The Voyagers of the Words"
               height="175"
-              src="img/aviator.jpg"
+              src="http://placehold.it/280x175"
               width="280"
             />
           </div>
@@ -341,7 +347,7 @@ Array [
               href="movie-page"
               onClick={[Function]}
             >
-              Aviator
+              The Voyagers of the Words
             </a>
           </h3>
         </article>
@@ -355,9 +361,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Revenant"
+              alt="Shores in the Heart"
               height="175"
-              src="img/revenant.jpg"
+              src="http://placehold.it/280x175"
               width="280"
             />
           </div>
@@ -369,7 +375,7 @@ Array [
               href="movie-page"
               onClick={[Function]}
             >
-              Revenant
+              Shores in the Heart
             </a>
           </h3>
         </article>

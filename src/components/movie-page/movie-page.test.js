@@ -3,35 +3,25 @@ import renderer from "react-test-renderer";
 import MoviePage from "./movie-page.jsx";
 import {Provider} from 'react-redux';
 import configureMockStore from 'redux-mock-store';
-
-const film = {
-  title: `The No Flowers`,
-  image: `http://placehold.it/280x175`,
-  description: `qwerty`,
-  rating: 1.0,
-  numberOfVotes: 1982,
-  director: `Taika Di Caprio`,
-  actors: `Ashley Cooper`,
-  genre: `Dramas`,
-  year: 1900,
-  preview: ``
-};
+import {films} from "../../mocks-for-tests.js";
 
 const mockStore = configureMockStore([]);
 let store = mockStore({
-  filteredFilms: [],
-  films: [],
-  genre: ``,
-  cardsToShow: 8
+  APP: {
+    genre: ``,
+    cardsToShow: 8
+  },
+  DATA: {
+    films: []
+  }
 });
-
 
 it(`Render MoviePage`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
           <MoviePage
-            film={film}
+            film={films[0]}
             onCardClick={() => {}}
             onActiveItemChange={() => {}}
             activeItem={``}

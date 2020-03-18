@@ -2,19 +2,7 @@ import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import MovieCard from "./movie-card.jsx";
-
-const film = {
-  title: `The No Flowers`,
-  image: `http://placehold.it/280x175`,
-  description: `qwerty`,
-  rating: 1.0,
-  numberOfVotes: 1982,
-  director: `Taika Di Caprio`,
-  actors: `Ashley Cooper`,
-  genre: `Dramas`,
-  year: 1900,
-  preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-};
+import {films} from "../../mocks-for-tests.js";
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -26,7 +14,7 @@ it(`Should film details be shown`, () => {
 
   const movieCard = shallow(
       <MovieCard
-        film={film}
+        film={films[0]}
         onCardHover={onCardHover}
         onCardHoverOut={onCardHoverOut}
         onCardClick={() => {}}
@@ -38,7 +26,7 @@ it(`Should film details be shown`, () => {
 
   setTimeout(() => {
     expect(onCardHover.mock.calls.length).toBe(1);
-    expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
+    expect(onCardHover.mock.calls[0][0]).toMatchObject(films[0]);
   }, 1100);
 });
 
@@ -47,7 +35,7 @@ it(`Should film card be clicked`, () => {
 
   const movieCard = shallow(
       <MovieCard
-        film={film}
+        film={films[0]}
         onCardHover={() => {}}
         onCardHoverOut={() => {}}
         onCardClick={onCardClick}

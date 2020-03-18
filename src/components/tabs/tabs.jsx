@@ -79,8 +79,9 @@ class Tabs extends PureComponent {
               </p>
               <p className="movie-card__starring">
                 <strong>
-                  Starring: {film.actors} and
-                  other
+                  Starring: {film.actors.map((actor) => {
+                    return actor;
+                  }).join(`,\n`)} and other
                 </strong>
               </p>
             </div>
@@ -98,7 +99,9 @@ class Tabs extends PureComponent {
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Starring</strong>
                   <span className="movie-card__details-value">
-                    {film.actors}
+                    {film.actors.map((actor) => {
+                      return actor;
+                    }).join(`,\n`)}
                   </span>
                 </p>
               </div>
@@ -114,7 +117,7 @@ class Tabs extends PureComponent {
               </p>
               <p className="movie-card__details-item">
                 <strong className="movie-card__details-name">Released</strong>
-                <span className="movie-card__details-value">{film.year}</span>
+                <span className="movie-card__details-value">{film.released}</span>
               </p>
             </div>
           </React.Fragment>);
@@ -207,15 +210,13 @@ class Tabs extends PureComponent {
 
 Tabs.propTypes = {
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     numberOfVotes: PropTypes.number.isRequired,
     director: PropTypes.string.isRequired,
-    actors: PropTypes.string.isRequired,
+    actors: PropTypes.array.isRequired,
     genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired
+    released: PropTypes.number.isRequired
   }).isRequired,
   activeTab: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired
