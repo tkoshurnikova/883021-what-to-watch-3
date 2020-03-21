@@ -2,7 +2,17 @@ export const FilmDetails = {
   "name": `Whispering Mist`,
   "genre": `Comedy`,
   "released": 1995,
-  "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+  "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  "image": `http://placehold.it/280x175`,
+  "description": `qwerty`,
+  "rating": 1.0,
+  "numberOfVotes": 1982,
+  "director": `Taika Di Caprio`,
+  "actors": [`Ashley Cooper`, `Ramona Flowers`],
+  "preview": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  "background_color": `#ffffff`,
+  "background_image": `some image`,
+  "poster_image": `some image`
 };
 
 export const films = [

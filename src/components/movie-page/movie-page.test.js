@@ -6,17 +6,20 @@ import configureMockStore from 'redux-mock-store';
 import {films} from "../../mocks-for-tests.js";
 
 const mockStore = configureMockStore([]);
-let store = mockStore({
-  APP: {
-    genre: ``,
-    cardsToShow: 8
-  },
-  DATA: {
-    films: []
-  }
-});
 
 it(`Render MoviePage`, () => {
+  const store = mockStore({
+    APP: {
+      genre: ``,
+      cardsToShow: 8
+    },
+    DATA: {
+      films
+    },
+    USER: {
+      authorizationStatus: `NO_AUTH`
+    }
+  });
   const tree = renderer
     .create(
         <Provider store={store}>
