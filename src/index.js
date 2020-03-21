@@ -7,15 +7,14 @@ import App from "./components/app/app.jsx";
 import reducer from "./reducer/reducer.js";
 import {createAPI} from "./api.js";
 import {Operation as DataOperation} from "./reducer/data/data.js";
+import {AuthorizationStatus} from "./const.js";
+import {Operation as UserOperation, ActionCreator} from "./reducer/user/user.js";
 
-const api = createAPI();
+const onUnauthorized = () => {
+  store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
+};
 
-// const PromoFilm = {
-//   title: `The Grand Budapest Hotel`,
-//   genre: `Drama`,
-//   year: 2014,
-//   video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
-// };
+const api = createAPI(onUnauthorized);
 
 const store = createStore(
     reducer,
@@ -27,12 +26,11 @@ const store = createStore(
 
 store.dispatch(DataOperation.loadFilms());
 store.dispatch(DataOperation.loadPromoFilm());
+store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>
-      <App
-        // PromoFilm={PromoFilm}
-      />
+      <App/>
     </Provider>,
     document.querySelector(`#root`)
 );

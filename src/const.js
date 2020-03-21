@@ -9,3 +9,8 @@ export const Genre = {
 };
 
 export const CARDS_TO_SHOW = 8;
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
