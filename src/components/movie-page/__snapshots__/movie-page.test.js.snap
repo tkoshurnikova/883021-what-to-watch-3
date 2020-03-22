@@ -57,7 +57,7 @@ Array [
         >
           <a
             className="user-block__link"
-            href="#"
+            href="dev-sign-in"
           >
             Sign in
           </a>
@@ -126,12 +126,7 @@ Array [
                 My list
               </span>
             </button>
-            <a
-              className="btn movie-card__button"
-              href="add-review.html"
-            >
-              Add review
-            </a>
+            
           </div>
         </div>
       </div>

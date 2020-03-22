@@ -30,7 +30,29 @@ export const films = [
     "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     "background_color": `#ffffff`,
     "background_image": `some image`,
-    "poster_image": `some image`
+    "poster_image": `some image`,
+    "reviews": [
+      {
+        "id": 1,
+        "user": {
+          "id": 4,
+          "name": `Kate Muir`
+        },
+        "rating": 8.9,
+        "comment": `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+        "date": `2019-05-08T14:13:56.569Z`
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 5,
+          "name": `Kate Muir`
+        },
+        "rating": 6.5,
+        "comment": `Some text`,
+        "date": `2020-02-01T14:13:56.569Z`
+      }
+    ]
   },
   {
     "name": `Rings of Cloud`,
@@ -46,7 +68,29 @@ export const films = [
     "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     "background_color": `#ffffff`,
     "background_image": `some image`,
-    "poster_image": `some image`
+    "poster_image": `some image`,
+    "reviews": [
+      {
+        "id": 1,
+        "user": {
+          "id": 4,
+          "name": `Kate Muir`
+        },
+        "rating": 8.9,
+        "comment": `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+        "date": `2019-05-08T14:13:56.569Z`
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 5,
+          "name": `Kate Muir`
+        },
+        "rating": 6.5,
+        "comment": `Some text`,
+        "date": `2020-02-01T14:13:56.569Z`
+      }
+    ]
   },
   {
     "name": `The Sword's Memory`,
@@ -62,7 +106,29 @@ export const films = [
     "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     "background_color": `#ffffff`,
     "background_image": `some image`,
-    "poster_image": `some image`
+    "poster_image": `some image`,
+    "reviews": [
+      {
+        "id": 1,
+        "user": {
+          "id": 4,
+          "name": `Kate Muir`
+        },
+        "rating": 8.9,
+        "comment": `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+        "date": `2019-05-08T14:13:56.569Z`
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 5,
+          "name": `Kate Muir`
+        },
+        "rating": 6.5,
+        "comment": `Some text`,
+        "date": `2020-02-01T14:13:56.569Z`
+      }
+    ]
   },
   {
     "name": `The Voyagers of the Words`,
@@ -78,7 +144,29 @@ export const films = [
     "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     "background_color": `#ffffff`,
     "background_image": `some image`,
-    "poster_image": `some image`
+    "poster_image": `some image`,
+    "reviews": [
+      {
+        "id": 1,
+        "user": {
+          "id": 4,
+          "name": `Kate Muir`
+        },
+        "rating": 8.9,
+        "comment": `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+        "date": `2019-05-08T14:13:56.569Z`
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 5,
+          "name": `Kate Muir`
+        },
+        "rating": 6.5,
+        "comment": `Some text`,
+        "date": `2020-02-01T14:13:56.569Z`
+      }
+    ]
   },
   {
     "name": `Shores in the Heart`,
@@ -94,7 +182,29 @@ export const films = [
     "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     "background_color": `#ffffff`,
     "background_image": `some image`,
-    "poster_image": `some image`
+    "poster_image": `some image`,
+    "reviews": [
+      {
+        "id": 1,
+        "user": {
+          "id": 4,
+          "name": `Kate Muir`
+        },
+        "rating": 8.9,
+        "comment": `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+        "date": `2019-05-08T14:13:56.569Z`
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 5,
+          "name": `Kate Muir`
+        },
+        "rating": 6.5,
+        "comment": `Some text`,
+        "date": `2020-02-01T14:13:56.569Z`
+      }
+    ]
   },
   {
     "name": `Missing Illusion`,
@@ -110,7 +220,29 @@ export const films = [
     "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     "background_color": `#ffffff`,
     "background_image": `some image`,
-    "poster_image": `some image`
+    "poster_image": `some image`,
+    "reviews": [
+      {
+        "id": 1,
+        "user": {
+          "id": 4,
+          "name": `Kate Muir`
+        },
+        "rating": 8.9,
+        "comment": `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+        "date": `2019-05-08T14:13:56.569Z`
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 5,
+          "name": `Kate Muir`
+        },
+        "rating": 6.5,
+        "comment": `Some text`,
+        "date": `2020-02-01T14:13:56.569Z`
+      }
+    ]
   },
   {
     "name": `The Unwilling Man`,
@@ -126,7 +258,29 @@ export const films = [
     "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     "background_color": `#ffffff`,
     "background_image": `some image`,
-    "poster_image": `some image`
+    "poster_image": `some image`,
+    "reviews": [
+      {
+        "id": 1,
+        "user": {
+          "id": 4,
+          "name": `Kate Muir`
+        },
+        "rating": 8.9,
+        "comment": `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+        "date": `2019-05-08T14:13:56.569Z`
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 5,
+          "name": `Kate Muir`
+        },
+        "rating": 6.5,
+        "comment": `Some text`,
+        "date": `2020-02-01T14:13:56.569Z`
+      }
+    ]
   },
   {
     "name": `Teacher in the Hunter`,
@@ -142,6 +296,28 @@ export const films = [
     "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     "background_color": `#ffffff`,
     "background_image": `some image`,
-    "poster_image": `some image`
+    "poster_image": `some image`,
+    "reviews": [
+      {
+        "id": 1,
+        "user": {
+          "id": 4,
+          "name": `Kate Muir`
+        },
+        "rating": 8.9,
+        "comment": `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+        "date": `2019-05-08T14:13:56.569Z`
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 5,
+          "name": `Kate Muir`
+        },
+        "rating": 6.5,
+        "comment": `Some text`,
+        "date": `2020-02-01T14:13:56.569Z`
+      }
+    ]
   }
 ];

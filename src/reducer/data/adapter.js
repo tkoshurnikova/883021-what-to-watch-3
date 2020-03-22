@@ -7,6 +7,7 @@ export default (data) => {
       numberOfVotes: item.scores_count,
       actors: item.starring,
       preview: item.preview_video_link,
+      reviews: []
     });
     delete adaptedFilmData.preview_image;
     delete adaptedFilmData.scores_count;
@@ -15,4 +16,17 @@ export default (data) => {
     return adaptedFilmData;
   });
   return adaptedData;
+};
+
+export const commentsAdapter = (item) => {
+  return {
+    id: item.id,
+    rating: item.rating,
+    date: item.date,
+    author: {
+      id: item.user.id,
+      name: item.user.name
+    },
+    comment: item.comment
+  };
 };

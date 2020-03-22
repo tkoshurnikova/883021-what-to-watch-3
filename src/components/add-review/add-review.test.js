@@ -1,31 +1,35 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import HeaderFilm from "./header-film.jsx";
-import {FilmDetails} from "../../mocks-for-tests.js";
+import AddReview from "./add-review.jsx";
 import {Provider} from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 
 const mockStore = configureMockStore([]);
 
-it(`Render HeaderFilm`, () => {
+it(`Render AddReview`, () => {
   const store = mockStore({
-    USER: {
-      authorizationStatus: `NO_AUTH`
+    DATA: {
+      formBlock: false,
+      sendingStatusText: ``
     }
   });
   const tree = renderer
     .create(
         <Provider store={store}>
-          <HeaderFilm
-            film={FilmDetails}
-            onPlayOrExitButtonClick={() => {}}
+          <AddReview
+            onSubmit={() => {}}
+            id={5}
+            name={`name`}
+            backgroundImage={`image`}
+            posterImage={`poster`}
+            isCommentValid={true}
+            onChange={() => {}}
           />)
         </Provider>, {
           createNodeMock: () => {
             return {};
           }
-        }
-    )
+        })
     .toJSON();
 
   expect(tree).toMatchSnapshot();

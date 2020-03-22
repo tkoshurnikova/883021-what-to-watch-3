@@ -12,7 +12,7 @@ class Header extends PureComponent {
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       returnFragment = (
         <div className="user-block">
-          <a href="#" className="user-block__link">Sign in</a>
+          <a href="dev-sign-in" className="user-block__link">Sign in</a>
         </div>
       );
     } else if (authorizationStatus === AuthorizationStatus.AUTH) {
