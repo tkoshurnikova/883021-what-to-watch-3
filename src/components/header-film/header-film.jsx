@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {AuthorizationStatus} from "../../const.js";
 
-const HeaderFilm = ({film, onPlayOrExitButtonClick}) => {
+const HeaderFilm = ({film, onPlayOrExitButtonClick, authorizationStatus}) => {
   const {name, genre, released} = film;
 
   return (
@@ -30,9 +33,15 @@ const HeaderFilm = ({film, onPlayOrExitButtonClick}) => {
           </svg>
           <span>My list</span>
         </button>
-        <a href="add-review.html" className="btn movie-card__button">
+        {(authorizationStatus === AuthorizationStatus.AUTH)
+          ?
+          <a href="dev-add-review" className="btn movie-card__button">
           Add review
-        </a>
+          </a>
+          :
+          ``
+        }
+
       </div>
     </div>
   );
@@ -40,7 +49,14 @@ const HeaderFilm = ({film, onPlayOrExitButtonClick}) => {
 
 HeaderFilm.propTypes = {
   film: PropTypes.object.isRequired,
-  onPlayOrExitButtonClick: PropTypes.func.isRequired
+  onPlayOrExitButtonClick: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
-export default HeaderFilm;
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state)
+});
+
+export {HeaderFilm};
+export default connect(mapStateToProps)(HeaderFilm);
+

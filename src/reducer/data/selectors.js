@@ -20,3 +20,11 @@ export const getFilteredFilms = createSelector(
 export const getPromoFilm = (state) => {
   return state[NAME_SPACE].promoFilm;
 };
+
+export const getFormBlock = (state) => {
+  return state[NAME_SPACE].formBlock;
+};
+
+export const getSendingStatusText = (state) => {
+  return state[NAME_SPACE].sendingStatusText;
+};

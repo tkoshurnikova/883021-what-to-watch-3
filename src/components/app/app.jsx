@@ -14,9 +14,13 @@ import {getClickedCard, getChosenFilm} from "../../reducer/app/selectors.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../const.js";
+import AddReview from "../add-review/add-review.jsx";
+import {Operation as DataOperations} from "../../reducer/data/data.js";
+import withReviewValidation from "../../hocs/with-review-validation/with-review-validation.jsx";
 
 const WrappedMoviePage = withActiveItem(MoviePage);
 const WrappedFulscreenPlayer = withFulscreenVideo(FullscreenPlayer);
+const WrappedAddReview = withReviewValidation(AddReview);
 
 class App extends PureComponent {
   _renderApp() {
@@ -52,7 +56,15 @@ class App extends PureComponent {
   }
 
   render() {
-    const {films, clickedCard, onCardClick, onPlayOrExitButtonClick, chosenFilm, login, authorizationStatus} = this.props;
+    const {
+      films,
+      clickedCard,
+      onCardClick,
+      onPlayOrExitButtonClick,
+      chosenFilm,
+      login, authorizationStatus,
+      sendReview
+    } = this.props;
     const card = (clickedCard) ? clickedCard : films[0];
     const film = (chosenFilm) ? chosenFilm : films[0];
 
@@ -78,6 +90,15 @@ class App extends PureComponent {
             }
             return null;
           }} />
+          <Route exact path="/dev-add-review">
+            <WrappedAddReview
+              onSubmit={sendReview}
+              id={1}
+              name={`The Grand Budapest Hotel`}
+              backgroundImage={`img/bg-the-grand-budapest-hotel.jpg`}
+              posterImage={`img/the-grand-budapest-hotel-poster.jpg`}
+            />
+          </Route>
         </Switch>
       </BrowserRouter>
     );
@@ -92,7 +113,8 @@ App.propTypes = {
   chosenFilm: PropTypes.object,
   onPlayOrExitButtonClick: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  sendReview: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -112,6 +134,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   login(authData) {
     dispatch(UserOperation.login(authData));
+  },
+  sendReview(authData, id) {
+    dispatch(DataOperations.sendReview(authData, id));
   }
 });
 
