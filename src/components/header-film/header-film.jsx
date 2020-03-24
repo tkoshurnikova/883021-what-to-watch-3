@@ -5,6 +5,7 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../const.js";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const.js";
+import history from "../../history.js";
 
 const HeaderFilm = ({film, authorizationStatus}) => {
   const {name, genre, released, id} = film;
@@ -27,7 +28,15 @@ const HeaderFilm = ({film, authorizationStatus}) => {
           </svg>
           <span>Play</span>
         </Link>
-        <button className="btn btn--list movie-card__button" type="button">
+        <button
+          className="btn btn--list movie-card__button"
+          type="button"
+          onClick={() => {
+            if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+              history.push(AppRoute.LOGIN);
+            }
+          }}
+        >
           <svg viewBox="0 0 19 20" width={19} height={20}>
             <use xlinkHref="#add" />
           </svg>

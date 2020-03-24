@@ -1,5 +1,6 @@
 import {extend} from "../../utils.js";
 import {AuthorizationStatus} from "../../const.js";
+import history from "../../history";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH
@@ -36,6 +37,7 @@ export const Operation = {
     })
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        history.goBack();
       });
   }
 };

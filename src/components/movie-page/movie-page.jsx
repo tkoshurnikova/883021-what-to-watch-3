@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import {getFilms} from "../../reducer/data/selectors.js";
-import {connect} from 'react-redux';
+import {connect} from "react-redux";
 import {TabName} from "../../const.js";
 import Footer from "../footer/footer.jsx";
 import Header from "../header/header.jsx";

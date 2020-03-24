@@ -47,6 +47,7 @@ exports[`Render HeaderFilm 1`] = `
     </a>
     <button
       className="btn btn--list movie-card__button"
+      onClick={[Function]}
       type="button"
     >
       <svg

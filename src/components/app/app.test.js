@@ -1,8 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
-import {Provider} from 'react-redux';
-import configureMockStore from 'redux-mock-store';
+import {Provider} from "react-redux";
+import configureMockStore from "redux-mock-store";
 import {films, FilmDetails} from "../../mocks-for-tests";
 
 const mockStore = configureMockStore([]);
