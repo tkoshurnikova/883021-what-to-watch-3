@@ -1,22 +1,21 @@
 import {extend} from "../../utils.js";
 import {AuthorizationStatus} from "../../const.js";
 import history from "../../history";
+import {Operation as DataOperation} from "../data/data.js";
 
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
 };
 
 export const ActionType = {
-  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`
 };
 
 export const ActionCreator = {
-  requireAuthorization: (status) => {
-    return {
-      type: ActionType.REQUIRED_AUTHORIZATION,
-      payload: status
-    };
-  }
+  requireAuthorization: (status) => ({
+    type: ActionType.REQUIRED_AUTHORIZATION,
+    payload: status
+  })
 };
 
 export const Operation = {
@@ -37,6 +36,7 @@ export const Operation = {
     })
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(DataOperation.loadFavoriteFilms());
         history.goBack();
       });
   }

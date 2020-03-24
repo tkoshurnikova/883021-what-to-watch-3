@@ -5,7 +5,8 @@ const initialState = {
   films: [],
   promoFilm: {},
   formBlock: false,
-  sendingStatusText: ``
+  sendingStatusText: ``,
+  favoriteFilms: []
 };
 
 export const ActionType = {
@@ -13,7 +14,8 @@ export const ActionType = {
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   SEND_REVIEW: `SEND_REVIEW`,
   CHANGE_FORM_BLOCK: `CHANGE_BLOCK_FORM`,
-  SET_SENDING_STATUS_TEXT: `SET_SENDING_STATUS_TEXT`
+  SET_SENDING_STATUS_TEXT: `SET_SENDING_STATUS_TEXT`,
+  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`
 };
 
 export const ActionCreator = {
@@ -35,6 +37,10 @@ export const ActionCreator = {
   setSendingStatusText: (text) => ({
     type: ActionType.SET_SENDING_STATUS_TEXT,
     payload: text
+  }),
+  loadFavoriteFilms: (films) => ({
+    type: ActionType.LOAD_FAVORITE_FILMS,
+    payload: films
   })
 };
 
@@ -86,6 +92,13 @@ export const Operation = {
         dispatch(ActionCreator.setSendingStatusText(`Something went wrong, please try again`));
         dispatch(ActionCreator.changeFormBlock(false));
       });
+  },
+
+  loadFavoriteFilms: () => (dispatch, _, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        dispatch(ActionCreator.loadFavoriteFilms(response.data));
+      });
   }
 };
 
@@ -109,6 +122,11 @@ export const reducer = (state = initialState, action) => {
     case ActionType.SET_SENDING_STATUS_TEXT:
       return extend(state, {
         sendingStatusText: action.payload
+      });
+
+    case ActionType.LOAD_FAVORITE_FILMS:
+      return extend(state, {
+        favoriteFilms: action.payload
       });
   }
 
