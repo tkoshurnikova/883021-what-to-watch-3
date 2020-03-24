@@ -1,5 +1,6 @@
 export const FilmDetails = {
   "name": `Whispering Mist`,
+  "id": 0,
   "genre": `Comedy`,
   "released": 1995,
   "video_link": `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
@@ -18,6 +19,7 @@ export const FilmDetails = {
 export const films = [
   {
     "name": `The No Flowers`,
+    "id": 1,
     "image": `http://placehold.it/280x175`,
     "description": `qwerty`,
     "rating": 1.0,
@@ -56,6 +58,7 @@ export const films = [
   },
   {
     "name": `Rings of Cloud`,
+    "id": 2,
     "image": `http://placehold.it/280x175`,
     "description": `qwerty`,
     "rating": 1.0,
@@ -94,6 +97,7 @@ export const films = [
   },
   {
     "name": `The Sword's Memory`,
+    "id": 3,
     "image": `http://placehold.it/280x175`,
     "description": `qwerty`,
     "rating": 1.0,
@@ -132,6 +136,7 @@ export const films = [
   },
   {
     "name": `The Voyagers of the Words`,
+    "id": 4,
     "image": `http://placehold.it/280x175`,
     "description": `qwerty`,
     "rating": 1.0,
@@ -170,6 +175,7 @@ export const films = [
   },
   {
     "name": `Shores in the Heart`,
+    "id": 5,
     "image": `http://placehold.it/280x175`,
     "description": `qwerty`,
     "rating": 1.0,
@@ -208,6 +214,7 @@ export const films = [
   },
   {
     "name": `Missing Illusion`,
+    "id": 6,
     "image": `http://placehold.it/280x175`,
     "description": `qwerty`,
     "rating": 1.0,
@@ -246,6 +253,7 @@ export const films = [
   },
   {
     "name": `The Unwilling Man`,
+    "id": 7,
     "image": `http://placehold.it/280x175`,
     "description": `qwerty`,
     "rating": 1.0,
@@ -284,6 +292,7 @@ export const films = [
   },
   {
     "name": `Teacher in the Hunter`,
+    "id": 8,
     "image": `http://placehold.it/280x175`,
     "description": `qwerty`,
     "rating": 1.0,

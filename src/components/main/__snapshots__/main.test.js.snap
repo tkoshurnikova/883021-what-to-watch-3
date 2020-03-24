@@ -26,6 +26,8 @@ Array [
       >
         <a
           className="logo__link"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -49,7 +51,8 @@ Array [
       >
         <a
           className="user-block__link"
-          href="dev-sign-in"
+          href="/login"
+          onClick={[Function]}
         >
           Sign in
         </a>
@@ -96,8 +99,9 @@ Array [
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/0"
               onClick={[Function]}
               type="button"
             >
@@ -113,7 +117,7 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
               type="button"
@@ -213,6 +217,5 @@ Array [
       </div>
     </footer>
   </div>,
-  ")",
 ]
 `;

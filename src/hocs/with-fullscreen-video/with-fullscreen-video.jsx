@@ -95,7 +95,7 @@ const withFullscreenVideo = (Component) => {
         >
           <video
             className="player__video"
-            poster="img/player-poster.jpg"
+            poster="/img/player-poster.jpg"
             ref={this._videoRef}
           />
         </Component>

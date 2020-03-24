@@ -1,8 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import AddReview from "./add-review.jsx";
-import {Provider} from 'react-redux';
-import configureMockStore from 'redux-mock-store';
+import {Provider} from "react-redux";
+import configureMockStore from "redux-mock-store";
+import {films} from "../../mocks-for-tests.js";
+import {Router} from "react-router-dom";
+import history from "../../history";
 
 const mockStore = configureMockStore([]);
 
@@ -16,15 +19,14 @@ it(`Render AddReview`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <AddReview
-            onSubmit={() => {}}
-            id={5}
-            name={`name`}
-            backgroundImage={`image`}
-            posterImage={`poster`}
-            isCommentValid={true}
-            onChange={() => {}}
-          />)
+          <Router history={history}>
+            <AddReview
+              onSubmit={() => {}}
+              film={films[0]}
+              isCommentValid={true}
+              onChange={() => {}}
+            />
+          </Router>
         </Provider>, {
           createNodeMock: () => {
             return {};

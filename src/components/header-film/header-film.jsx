@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../const.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
 
-const HeaderFilm = ({film, onPlayOrExitButtonClick, authorizationStatus}) => {
-  const {name, genre, released} = film;
+const HeaderFilm = ({film, authorizationStatus}) => {
+  const {name, genre, released, id} = film;
 
   return (
     <div className="movie-card__desc">
@@ -15,18 +17,16 @@ const HeaderFilm = ({film, onPlayOrExitButtonClick, authorizationStatus}) => {
         <span className="movie-card__year">{released}</span>
       </p>
       <div className="movie-card__buttons">
-        <button
+        <Link
+          to={`${AppRoute.PLAYER}/${id}`}
           className="btn btn--play movie-card__button"
           type="button"
-          onClick={() => {
-            onPlayOrExitButtonClick(film);
-          }}
         >
           <svg viewBox="0 0 19 19" width={19} height={19}>
             <use xlinkHref="#play-s" />
           </svg>
           <span>Play</span>
-        </button>
+        </Link>
         <button className="btn btn--list movie-card__button" type="button">
           <svg viewBox="0 0 19 20" width={19} height={20}>
             <use xlinkHref="#add" />
@@ -35,9 +35,9 @@ const HeaderFilm = ({film, onPlayOrExitButtonClick, authorizationStatus}) => {
         </button>
         {(authorizationStatus === AuthorizationStatus.AUTH)
           ?
-          <a href="dev-add-review" className="btn movie-card__button">
+          <Link to={`${AppRoute.FILMS}/${id}/review`} className="btn movie-card__button">
           Add review
-          </a>
+          </Link>
           :
           ``
         }
@@ -49,7 +49,6 @@ const HeaderFilm = ({film, onPlayOrExitButtonClick, authorizationStatus}) => {
 
 HeaderFilm.propTypes = {
   film: PropTypes.object.isRequired,
-  onPlayOrExitButtonClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired
 };
 

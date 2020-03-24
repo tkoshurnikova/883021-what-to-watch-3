@@ -4,16 +4,12 @@ import {extend} from "../../utils.js";
 const initialState = {
   genre: Genre.ALL_GENRES,
   cardsToShow: CARDS_TO_SHOW,
-  clickedCard: null,
-  chosenFilm: null
 };
 
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   SHOW_MORE_FILMS: `SHOW_MORE_FILMS`,
   RESET_CARDS_COUNT: `RESET_CARDS_COUNT`,
-  SET_CLICKED_CARD: `SET_CLICKED_CARD`,
-  SET_CHOSEN_FILM: `SET_CHOSEN_FILM`
 };
 
 export const ActionCreator = {
@@ -28,14 +24,6 @@ export const ActionCreator = {
   resetCardsCount: () => ({
     type: ActionType.RESET_CARDS_COUNT,
   }),
-  setClickedCard: (clickedCard) => ({
-    type: ActionType.SET_CLICKED_CARD,
-    payload: clickedCard
-  }),
-  setChosenFilm: (chosenFilm) => ({
-    type: ActionType.SET_CHOSEN_FILM,
-    payload: chosenFilm
-  })
 };
 
 export const reducer = (state = initialState, action) => {
@@ -53,16 +41,6 @@ export const reducer = (state = initialState, action) => {
     case ActionType.RESET_CARDS_COUNT:
       return extend(state, {
         cardsToShow: CARDS_TO_SHOW
-      });
-
-    case ActionType.SET_CLICKED_CARD:
-      return extend(state, {
-        clickedCard: action.payload
-      });
-
-    case ActionType.SET_CHOSEN_FILM:
-      return extend(state, {
-        chosenFilm: action.payload
       });
   }
 

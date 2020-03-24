@@ -6,7 +6,6 @@ import {films} from "../../mocks-for-tests.js";
 it(`Render FullscreenPlayer`, () => {
   const tree = renderer
     .create(<FullscreenPlayer
-      onPlayOrExitButtonClick={() => {}}
       film={films[0]}
       isPlaying={false}
       isFullscreen={false}

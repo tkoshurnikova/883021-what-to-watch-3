@@ -1,6 +1,7 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {convertSecondsToHours} from "../../utils.js";
+import history from "../../history";
 
 export default class FullscreenPlayer extends PureComponent {
   constructor(props) {
@@ -11,7 +12,6 @@ export default class FullscreenPlayer extends PureComponent {
   render() {
     const {
       children,
-      onPlayOrExitButtonClick,
       film,
       isPlaying,
       isFullscreen,
@@ -24,7 +24,7 @@ export default class FullscreenPlayer extends PureComponent {
     return (
       <div className="player" ref={this._videoBlockRef}>
         {children}
-        <button type="button" className="player__exit" onClick={() => onPlayOrExitButtonClick(null)}>
+        <button type="button" className="player__exit" onClick={() => history.goBack()}>
           Exit
         </button>
         <div className="player__controls">
@@ -87,7 +87,6 @@ export default class FullscreenPlayer extends PureComponent {
 
 FullscreenPlayer.propTypes = {
   film: PropTypes.object.isRequired,
-  onPlayOrExitButtonClick: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   isFullscreen: PropTypes.bool.isRequired,
   timeProgressInPercents: PropTypes.number.isRequired,

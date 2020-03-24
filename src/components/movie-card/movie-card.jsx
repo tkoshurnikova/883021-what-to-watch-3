@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
 
-const MovieCard = ({film, onCardHover, onCardHoverOut, onCardClick, activeCard}) => {
+const MovieCard = ({film, onCardHover, onCardHoverOut, activeCard}) => {
   let timerForPreviewPlaying = () => {};
 
   return (
@@ -17,26 +19,23 @@ const MovieCard = ({film, onCardHover, onCardHoverOut, onCardClick, activeCard})
         clearTimeout(timerForPreviewPlaying);
         onCardHoverOut({});
       }}
-      onClick={() => onCardClick(film)}
     >
-      <div className="small-movie-card__image">
-        {(activeCard === film)
-          ? <VideoPlayer
-            film={film}
-            isPlaying={activeCard === film}
-          />
-          : <img src={film.image} alt={film.name} width="280" height="175" />}
-      </div>
+      <Link to={`${AppRoute.FILMS}/${film.id}`}>
+        <div className="small-movie-card__image">
+          {(activeCard === film)
+            ? <VideoPlayer
+              film={film}
+              isPlaying={activeCard === film}
+            />
+            : <img src={film.image} alt={film.name} width="280" height="175" />}
+        </div>
+      </Link>
       <h3 className="small-movie-card__title">
-        <a
+        <Link
           className="small-movie-card__link"
-          onClick={(evt) => {
-            evt.preventDefault();
-            onCardClick(film);
-          }}
-          href="movie-page">
+          to={`${AppRoute.FILMS}/${film.id}`}>
           {film.name}
-        </a>
+        </Link>
       </h3>
     </article>
   );
@@ -48,8 +47,8 @@ MovieCard.propTypes = {
   film: PropTypes.shape({
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
   }).isRequired,
-  onCardClick: PropTypes.func.isRequired,
   activeCard: PropTypes.object
 };
 

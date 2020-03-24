@@ -25,9 +25,7 @@ it(`Render App`, () => {
     .create(
         <Provider store={store}>
           <App
-            onCardClick={() => {}}
             clickedCard={films[0]}
-            onPlayOrExitButtonClick={() => {}}
             login={() => {}}
           />
         </Provider>, {

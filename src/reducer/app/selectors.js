@@ -9,11 +9,3 @@ export const getGenre = (state) => {
 export const getCardsToShow = (state) => {
   return state[NAME_SPACE].cardsToShow;
 };
-
-export const getClickedCard = (state) => {
-  return state[NAME_SPACE].clickedCard;
-};
-
-export const getChosenFilm = (state) => {
-  return state[NAME_SPACE].chosenFilm;
-};
