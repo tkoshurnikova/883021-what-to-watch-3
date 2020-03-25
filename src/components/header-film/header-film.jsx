@@ -6,9 +6,10 @@ import {AuthorizationStatus} from "../../const.js";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const.js";
 import history from "../../history.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 
-const HeaderFilm = ({film, authorizationStatus}) => {
-  const {name, genre, released, id} = film;
+const HeaderFilm = ({film, authorizationStatus, onFavoriteButtonClick}) => {
+  const {name, genre, released, id, favorite} = film;
 
   return (
     <div className="movie-card__desc">
@@ -34,12 +35,25 @@ const HeaderFilm = ({film, authorizationStatus}) => {
           onClick={() => {
             if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
               history.push(AppRoute.LOGIN);
+            } else {
+              if (favorite) {
+                onFavoriteButtonClick(id, 0);
+              } else {
+                onFavoriteButtonClick(id, 1);
+              }
             }
           }}
         >
-          <svg viewBox="0 0 19 20" width={19} height={20}>
-            <use xlinkHref="#add" />
-          </svg>
+          {favorite ?
+            <svg viewBox="0 0 18 14" width={18} height={14}>
+              <use xlinkHref="#in-list" />
+            </svg>
+            :
+            <svg viewBox="0 0 19 20" width={19} height={20}>
+              <use xlinkHref="#add" />
+            </svg>
+          }
+
           <span>My list</span>
         </button>
         {(authorizationStatus === AuthorizationStatus.AUTH)
@@ -58,13 +72,20 @@ const HeaderFilm = ({film, authorizationStatus}) => {
 
 HeaderFilm.propTypes = {
   film: PropTypes.object.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  onFavoriteButtonClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state)
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  onFavoriteButtonClick(id, status) {
+    dispatch(DataOperation.changeFavoriteStatus(id, status));
+  },
+});
+
 export {HeaderFilm};
-export default connect(mapStateToProps)(HeaderFilm);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderFilm);
 

@@ -12,10 +12,10 @@ const initialState = {
 export const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
-  SEND_REVIEW: `SEND_REVIEW`,
   CHANGE_FORM_BLOCK: `CHANGE_BLOCK_FORM`,
   SET_SENDING_STATUS_TEXT: `SET_SENDING_STATUS_TEXT`,
-  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`
+  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
+  CHANGE_FAVORITE_STATUS: `CHANGE_FAVORITE_STATUS`
 };
 
 export const ActionCreator = {
@@ -26,9 +26,6 @@ export const ActionCreator = {
   loadPromoFilm: (film) => ({
     type: ActionType.LOAD_PROMO_FILM,
     payload: film
-  }),
-  sendReview: () => ({
-    type: ActionType.SEND_REVIEW
   }),
   changeFormBlock: (status) => ({
     type: ActionType.CHANGE_FORM_BLOCK,
@@ -41,6 +38,10 @@ export const ActionCreator = {
   loadFavoriteFilms: (films) => ({
     type: ActionType.LOAD_FAVORITE_FILMS,
     payload: films
+  }),
+  changeFavoriteStatus: (id) => ({
+    type: ActionType.CHANGE_FAVORITE_STATUS,
+    payload: id
   })
 };
 
@@ -81,7 +82,6 @@ export const Operation = {
     })
       .then((response) => {
         if (response.status === 200) {
-          dispatch(ActionCreator.sendReview());
           dispatch(ActionCreator.setSendingStatusText(`Comment was sent`));
         } else {
           dispatch(ActionCreator.setSendingStatusText(`Something went wrong, please try again`));
@@ -97,7 +97,24 @@ export const Operation = {
   loadFavoriteFilms: () => (dispatch, _, api) => {
     return api.get(`/favorite`)
       .then((response) => {
-        dispatch(ActionCreator.loadFavoriteFilms(response.data));
+        const adaptedData = dataAdapter(response.data);
+        dispatch(ActionCreator.loadFavoriteFilms(adaptedData));
+      });
+  },
+
+  changeFavoriteStatus: (id, status) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${id}/${status}`)
+      .then((response) => {
+        const filmsList = getState().DATA.films;
+        const newFilmsList = filmsList.map((item) => {
+          if (item.id === id) {
+            item.favorite = !item.favorite;
+          }
+          return item;
+        });
+        dispatch(ActionCreator.loadFilms(newFilmsList));
+        dispatch(ActionCreator.changeFavoriteStatus(response.data.id));
+        dispatch(Operation.loadFavoriteFilms());
       });
   }
 };
