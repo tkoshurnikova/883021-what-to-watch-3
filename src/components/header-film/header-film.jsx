@@ -6,7 +6,7 @@ import {AuthorizationStatus} from "../../const.js";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const.js";
 import history from "../../history.js";
-import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {Operation as DataOperation, ActionCreator} from "../../reducer/data/data.js";
 
 const HeaderFilm = ({film, authorizationStatus, onFavoriteButtonClick}) => {
   const {name, genre, released, id, favorite} = film;
@@ -37,9 +37,9 @@ const HeaderFilm = ({film, authorizationStatus, onFavoriteButtonClick}) => {
               history.push(AppRoute.LOGIN);
             } else {
               if (favorite) {
-                onFavoriteButtonClick(id, 0);
+                onFavoriteButtonClick(film, id, 0);
               } else {
-                onFavoriteButtonClick(id, 1);
+                onFavoriteButtonClick(film, id, 1);
               }
             }
           }}
@@ -81,8 +81,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onFavoriteButtonClick(id, status) {
-    dispatch(DataOperation.changeFavoriteStatus(id, status));
+  onFavoriteButtonClick(film, id, status) {
+    dispatch(DataOperation.changeFavoriteFilmsOnServer(id, status));
+    dispatch(DataOperation.loadFavoriteFilms());
+    dispatch(ActionCreator.changeFavoriteStatus(film));
   },
 });
 

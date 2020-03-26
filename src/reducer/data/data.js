@@ -15,6 +15,7 @@ export const ActionType = {
   CHANGE_FORM_BLOCK: `CHANGE_BLOCK_FORM`,
   SET_SENDING_STATUS_TEXT: `SET_SENDING_STATUS_TEXT`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
+  CHANGE_FAVORITE_FILMS_ON_SERVER: `CHANGE_FAVORITE_FILMS_ON_SERVER`,
   CHANGE_FAVORITE_STATUS: `CHANGE_FAVORITE_STATUS`
 };
 
@@ -39,9 +40,13 @@ export const ActionCreator = {
     type: ActionType.LOAD_FAVORITE_FILMS,
     payload: films
   }),
-  changeFavoriteStatus: (id) => ({
-    type: ActionType.CHANGE_FAVORITE_STATUS,
+  changeFavoriteFilmsOnServer: (id) => ({
+    type: ActionType.CHANGE_FAVORITE_FILMS_ON_SERVER,
     payload: id
+  }),
+  changeFavoriteStatus: (film) => ({
+    type: ActionType.CHANGE_FAVORITE_STATUS,
+    payload: film
   })
 };
 
@@ -102,19 +107,10 @@ export const Operation = {
       });
   },
 
-  changeFavoriteStatus: (id, status) => (dispatch, getState, api) => {
+  changeFavoriteFilmsOnServer: (id, status) => (dispatch, _, api) => {
     return api.post(`/favorite/${id}/${status}`)
       .then((response) => {
-        const filmsList = getState().DATA.films;
-        const newFilmsList = filmsList.map((item) => {
-          if (item.id === id) {
-            item.favorite = !item.favorite;
-          }
-          return item;
-        });
-        dispatch(ActionCreator.loadFilms(newFilmsList));
         dispatch(ActionCreator.changeFavoriteStatus(response.data.id));
-        dispatch(Operation.loadFavoriteFilms());
       });
   }
 };
@@ -145,8 +141,20 @@ export const reducer = (state = initialState, action) => {
       return extend(state, {
         favoriteFilms: action.payload
       });
+
+    case ActionType.CHANGE_FAVORITE_STATUS:
+      return extend(state, {
+        films: state.films.map((item) => {
+          if (item.id === action.payload.id) {
+            return extend(item, {favorite: !item.favorite});
+          }
+          return item;
+        }),
+        promoFilm: extend(state.promoFilm, {
+          favorite: state.promoFilm.id === action.payload.id ? !state.promoFilm.favorite : state.promoFilm.favorite
+        })
+      });
   }
 
   return state;
 };
-
