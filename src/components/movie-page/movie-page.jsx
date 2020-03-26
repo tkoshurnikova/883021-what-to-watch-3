@@ -3,29 +3,17 @@ import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import {getFilms} from "../../reducer/data/selectors.js";
-import {connect} from 'react-redux';
+import {connect} from "react-redux";
 import {TabName} from "../../const.js";
 import Footer from "../footer/footer.jsx";
 import Header from "../header/header.jsx";
 import HeaderFilm from "../header-film/header-film.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
-import FullscreenPlayer from "../fullscreen-player/fullscreen-player.jsx";
-import withFulscreenVideo from "../../hocs/with-fullscreen-video/with-fullscreen-video.jsx";
 
 const WrappedMoviesList = withActiveItem(MoviesList);
-const WrappedFulscreenPlayer = withFulscreenVideo(FullscreenPlayer);
 
-const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveItemChange, onPlayOrExitButtonClick, chosenFilm, films}) => {
+const MoviePage = ({film, activeItem = TabName.OVERVIEW, onActiveItemChange, films}) => {
   const similarFilms = films.filter((item) => item.genre === film.genre && item.name !== film.name).slice(0, 4);
-
-  if (chosenFilm) {
-    return (
-      <WrappedFulscreenPlayer
-        onPlayOrExitButtonClick={onPlayOrExitButtonClick}
-        film={chosenFilm}
-      />
-    );
-  }
 
   return (
     <React.Fragment>
@@ -42,7 +30,6 @@ const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveIt
           <div className="movie-card__wrap">
             <HeaderFilm
               film={film}
-              onPlayOrExitButtonClick={onPlayOrExitButtonClick}
             />
           </div>
         </div>
@@ -71,7 +58,6 @@ const MoviePage = ({film, onCardClick, activeItem = TabName.OVERVIEW, onActiveIt
           <h2 className="catalog__title">More like this</h2>
           <WrappedMoviesList
             films={similarFilms}
-            onCardClick={onCardClick}
           />
         </section>
         <Footer/>
@@ -88,10 +74,8 @@ MoviePage.propTypes = {
     "background_image": PropTypes.string.isRequired,
     "poster_image": PropTypes.string.isRequired
   }).isRequired,
-  onCardClick: PropTypes.func.isRequired,
   activeItem: PropTypes.string,
   onActiveItemChange: PropTypes.func.isRequired,
-  onPlayOrExitButtonClick: PropTypes.func.isRequired,
   chosenFilm: PropTypes.object,
   films: PropTypes.array.isRequired
 };

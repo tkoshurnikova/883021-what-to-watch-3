@@ -28,3 +28,7 @@ export const getFormBlock = (state) => {
 export const getSendingStatusText = (state) => {
   return state[NAME_SPACE].sendingStatusText;
 };
+
+export const getFavoriteFilms = (state) => {
+  return state[NAME_SPACE].favoriteFilms;
+};

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {connect} from 'react-redux';
+import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import ShowMoreBtn from "../show-more-btn/show-more-btn.jsx";
@@ -11,10 +11,9 @@ import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
 import {getFilteredFilms} from "../../reducer/data/selectors.js";
 import {getCardsToShow} from "../../reducer/app/selectors.js";
 
-
 const WrappedMoviesList = withActiveItem(MoviesList);
 
-const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick, onPlayOrExitButtonClick}) => {
+const Main = ({PromoFilm, filteredFilms, cardsToShow}) => {
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -33,7 +32,6 @@ const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick, onPlayOrExitB
             </div>
             <HeaderFilm
               film={PromoFilm}
-              onPlayOrExitButtonClick={onPlayOrExitButtonClick}
             />
           </div>
         </div>
@@ -46,7 +44,6 @@ const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick, onPlayOrExitB
           <GenresList/>
           <WrappedMoviesList
             films={filteredFilms}
-            onCardClick={onCardClick}
           />
           {cardsToShow >= filteredFilms.length || <ShowMoreBtn/>}
 
@@ -60,9 +57,7 @@ const Main = ({PromoFilm, filteredFilms, cardsToShow, onCardClick, onPlayOrExitB
 Main.propTypes = {
   PromoFilm: PropTypes.object.isRequired,
   filteredFilms: PropTypes.array.isRequired,
-  onCardClick: PropTypes.func.isRequired,
   cardsToShow: PropTypes.number.isRequired,
-  onPlayOrExitButtonClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

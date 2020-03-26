@@ -1,9 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
-import {Provider} from 'react-redux';
-import configureMockStore from 'redux-mock-store';
+import {Provider} from "react-redux";
+import configureMockStore from "redux-mock-store";
 import {films, FilmDetails} from "../../mocks-for-tests.js";
+import {Router} from "react-router-dom";
+import history from "../../history";
 
 const mockStore = configureMockStore([]);
 
@@ -24,13 +26,14 @@ it(`Render Main`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <Main
-            PromoFilm={FilmDetails}
-            filteredFilms={films}
-            onCardClick={() => {}}
-            cardsToShow={8}
-            onPlayOrExitButtonClick={() => {}}
-          />)
+          <Router history={history}>
+            <Main
+              PromoFilm={FilmDetails}
+              filteredFilms={films}
+              onCardClick={() => {}}
+              cardsToShow={8}
+            />
+          </Router>
         </Provider>, {
           createNodeMock: () => {
             return {};

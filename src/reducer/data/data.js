@@ -5,15 +5,18 @@ const initialState = {
   films: [],
   promoFilm: {},
   formBlock: false,
-  sendingStatusText: ``
+  sendingStatusText: ``,
+  favoriteFilms: []
 };
 
 export const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
-  SEND_REVIEW: `SEND_REVIEW`,
   CHANGE_FORM_BLOCK: `CHANGE_BLOCK_FORM`,
-  SET_SENDING_STATUS_TEXT: `SET_SENDING_STATUS_TEXT`
+  SET_SENDING_STATUS_TEXT: `SET_SENDING_STATUS_TEXT`,
+  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
+  CHANGE_FAVORITE_FILMS_ON_SERVER: `CHANGE_FAVORITE_FILMS_ON_SERVER`,
+  CHANGE_FAVORITE_STATUS: `CHANGE_FAVORITE_STATUS`
 };
 
 export const ActionCreator = {
@@ -25,9 +28,6 @@ export const ActionCreator = {
     type: ActionType.LOAD_PROMO_FILM,
     payload: film
   }),
-  sendReview: () => ({
-    type: ActionType.SEND_REVIEW
-  }),
   changeFormBlock: (status) => ({
     type: ActionType.CHANGE_FORM_BLOCK,
     payload: status
@@ -35,6 +35,18 @@ export const ActionCreator = {
   setSendingStatusText: (text) => ({
     type: ActionType.SET_SENDING_STATUS_TEXT,
     payload: text
+  }),
+  loadFavoriteFilms: (films) => ({
+    type: ActionType.LOAD_FAVORITE_FILMS,
+    payload: films
+  }),
+  changeFavoriteFilmsOnServer: (id) => ({
+    type: ActionType.CHANGE_FAVORITE_FILMS_ON_SERVER,
+    payload: id
+  }),
+  changeFavoriteStatus: (film) => ({
+    type: ActionType.CHANGE_FAVORITE_STATUS,
+    payload: film
   })
 };
 
@@ -75,7 +87,6 @@ export const Operation = {
     })
       .then((response) => {
         if (response.status === 200) {
-          dispatch(ActionCreator.sendReview());
           dispatch(ActionCreator.setSendingStatusText(`Comment was sent`));
         } else {
           dispatch(ActionCreator.setSendingStatusText(`Something went wrong, please try again`));
@@ -85,6 +96,21 @@ export const Operation = {
       .catch(() => {
         dispatch(ActionCreator.setSendingStatusText(`Something went wrong, please try again`));
         dispatch(ActionCreator.changeFormBlock(false));
+      });
+  },
+
+  loadFavoriteFilms: () => (dispatch, _, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        const adaptedData = dataAdapter(response.data);
+        dispatch(ActionCreator.loadFavoriteFilms(adaptedData));
+      });
+  },
+
+  changeFavoriteFilmsOnServer: (id, status) => (dispatch, _, api) => {
+    return api.post(`/favorite/${id}/${status}`)
+      .then((response) => {
+        dispatch(ActionCreator.changeFavoriteStatus(response.data.id));
       });
   }
 };
@@ -110,8 +136,25 @@ export const reducer = (state = initialState, action) => {
       return extend(state, {
         sendingStatusText: action.payload
       });
+
+    case ActionType.LOAD_FAVORITE_FILMS:
+      return extend(state, {
+        favoriteFilms: action.payload
+      });
+
+    case ActionType.CHANGE_FAVORITE_STATUS:
+      return extend(state, {
+        films: state.films.map((item) => {
+          if (item.id === action.payload.id) {
+            return extend(item, {favorite: !item.favorite});
+          }
+          return item;
+        }),
+        promoFilm: extend(state.promoFilm, {
+          favorite: state.promoFilm.id === action.payload.id ? !state.promoFilm.favorite : state.promoFilm.favorite
+        })
+      });
   }
 
   return state;
 };
-

@@ -4,7 +4,7 @@ import MovieCard from "../movie-card/movie-card.jsx";
 import {connect} from "react-redux";
 import {getCardsToShow} from "../../reducer/app/selectors.js";
 
-const MoviesList = ({films, onCardClick, cardsToShow, activeItem, onActiveItemChange}) => {
+const MoviesList = ({films, cardsToShow, activeItem, onActiveItemChange}) => {
   const showedFilms = films.slice(0, cardsToShow);
 
   return (
@@ -15,7 +15,6 @@ const MoviesList = ({films, onCardClick, cardsToShow, activeItem, onActiveItemCh
           key={film.name}
           onCardHover={onActiveItemChange}
           onCardHoverOut={onActiveItemChange}
-          onCardClick={onCardClick}
           activeCard={activeItem}
         />
       ))}
@@ -25,7 +24,6 @@ const MoviesList = ({films, onCardClick, cardsToShow, activeItem, onActiveItemCh
 
 MoviesList.propTypes = {
   films: PropTypes.array.isRequired,
-  onCardClick: PropTypes.func.isRequired,
   cardsToShow: PropTypes.number.isRequired,
   activeItem: PropTypes.object,
   onActiveItemChange: PropTypes.func.isRequired

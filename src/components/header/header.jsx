@@ -1,8 +1,10 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../const.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {AppRoute} from "../../const.js";
 
 class Header extends PureComponent {
   renderLoginBlock() {
@@ -12,19 +14,20 @@ class Header extends PureComponent {
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       returnFragment = (
         <div className="user-block">
-          <a href="dev-sign-in" className="user-block__link">Sign in</a>
+          <Link to={AppRoute.LOGIN} className="user-block__link">Sign in</Link>
         </div>
       );
     } else if (authorizationStatus === AuthorizationStatus.AUTH) {
       returnFragment = (
         <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
+          <Link to={AppRoute.MY_LIST}>
+            <div className="user-block__avatar">
+              <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+            </div>
+          </Link>
         </div>
       );
     }
-
     return returnFragment;
   }
 
@@ -34,11 +37,11 @@ class Header extends PureComponent {
     return (
       <header className="page-header movie-card__head">
         <div className="logo">
-          <a className="logo__link">
+          <Link to={AppRoute.MAIN} className="logo__link">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>
-          </a>
+          </Link>
         </div>
         {loginBlock}
       </header>

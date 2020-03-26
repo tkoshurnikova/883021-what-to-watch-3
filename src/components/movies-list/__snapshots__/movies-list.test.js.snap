@@ -1,15 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render MoviesList 1`] = `
-Array [
-  <div
-    className="catalog__movies-list"
+<div
+  className="catalog__movies-list"
+>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
   >
-    <article
-      className="small-movie-card catalog__movies-card"
+    <a
+      href="/films/1"
       onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -22,23 +24,27 @@ Array [
           width="280"
         />
       </div>
-      <h3
-        className="small-movie-card__title"
+    </a>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/1"
+        onClick={[Function]}
       >
-        <a
-          className="small-movie-card__link"
-          href="movie-page"
-          onClick={[Function]}
-        >
-          The No Flowers
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
+        The No Flowers
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <a
+      href="/films/2"
       onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -50,23 +56,27 @@ Array [
           width="280"
         />
       </div>
-      <h3
-        className="small-movie-card__title"
+    </a>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/2"
+        onClick={[Function]}
       >
-        <a
-          className="small-movie-card__link"
-          href="movie-page"
-          onClick={[Function]}
-        >
-          Rings of Cloud
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
+        Rings of Cloud
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <a
+      href="/films/3"
       onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -78,23 +88,27 @@ Array [
           width="280"
         />
       </div>
-      <h3
-        className="small-movie-card__title"
+    </a>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/3"
+        onClick={[Function]}
       >
-        <a
-          className="small-movie-card__link"
-          href="movie-page"
-          onClick={[Function]}
-        >
-          The Sword's Memory
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
+        The Sword's Memory
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <a
+      href="/films/4"
       onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -106,23 +120,27 @@ Array [
           width="280"
         />
       </div>
-      <h3
-        className="small-movie-card__title"
+    </a>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/4"
+        onClick={[Function]}
       >
-        <a
-          className="small-movie-card__link"
-          href="movie-page"
-          onClick={[Function]}
-        >
-          The Voyagers of the Words
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
+        The Voyagers of the Words
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <a
+      href="/films/5"
       onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -134,23 +152,27 @@ Array [
           width="280"
         />
       </div>
-      <h3
-        className="small-movie-card__title"
+    </a>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/5"
+        onClick={[Function]}
       >
-        <a
-          className="small-movie-card__link"
-          href="movie-page"
-          onClick={[Function]}
-        >
-          Shores in the Heart
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
+        Shores in the Heart
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <a
+      href="/films/6"
       onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -162,23 +184,27 @@ Array [
           width="280"
         />
       </div>
-      <h3
-        className="small-movie-card__title"
+    </a>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/6"
+        onClick={[Function]}
       >
-        <a
-          className="small-movie-card__link"
-          href="movie-page"
-          onClick={[Function]}
-        >
-          Missing Illusion
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
+        Missing Illusion
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <a
+      href="/films/7"
       onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -190,23 +216,27 @@ Array [
           width="280"
         />
       </div>
-      <h3
-        className="small-movie-card__title"
+    </a>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/7"
+        onClick={[Function]}
       >
-        <a
-          className="small-movie-card__link"
-          href="movie-page"
-          onClick={[Function]}
-        >
-          The Unwilling Man
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
+        The Unwilling Man
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <a
+      href="/films/8"
       onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -218,19 +248,18 @@ Array [
           width="280"
         />
       </div>
-      <h3
-        className="small-movie-card__title"
+    </a>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/8"
+        onClick={[Function]}
       >
-        <a
-          className="small-movie-card__link"
-          href="movie-page"
-          onClick={[Function]}
-        >
-          Teacher in the Hunter
-        </a>
-      </h3>
-    </article>
-  </div>,
-  ")",
-]
+        Teacher in the Hunter
+      </a>
+    </h3>
+  </article>
+</div>
 `;

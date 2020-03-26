@@ -19,3 +19,11 @@ export const CommentLength = {
   MIN: 50,
   MAX: 400
 };
+
+export const AppRoute = {
+  LOGIN: `/login`,
+  MY_LIST: `/mylist`,
+  FILMS: `/films`,
+  PLAYER: `/player`,
+  MAIN: `/`,
+};

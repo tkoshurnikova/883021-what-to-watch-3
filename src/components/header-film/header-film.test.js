@@ -2,8 +2,10 @@ import React from "react";
 import renderer from "react-test-renderer";
 import HeaderFilm from "./header-film.jsx";
 import {FilmDetails} from "../../mocks-for-tests.js";
-import {Provider} from 'react-redux';
-import configureMockStore from 'redux-mock-store';
+import {Provider} from "react-redux";
+import configureMockStore from "redux-mock-store";
+import {Router} from "react-router-dom";
+import history from "../../history";
 
 const mockStore = configureMockStore([]);
 
@@ -16,10 +18,11 @@ it(`Render HeaderFilm`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <HeaderFilm
-            film={FilmDetails}
-            onPlayOrExitButtonClick={() => {}}
-          />)
+          <Router history={history}>
+            <HeaderFilm
+              film={FilmDetails}
+            />
+          </Router>
         </Provider>, {
           createNodeMock: () => {
             return {};

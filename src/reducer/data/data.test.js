@@ -6,7 +6,8 @@ it(`Reducer without additional parameters should return initial state`, () => {
     films: [],
     promoFilm: {},
     formBlock: false,
-    sendingStatusText: ``
+    sendingStatusText: ``,
+    favoriteFilms: []
   });
 });
 
@@ -36,4 +37,11 @@ it(`Reducer should change sending status`, () => {
       {sendingStatusText: ``},
       {type: ActionType.SET_SENDING_STATUS_TEXT, payload: `Sending...`}
   )).toEqual({sendingStatusText: `Sending...`});
+});
+
+it(`Reducer should load favorite films`, () => {
+  expect(reducer(
+      {favoriteFilms: []},
+      {type: ActionType.LOAD_FAVORITE_FILMS, payload: films[0]}
+  )).toEqual({favoriteFilms: films[0]});
 });

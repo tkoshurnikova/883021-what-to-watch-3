@@ -2,6 +2,8 @@ import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getFormBlock, getSendingStatusText} from "../../reducer/data/selectors.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
 
 class AddReview extends PureComponent {
   constructor(props) {
@@ -12,17 +14,17 @@ class AddReview extends PureComponent {
   }
 
   handleSubmit(evt) {
-    const {onSubmit, id, reviewText} = this.props;
+    const {onSubmit, film, reviewText} = this.props;
     evt.preventDefault();
 
     onSubmit({
       rating: this.ratingInputRef.current.value,
       comment: reviewText
-    }, id);
+    }, film.id);
   }
 
   render() {
-    const {name, backgroundImage, posterImage,
+    const {film,
       formBlock, sendingStatusText,
       reviewText, isCommentValid, onChange
     } = this.props;
@@ -31,21 +33,21 @@ class AddReview extends PureComponent {
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">
           <div className="movie-card__bg">
-            <img src={backgroundImage} alt={name} />
+            <img src={film.background_image} alt={film.name} />
           </div>
           <h1 className="visually-hidden">WTW</h1>
           <header className="page-header">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to={AppRoute.MAIN} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="movie-page.html" className="breadcrumbs__link">{name}</a>
+                  <Link to={`${AppRoute.FILMS}/${film.id}`} className="breadcrumbs__link">{film.name}</Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -54,12 +56,12 @@ class AddReview extends PureComponent {
             </nav>
             <div className="user-block">
               <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width={63} height={63} />
+                <img src="/img/avatar.jpg" alt="User avatar" width={63} height={63} />
               </div>
             </div>
           </header>
           <div className="movie-card__poster movie-card__poster--small">
-            <img src={posterImage} alt={name} width={218} height={327} />
+            <img src={film.poster_image} alt={film.name} width={218} height={327} />
           </div>
         </div>
         <div className="add-review">
@@ -108,10 +110,7 @@ class AddReview extends PureComponent {
 
 AddReview.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  backgroundImage: PropTypes.string.isRequired,
-  posterImage: PropTypes.string.isRequired,
+  film: PropTypes.object.isRequired,
   formBlock: PropTypes.bool.isRequired,
   sendingStatusText: PropTypes.string.isRequired,
   reviewText: PropTypes.string,

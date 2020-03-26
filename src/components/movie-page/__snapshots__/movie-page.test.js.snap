@@ -34,6 +34,8 @@ Array [
         >
           <a
             className="logo__link"
+            href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -57,7 +59,8 @@ Array [
         >
           <a
             className="user-block__link"
-            href="dev-sign-in"
+            href="/login"
+            onClick={[Function]}
           >
             Sign in
           </a>
@@ -91,8 +94,9 @@ Array [
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/1"
               onClick={[Function]}
               type="button"
             >
@@ -108,9 +112,10 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -211,26 +216,30 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            href="/films/2"
+            onClick={[Function]}
           >
-            <img
-              alt="Rings of Cloud"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
+            <div
+              className="small-movie-card__image"
+            >
+              <img
+                alt="Rings of Cloud"
+                height="175"
+                src="http://placehold.it/280x175"
+                width="280"
+              />
+            </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page"
+              href="/films/2"
               onClick={[Function]}
             >
               Rings of Cloud
@@ -239,26 +248,30 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            href="/films/3"
+            onClick={[Function]}
           >
-            <img
-              alt="The Sword's Memory"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
+            <div
+              className="small-movie-card__image"
+            >
+              <img
+                alt="The Sword's Memory"
+                height="175"
+                src="http://placehold.it/280x175"
+                width="280"
+              />
+            </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page"
+              href="/films/3"
               onClick={[Function]}
             >
               The Sword's Memory
@@ -267,26 +280,30 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            href="/films/4"
+            onClick={[Function]}
           >
-            <img
-              alt="The Voyagers of the Words"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
+            <div
+              className="small-movie-card__image"
+            >
+              <img
+                alt="The Voyagers of the Words"
+                height="175"
+                src="http://placehold.it/280x175"
+                width="280"
+              />
+            </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page"
+              href="/films/4"
               onClick={[Function]}
             >
               The Voyagers of the Words
@@ -295,26 +312,30 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            href="/films/5"
+            onClick={[Function]}
           >
-            <img
-              alt="Shores in the Heart"
-              height="175"
-              src="http://placehold.it/280x175"
-              width="280"
-            />
-          </div>
+            <div
+              className="small-movie-card__image"
+            >
+              <img
+                alt="Shores in the Heart"
+                height="175"
+                src="http://placehold.it/280x175"
+                width="280"
+              />
+            </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page"
+              href="/films/5"
               onClick={[Function]}
             >
               Shores in the Heart
@@ -331,6 +352,8 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -358,6 +381,5 @@ Array [
       </div>
     </footer>
   </div>,
-  ")",
 ]
 `;

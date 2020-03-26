@@ -7,12 +7,14 @@ export default (data) => {
       numberOfVotes: item.scores_count,
       actors: item.starring,
       preview: item.preview_video_link,
-      reviews: []
+      reviews: [],
+      favorite: item.is_favorite
     });
     delete adaptedFilmData.preview_image;
     delete adaptedFilmData.scores_count;
     delete adaptedFilmData.starring;
     delete adaptedFilmData.preview_video_link;
+    delete adaptedFilmData.is_favorite;
     return adaptedFilmData;
   });
   return adaptedData;
