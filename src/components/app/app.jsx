@@ -10,6 +10,7 @@ import MoviePage from "../movie-page/movie-page.jsx";
 import FullscreenPlayer from "../fullscreen-player/fullscreen-player.jsx";
 import AddReview from "../add-review/add-review.jsx";
 import MyList from "../my-list/my-list.jsx";
+import PrivateRoute from "../private-route/private-route.jsx";
 
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
 import withFullscreenVideo from "../../hocs/with-fullscreen-video/with-fullscreen-video.jsx";
@@ -72,7 +73,7 @@ class App extends PureComponent {
               );
             }}
           />
-          <Route
+          <PrivateRoute
             exact
             path={`${AppRoute.FILMS}/:id/review`}
             render={(props) => {
@@ -99,7 +100,7 @@ class App extends PureComponent {
               );
             }}
           />
-          <Route
+          <PrivateRoute
             exact
             path={AppRoute.MY_LIST}
             render={() => {
