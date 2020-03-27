@@ -23,6 +23,7 @@ export const Operation = {
     return api.get(`/login`)
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(DataOperation.loadFavoriteFilms());
       })
       .catch((err) => {
         throw err;
@@ -36,7 +37,6 @@ export const Operation = {
     })
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-        dispatch(DataOperation.loadFavoriteFilms());
         history.goBack();
       });
   }
