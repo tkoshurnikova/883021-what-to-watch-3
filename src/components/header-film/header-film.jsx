@@ -56,15 +56,9 @@ const HeaderFilm = ({film, authorizationStatus, onFavoriteButtonClick}) => {
 
           <span>My list</span>
         </button>
-        {(authorizationStatus === AuthorizationStatus.AUTH)
-          ?
-          <Link to={`${AppRoute.FILMS}/${id}/review`} className="btn movie-card__button">
-          Add review
-          </Link>
-          :
-          ``
-        }
-
+        <Link to={`${AppRoute.FILMS}/${id}/review`} className="btn movie-card__button">
+        Add review
+        </Link>
       </div>
     </div>
   );

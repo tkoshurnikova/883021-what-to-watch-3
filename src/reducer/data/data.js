@@ -1,5 +1,6 @@
-import {extend} from "../../utils.js";
+import {extend, getFilmByID} from "../../utils.js";
 import dataAdapter, {commentsAdapter} from "./adapter.js";
+import history from "../../history";
 
 const initialState = {
   films: [],
@@ -77,7 +78,7 @@ export const Operation = {
       });
   },
 
-  sendReview: (authData, id) => (dispatch, _, api) => {
+  sendReview: (authData, id) => (dispatch, getState, api) => {
     dispatch(ActionCreator.changeFormBlock(true));
     dispatch(ActionCreator.setSendingStatusText(`Sending...`));
 
@@ -88,6 +89,8 @@ export const Operation = {
       .then((response) => {
         if (response.status === 200) {
           dispatch(ActionCreator.setSendingStatusText(`Comment was sent`));
+          dispatch(loadReviews(getFilmByID(getState().DATA.films, id)));
+          history.push(`/films/${id}`);
         } else {
           dispatch(ActionCreator.setSendingStatusText(`Something went wrong, please try again`));
         }
