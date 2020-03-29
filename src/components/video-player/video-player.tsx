@@ -1,21 +1,28 @@
 import * as React from "react";
-import PropTypes from "prop-types";
+import {Film} from "../../types";
 
-export default class VideoPlayer extends React.PureComponent {
+interface Props {
+  film: Film;
+  isPlaying: boolean;
+}
+
+export default class VideoPlayer extends React.PureComponent<Props, {}> {
+  private videoRef: React.RefObject<HTMLVideoElement>;
+
   constructor(props) {
     super(props);
 
-    this._videoRef = React.createRef();
+    this.videoRef = React.createRef();
   }
 
   componentDidMount() {
     const {film} = this.props;
-    const video = this._videoRef.current;
+    const video = this.videoRef.current;
     video.src = film.preview;
   }
 
   componentWillUnmount() {
-    const video = this._videoRef.current;
+    const video = this.videoRef.current;
     video.src = ``;
   }
 
@@ -26,7 +33,7 @@ export default class VideoPlayer extends React.PureComponent {
       <video
         muted
         autoPlay
-        ref={this._videoRef}
+        ref={this.videoRef}
         poster={film.image}
         width="280"
         height="175"
@@ -35,7 +42,7 @@ export default class VideoPlayer extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    const video = this._videoRef.current;
+    const video = this.videoRef.current;
 
     if (this.props.isPlaying) {
       video.play();
@@ -44,11 +51,3 @@ export default class VideoPlayer extends React.PureComponent {
     }
   }
 }
-
-VideoPlayer.propTypes = {
-  film: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired
-  }).isRequired,
-  isPlaying: PropTypes.bool.isRequired
-};

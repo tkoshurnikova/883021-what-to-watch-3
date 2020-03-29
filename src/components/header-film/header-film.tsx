@@ -1,13 +1,20 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {AuthorizationStatus, AppRoute} from "../../const";
 import history from "../../history";
 import {Operation as DataOperation, ActionCreator} from "../../reducer/data/data";
+import {Film} from "../../types";
 
-const HeaderFilm = ({film, authorizationStatus, onFavoriteButtonClick}) => {
+interface Props {
+  film: Film;
+  authorizationStatus: AuthorizationStatus.AUTH | AuthorizationStatus.NO_AUTH;
+  onFavoriteButtonClick: (film: Film, id: number, status: number) => void;
+};
+
+const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
+  const {film, authorizationStatus, onFavoriteButtonClick} = props;
   const {name, genre, released, id, favorite} = film;
 
   return (
@@ -61,12 +68,6 @@ const HeaderFilm = ({film, authorizationStatus, onFavoriteButtonClick}) => {
       </div>
     </div>
   );
-};
-
-HeaderFilm.propTypes = {
-  film: PropTypes.object.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  onFavoriteButtonClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list";
 import GenresList from "../genres-list/genres-list";
@@ -10,10 +9,19 @@ import HeaderFilm from "../header-film/header-film";
 import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import {getFilteredFilms} from "../../reducer/data/selectors";
 import {getCardsToShow} from "../../reducer/app/selectors";
+import {Film} from "../../types";
+
+interface Props {
+  PromoFilm: Film;
+  filteredFilms: Film[];
+  cardsToShow: number;
+};
 
 const WrappedMoviesList = withActiveItem(MoviesList);
 
-const Main = ({PromoFilm, filteredFilms, cardsToShow}) => {
+const Main: React.FunctionComponent<Props> = (props: Props) => {
+  const {PromoFilm, filteredFilms, cardsToShow} = props;
+
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -52,12 +60,6 @@ const Main = ({PromoFilm, filteredFilms, cardsToShow}) => {
       </div>
     </React.Fragment>
   );
-};
-
-Main.propTypes = {
-  PromoFilm: PropTypes.object.isRequired,
-  filteredFilms: PropTypes.array.isRequired,
-  cardsToShow: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({

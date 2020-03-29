@@ -1,7 +1,15 @@
 import * as React from "react";
-import PropTypes from "prop-types";
+import * as moment from "moment";
 import {TabName} from "../../const";
-import moment from "moment";
+import {Film} from "../../types";
+
+type Tab = TabName.OVERVIEW | TabName.DETAILS | TabName.REVIEWS;
+
+interface Props {
+  film: Film;
+  activeTab: Tab;
+  onTabClick: (tab: Tab) => void;
+}
 
 const getFilmRatingDescription = (rating) => {
   let ratingDescription = ``;
@@ -15,7 +23,7 @@ const getFilmRatingDescription = (rating) => {
   return ratingDescription;
 };
 
-class Tabs extends React.PureComponent {
+class Tabs extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -32,7 +40,7 @@ class Tabs extends React.PureComponent {
           if (document.querySelector(`.movie-nav__item--active`)) {
             document.querySelector(`.movie-nav__item--active`).classList.remove(`movie-nav__item--active`);
           }
-          evt.target.parentNode.classList.add(`movie-nav__item--active`);
+          // evt.target.parentNode.classList.add(`movie-nav__item--active`);
         }}
       >
         <a href="#" className="movie-nav__link">
@@ -146,20 +154,5 @@ class Tabs extends React.PureComponent {
     );
   }
 }
-
-Tabs.propTypes = {
-  film: PropTypes.shape({
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    numberOfVotes: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.array.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    reviews: PropTypes.array.isRequired
-  }).isRequired,
-  activeTab: PropTypes.string.isRequired,
-  onTabClick: PropTypes.func.isRequired
-};
 
 export default Tabs;

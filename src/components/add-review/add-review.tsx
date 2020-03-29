@@ -1,11 +1,23 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getFormBlock, getSendingStatusText} from "../../reducer/data/selectors";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
+import {Film} from "../../types";
 
-class AddReview extends React.PureComponent {
+interface Props {
+  onSubmit: ({rating: number, comment: string}, id: number) => void;
+  film: Film;
+  formBlock: boolean;
+  sendingStatusText: string;
+  reviewText?: string;
+  isCommentValid: boolean;
+  onChange: () => void;
+};
+
+class AddReview extends React.PureComponent<Props, {}> {
+  private ratingInputRef: React.RefObject<HTMLInputElement>
+
   constructor(props) {
     super(props);
 
@@ -107,16 +119,6 @@ class AddReview extends React.PureComponent {
     );
   }
 }
-
-AddReview.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  film: PropTypes.object.isRequired,
-  formBlock: PropTypes.bool.isRequired,
-  sendingStatusText: PropTypes.string.isRequired,
-  reviewText: PropTypes.string,
-  isCommentValid: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired
-};
 
 const mapStateToProps = (state) => ({
   formBlock: getFormBlock(state),

@@ -1,8 +1,29 @@
 import * as React from "react";
-import PropTypes from "prop-types";
+import {Subtract} from "utility-types";
+import {Film} from "../../types"
+
+interface InjectingProps {
+  isPlaying: boolean;
+  isFullscreen: boolean;
+  timeProgressInPercents: number;
+  timeLeft: number;
+  onFullscreenButtonClick: () => void;
+  onPlayButtonClick: () => void;
+}
+
+interface State {
+  isPlaying: boolean;
+  isFullscreen: boolean;
+  timeProgressInPercents: number;
+  timeLeft: number;
+}
 
 const withFullscreenVideo = (Component) => {
-  class WithFulscreenVideo extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+  class WithFullscreenVideo extends React.PureComponent<T, State> {
+    private videoRef: React.RefObject<HTMLVideoElement>;
+
     constructor(props) {
       super(props);
 
@@ -13,14 +34,14 @@ const withFullscreenVideo = (Component) => {
         timeLeft: 0
       };
 
-      this._videoRef = React.createRef();
+      this.videoRef = React.createRef();
       this.onFullscreenButtonClick = this.onFullscreenButtonClick.bind(this);
       this.onPlayButtonClick = this.onPlayButtonClick.bind(this);
     }
 
     componentDidMount() {
       const {film} = this.props;
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
       video.src = film.video_link;
 
       video.ontimeupdate = () => this.setState({
@@ -30,7 +51,7 @@ const withFullscreenVideo = (Component) => {
     }
 
     componentDidUpdate() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
       const {isPlaying} = this.state;
 
       if (video.ended) {
@@ -55,7 +76,7 @@ const withFullscreenVideo = (Component) => {
     }
 
     componentWillUnmount() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
       video.src = ``;
       video.ontimeupdate = null;
     }
@@ -96,18 +117,14 @@ const withFullscreenVideo = (Component) => {
           <video
             className="player__video"
             poster="/img/player-poster.jpg"
-            ref={this._videoRef}
+            ref={this.videoRef}
           />
         </Component>
       );
     }
   }
 
-  WithFulscreenVideo.propTypes = {
-    film: PropTypes.object.isRequired,
-  };
-
-  return WithFulscreenVideo;
+  return WithFullscreenVideo;
 };
 
 export default withFullscreenVideo;

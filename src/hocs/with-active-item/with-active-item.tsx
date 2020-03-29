@@ -1,8 +1,20 @@
 import * as React from "react";
-import PropTypes from "prop-types";
+import {Subtract} from "utility-types";
+import {Film} from "../../types";
+
+interface State {
+  activeItem?: Film;
+}
+
+interface InjectingProps {
+  activeItem: Film;
+  onActiveItemChange: () => void;
+}
 
 const withActiveItem = (Component) => {
-  class WithActiveItem extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+  class WithActiveItem extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -30,11 +42,6 @@ const withActiveItem = (Component) => {
       );
     }
   }
-
-  WithActiveItem.propTypes = {
-    activeItem: PropTypes.object
-  };
-
   return WithActiveItem;
 };
 

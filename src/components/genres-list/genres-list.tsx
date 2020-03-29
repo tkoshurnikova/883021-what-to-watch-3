@@ -1,11 +1,18 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/app/app";
 import {getGenre} from "../../reducer/app/selectors";
 import {getFilms} from "../../reducer/data/selectors";
+import {Film} from "../../types";
 
-const GenresList = ({films, genre, onGenreChange}) => {
+interface Props {
+  films: Film[];
+  genre: string;
+  onGenreChange: (genre: string, films: Film[]) => void;
+};
+
+const GenresList: React.FunctionComponent<Props> = (props: Props) => {
+  const {films, genre, onGenreChange} = props;
   const genres = [...new Set([`All genres`, ...films.map((film) => film.genre)])];
 
   return (
@@ -31,12 +38,6 @@ const GenresList = ({films, genre, onGenreChange}) => {
       }
     </ul>
   );
-};
-
-GenresList.propTypes = {
-  films: PropTypes.array.isRequired,
-  genre: PropTypes.string.isRequired,
-  onGenreChange: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

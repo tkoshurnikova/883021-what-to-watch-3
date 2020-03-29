@@ -1,12 +1,24 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {convertSecondsToHours} from "../../utils";
 import history from "../../history";
+import {Film} from "../../types";
 
-export default class FullscreenPlayer extends React.PureComponent {
+interface Props {
+  film: Film;
+  isPlaying: boolean;
+  isFullscreen: boolean;
+  timeProgressInPercents: number;
+  timeLeft: number;
+  onFullscreenButtonClick: () => void;
+  onPlayButtonClick: () => void;
+}
+
+export default class FullscreenPlayer extends React.PureComponent<Props, {}> {
+  private videoBlockRef: React.RefObject<HTMLDivElement>;
+
   constructor(props) {
     super(props);
-    this._videoBlockRef = React.createRef();
+    this.videoBlockRef = React.createRef();
   }
 
   render() {
@@ -22,7 +34,7 @@ export default class FullscreenPlayer extends React.PureComponent {
     } = this.props;
 
     return (
-      <div className="player" ref={this._videoBlockRef}>
+      <div className="player" ref={this.videoBlockRef}>
         {children}
         <button type="button" className="player__exit" onClick={() => history.goBack()}>
           Exit
@@ -68,7 +80,7 @@ export default class FullscreenPlayer extends React.PureComponent {
                   document.exitFullscreen();
                   onFullscreenButtonClick();
                 } else {
-                  this._videoBlockRef.current.requestFullscreen();
+                  this.videoBlockRef.current.requestFullscreen();
                   onFullscreenButtonClick();
                 }
               }}
@@ -84,17 +96,3 @@ export default class FullscreenPlayer extends React.PureComponent {
     );
   }
 }
-
-FullscreenPlayer.propTypes = {
-  film: PropTypes.object.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  isFullscreen: PropTypes.bool.isRequired,
-  timeProgressInPercents: PropTypes.number.isRequired,
-  timeLeft: PropTypes.number.isRequired,
-  onFullscreenButtonClick: PropTypes.func.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.node.isRequired,
-    PropTypes.arrayOf(PropTypes.node)
-  ]).isRequired,
-};

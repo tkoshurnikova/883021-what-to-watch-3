@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {Switch, Route, Router} from "react-router-dom";
 import {connect} from "react-redux";
 import history from "../../history";
@@ -24,111 +23,111 @@ import {Operation as DataOperations} from "../../reducer/data/data";
 
 import {AppRoute} from "../../const";
 import {getFilmByID} from "../../utils";
+import {Film} from "../../types";
 
 const WrappedMoviePage = withActiveItem(MoviePage);
 const WrappedFullscreenPlayer = withFullscreenVideo(FullscreenPlayer);
 const WrappedAddReview = withReviewValidation(AddReview);
 
-class App extends React.PureComponent {
-  render() {
-    const {
-      films,
-      promoFilm,
-      sendReview,
-      login,
-      error
-    } = this.props;
-
-    if (error) {
-      return <Error/>;
-    }
-
-    return (
-      <Router history={history}>
-        <Switch>
-          <Route
-            exact
-            path={AppRoute.MAIN}
-            render={() => {
-              return (
-                <Main
-                  PromoFilm={promoFilm}
-                />
-              );
-            }}
-          />
-          <Route
-            exact
-            path={AppRoute.LOGIN}
-            render={() => {
-              return (
-                <SignIn onSubmit={login} />
-              );
-            }}
-          />
-          <Route
-            exact
-            path={`${AppRoute.FILMS}/:id`}
-            render={(props) => {
-              const {id} = props.match.params;
-              const film = getFilmByID(films, id);
-              return (
-                <WrappedMoviePage
-                  film={film}
-                  chosenFilm={film}
-                />
-              );
-            }}
-          />
-          <PrivateRoute
-            exact
-            path={`${AppRoute.FILMS}/:id/review`}
-            render={(props) => {
-              const {id} = props.match.params;
-              const film = getFilmByID(films, id);
-              return (
-                <WrappedAddReview
-                  onSubmit={sendReview}
-                  film={film}
-                />
-              );
-            }}
-          />
-          <Route
-            exact
-            path={`${AppRoute.PLAYER}/:id`}
-            render={(props) => {
-              const {id} = props.match.params;
-              const film = getFilmByID(films, id);
-              return (
-                <WrappedFullscreenPlayer
-                  film={film}
-                />
-              );
-            }}
-          />
-          <PrivateRoute
-            exact
-            path={AppRoute.MY_LIST}
-            render={() => {
-              return (
-                <MyList />
-              );
-            }}
-          />
-        </Switch>
-      </Router>
-    );
-  }
-}
-
-App.propTypes = {
-  films: PropTypes.array.isRequired,
-  promoFilm: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
-  sendReview: PropTypes.func.isRequired,
-  error: PropTypes.bool.isRequired
+interface Props {
+  films: Film[];
+  promoFilm: Film;
+  login: () => void;
+  sendReview: () => void;
+  error: boolean;
 };
+
+const App: React.FunctionComponent<Props> = (props: Props) => {
+
+  const {
+    films,
+    promoFilm,
+    sendReview,
+    login,
+    error
+  } = this.props;
+
+  if (error) {
+    return <Error/>;
+  }
+
+  return (
+    <Router history={history}>
+      <Switch>
+        <Route
+          exact
+          path={AppRoute.MAIN}
+          render={() => {
+            return (
+              <Main
+                PromoFilm={promoFilm}
+              />
+            );
+          }}
+        />
+        <Route
+          exact
+          path={AppRoute.LOGIN}
+          render={() => {
+            return (
+              <SignIn onSubmit={login} />
+            );
+          }}
+        />
+        <Route
+          exact
+          path={`${AppRoute.FILMS}/:id`}
+          render={(props) => {
+            const {id} = props.match.params;
+            const film = getFilmByID(films, id);
+            return (
+              <WrappedMoviePage
+                film={film}
+                chosenFilm={film}
+              />
+            );
+          }}
+        />
+        <PrivateRoute
+          exact
+          path={`${AppRoute.FILMS}/:id/review`}
+          render={(props) => {
+            const {id} = props.match.params;
+            const film = getFilmByID(films, id);
+            return (
+              <WrappedAddReview
+                onSubmit={sendReview}
+                film={film}
+              />
+            );
+          }}
+        />
+        <Route
+          exact
+          path={`${AppRoute.PLAYER}/:id`}
+          render={(props) => {
+            const {id} = props.match.params;
+            const film = getFilmByID(films, id);
+            return (
+              <WrappedFullscreenPlayer
+                film={film}
+              />
+            );
+          }}
+        />
+        <PrivateRoute
+          exact
+          path={AppRoute.MY_LIST}
+          render={() => {
+            return (
+              <MyList />
+            );
+          }}
+        />
+      </Switch>
+    </Router>
+  );
+}
 
 const mapStateToProps = (state) => ({
   films: getFilms(state),

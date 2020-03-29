@@ -1,10 +1,21 @@
 import * as React from "react";
 import Footer from "../footer/footer";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
 
-class SignIn extends Rreact.PureComponent {
+type SubmitData = {
+  email: string;
+  password: string;
+}
+
+interface Props {
+  onSubmit: (submitData: SubmitData) => void;
+}
+
+class SignIn extends React.PureComponent<Props, {}> {
+  private emailRef: React.RefObject<HTMLInputElement>;
+  private passwordRef: React.RefObject<HTMLInputElement>;
+
   constructor(props) {
     super(props);
 
@@ -82,9 +93,5 @@ class SignIn extends Rreact.PureComponent {
     );
   }
 }
-
-SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired
-};
 
 export default SignIn;

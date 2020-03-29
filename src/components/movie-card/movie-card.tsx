@@ -1,11 +1,19 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
+import {Film} from "../../types";
 
-const MovieCard = ({film, onCardHover, onCardHoverOut, activeCard}) => {
-  let timerForPreviewPlaying = () => {};
+interface Props {
+  onCardHover: (film: Film) => void;
+  onCardHoverOut: (film: {}) => void;
+  film: Film,
+  activeCard?: Film;
+};
+
+const MovieCard: React.FunctionComponent<Props> = (props: Props) => {
+  const {film, onCardHover, onCardHoverOut, activeCard} = props;
+  let timerForPreviewPlaying;
 
   return (
     <article
@@ -39,17 +47,6 @@ const MovieCard = ({film, onCardHover, onCardHoverOut, activeCard}) => {
       </h3>
     </article>
   );
-};
-
-MovieCard.propTypes = {
-  onCardHover: PropTypes.func.isRequired,
-  onCardHoverOut: PropTypes.func.isRequired,
-  film: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
-  }).isRequired,
-  activeCard: PropTypes.object
 };
 
 export default MovieCard;

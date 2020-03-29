@@ -1,12 +1,15 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {AppRoute} from "../../const";
 
-class Header extends React.PureComponent {
+interface Props {
+  authorizationStatus: AuthorizationStatus.AUTH | AuthorizationStatus.NO_AUTH;
+}
+
+class Header extends React.PureComponent<Props, {}> {
   renderLoginBlock() {
     const {authorizationStatus} = this.props;
     let returnFragment;
@@ -48,10 +51,6 @@ class Header extends React.PureComponent {
     );
   }
 }
-
-Header.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired
-};
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state)

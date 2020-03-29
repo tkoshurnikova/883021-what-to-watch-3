@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs";
 import MoviesList from "../movies-list/movies-list";
 import {getFilms} from "../../reducer/data/selectors";
@@ -9,10 +8,20 @@ import Footer from "../footer/footer";
 import Header from "../header/header";
 import HeaderFilm from "../header-film/header-film";
 import withActiveItem from "../../hocs/with-active-item/with-active-item";
+import {Film} from "../../types";
+
+interface Props {
+  film: Film;
+  activeItem: TabName.OVERVIEW | TabName.DETAILS | TabName.REVIEWS;
+  onActiveItemChange: () => void;
+  chosenFilm?: Film;
+  films: Film[]
+};
 
 const WrappedMoviesList = withActiveItem(MoviesList);
 
-const MoviePage = ({film, activeItem = TabName.OVERVIEW, onActiveItemChange, films}) => {
+const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
+  const {film, activeItem = TabName.OVERVIEW, onActiveItemChange, films} = props;
   const similarFilms = films.filter((item) => item.genre === film.genre && item.name !== film.name).slice(0, 4);
 
   return (
@@ -64,20 +73,6 @@ const MoviePage = ({film, activeItem = TabName.OVERVIEW, onActiveItemChange, fil
       </div>
     </React.Fragment>
   );
-};
-
-MoviePage.propTypes = {
-  film: PropTypes.shape({
-    "name": PropTypes.string.isRequired,
-    "genre": PropTypes.string.isRequired,
-    "background_color": PropTypes.string.isRequired,
-    "background_image": PropTypes.string.isRequired,
-    "poster_image": PropTypes.string.isRequired
-  }).isRequired,
-  activeItem: PropTypes.string,
-  onActiveItemChange: PropTypes.func.isRequired,
-  chosenFilm: PropTypes.object,
-  films: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({

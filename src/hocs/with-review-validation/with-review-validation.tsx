@@ -1,8 +1,22 @@
 import * as React from "react";
+import {Subtract} from "utility-types";
 import {CommentLength} from "../../const";
 
+interface State {
+  reviewText: string;
+  isCommentValid: boolean;
+}
+
+interface InjectingProps {
+  reviewText: string;
+  isCommentValid: boolean;
+  onChange: () => void;
+}
+
 const withReviewValidation = (Component) => {
-  class WithReviewValidation extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+  class WithReviewValidation extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 

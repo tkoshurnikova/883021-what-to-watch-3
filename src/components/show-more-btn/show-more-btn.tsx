@@ -1,9 +1,14 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/app/app";
 
-const ShowMoreBtn = ({onShowMoreBtnClick}) => {
+interface Props {
+  onShowMoreBtnClick: () => void;
+};
+
+const ShowMoreBtn: React.FunctionComponent<Props> = (props: Props) => {
+  const {onShowMoreBtnClick} = props;
+
   return (
     <div className="catalog__more">
       <button
@@ -13,10 +18,6 @@ const ShowMoreBtn = ({onShowMoreBtnClick}) => {
       >Show more</button>
     </div>
   );
-};
-
-ShowMoreBtn.propTypes = {
-  onShowMoreBtnClick: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({

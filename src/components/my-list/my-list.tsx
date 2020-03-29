@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
@@ -8,10 +7,17 @@ import Footer from "../footer/footer";
 import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import {getFavoriteFilms} from "../../reducer/data/selectors";
 import {AppRoute} from "../../const";
+import {Film} from "../../types";
+
+interface Props {
+  favoriteFilms?: Film[]
+};
 
 const WrappedMoviesList = withActiveItem(MoviesList);
 
-const MyList = ({favoriteFilms}) => {
+const MyList: React.FunctionComponent<Props> = (props: Props) => {
+  const {favoriteFilms} = props;
+
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -38,10 +44,6 @@ const MyList = ({favoriteFilms}) => {
       <Footer />
     </div>
   );
-};
-
-MyList.propTypes = {
-  favoriteFilms: PropTypes.array
 };
 
 const mapStateToProps = (state) => ({
