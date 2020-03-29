@@ -1,12 +1,12 @@
-import React, {PureComponent, createRef} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import {convertSecondsToHours} from "../../utils.js";
+import {convertSecondsToHours} from "../../utils";
 import history from "../../history";
 
-export default class FullscreenPlayer extends PureComponent {
+export default class FullscreenPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
-    this._videoBlockRef = createRef();
+    this._videoBlockRef = React.createRef();
   }
 
   render() {

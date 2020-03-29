@@ -1,15 +1,15 @@
-import React, {PureComponent, createRef} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {getFormBlock, getSendingStatusText} from "../../reducer/data/selectors.js";
+import {getFormBlock, getSendingStatusText} from "../../reducer/data/selectors";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../const.js";
+import {AppRoute} from "../../const";
 
-class AddReview extends PureComponent {
+class AddReview extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.ratingInputRef = createRef();
+    this.ratingInputRef = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 

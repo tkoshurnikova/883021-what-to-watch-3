@@ -1,12 +1,11 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../const.js";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../const.js";
-import history from "../../history.js";
-import {Operation as DataOperation, ActionCreator} from "../../reducer/data/data.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {AuthorizationStatus, AppRoute} from "../../const";
+import history from "../../history";
+import {Operation as DataOperation, ActionCreator} from "../../reducer/data/data";
 
 const HeaderFilm = ({film, authorizationStatus, onFavoriteButtonClick}) => {
   const {name, genre, released, id, favorite} = film;

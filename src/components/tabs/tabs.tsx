@@ -1,6 +1,6 @@
-import React, {PureComponent} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import {TabName} from "../../const.js";
+import {TabName} from "../../const";
 import moment from "moment";
 
 const getFilmRatingDescription = (rating) => {
@@ -15,7 +15,7 @@ const getFilmRatingDescription = (rating) => {
   return ratingDescription;
 };
 
-class Tabs extends PureComponent {
+class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
   }

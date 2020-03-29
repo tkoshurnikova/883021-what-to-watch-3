@@ -1,8 +1,8 @@
-import React, {PureComponent, createRef} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 
 const withFullscreenVideo = (Component) => {
-  class WithFulscreenVideo extends PureComponent {
+  class WithFulscreenVideo extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -13,7 +13,7 @@ const withFullscreenVideo = (Component) => {
         timeLeft: 0
       };
 
-      this._videoRef = createRef();
+      this._videoRef = React.createRef();
       this.onFullscreenButtonClick = this.onFullscreenButtonClick.bind(this);
       this.onPlayButtonClick = this.onPlayButtonClick.bind(this);
     }

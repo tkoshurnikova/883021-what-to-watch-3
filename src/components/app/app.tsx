@@ -1,35 +1,35 @@
-import React, {PureComponent} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, Router} from "react-router-dom";
 import {connect} from "react-redux";
-import history from "../../history.js";
+import history from "../../history";
 
-import Main from "../main/main.jsx";
-import SignIn from "../sign-in/sign-in.jsx";
-import MoviePage from "../movie-page/movie-page.jsx";
-import FullscreenPlayer from "../fullscreen-player/fullscreen-player.jsx";
-import AddReview from "../add-review/add-review.jsx";
-import MyList from "../my-list/my-list.jsx";
-import Error from "../error/error.jsx";
-import PrivateRoute from "../private-route/private-route.jsx";
+import Main from "../main/main";
+import SignIn from "../sign-in/sign-in";
+import MoviePage from "../movie-page/movie-page";
+import FullscreenPlayer from "../fullscreen-player/fullscreen-player";
+import AddReview from "../add-review/add-review";
+import MyList from "../my-list/my-list";
+import Error from "../error/error";
+import PrivateRoute from "../private-route/private-route";
 
-import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
-import withFullscreenVideo from "../../hocs/with-fullscreen-video/with-fullscreen-video.jsx";
-import withReviewValidation from "../../hocs/with-review-validation/with-review-validation.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item";
+import withFullscreenVideo from "../../hocs/with-fullscreen-video/with-fullscreen-video";
+import withReviewValidation from "../../hocs/with-review-validation/with-review-validation";
 
-import {getFilms, getPromoFilm} from "../../reducer/data/selectors.js";
-import {getErrorStatus} from "../../reducer/app/selectors.js";
-import {Operation as UserOperation} from "../../reducer/user/user.js";
-import {Operation as DataOperations} from "../../reducer/data/data.js";
+import {getFilms, getPromoFilm} from "../../reducer/data/selectors";
+import {getErrorStatus} from "../../reducer/app/selectors";
+import {Operation as UserOperation} from "../../reducer/user/user";
+import {Operation as DataOperations} from "../../reducer/data/data";
 
-import {AppRoute} from "../../const.js";
-import {getFilmByID} from "../../utils.js";
+import {AppRoute} from "../../const";
+import {getFilmByID} from "../../utils";
 
 const WrappedMoviePage = withActiveItem(MoviePage);
 const WrappedFullscreenPlayer = withFullscreenVideo(FullscreenPlayer);
 const WrappedAddReview = withReviewValidation(AddReview);
 
-class App extends PureComponent {
+class App extends React.PureComponent {
   render() {
     const {
       films,

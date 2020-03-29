@@ -1,15 +1,15 @@
-import React, {PureComponent, createRef} from "react";
-import Footer from "../footer/footer.jsx";
+import * as React from "react";
+import Footer from "../footer/footer";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../const.js";
+import {AppRoute} from "../../const";
 
-class SignIn extends PureComponent {
+class SignIn extends Rreact.PureComponent {
   constructor(props) {
     super(props);
 
-    this.emailRef = createRef();
-    this.passwordRef = createRef();
+    this.emailRef = React.createRef();
+    this.passwordRef = React.createRef();
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }

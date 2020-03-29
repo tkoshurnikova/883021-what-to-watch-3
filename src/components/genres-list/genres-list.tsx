@@ -1,9 +1,9 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/app/app.js";
-import {getGenre} from "../../reducer/app/selectors.js";
-import {getFilms} from "../../reducer/data/selectors.js";
+import {ActionCreator} from "../../reducer/app/app";
+import {getGenre} from "../../reducer/app/selectors";
+import {getFilms} from "../../reducer/data/selectors";
 
 const GenresList = ({films, genre, onGenreChange}) => {
   const genres = [...new Set([`All genres`, ...films.map((film) => film.genre)])];

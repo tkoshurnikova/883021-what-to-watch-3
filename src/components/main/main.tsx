@@ -1,15 +1,15 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import MoviesList from "../movies-list/movies-list.jsx";
-import GenresList from "../genres-list/genres-list.jsx";
-import ShowMoreBtn from "../show-more-btn/show-more-btn.jsx";
-import Footer from "../footer/footer.jsx";
-import Header from "../header/header.jsx";
-import HeaderFilm from "../header-film/header-film.jsx";
-import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
-import {getFilteredFilms} from "../../reducer/data/selectors.js";
-import {getCardsToShow} from "../../reducer/app/selectors.js";
+import MoviesList from "../movies-list/movies-list";
+import GenresList from "../genres-list/genres-list";
+import ShowMoreBtn from "../show-more-btn/show-more-btn";
+import Footer from "../footer/footer";
+import Header from "../header/header";
+import HeaderFilm from "../header-film/header-film";
+import withActiveItem from "../../hocs/with-active-item/with-active-item";
+import {getFilteredFilms} from "../../reducer/data/selectors";
+import {getCardsToShow} from "../../reducer/app/selectors";
 
 const WrappedMoviesList = withActiveItem(MoviesList);
 

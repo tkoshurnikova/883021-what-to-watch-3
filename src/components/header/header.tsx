@@ -1,12 +1,12 @@
-import React, {PureComponent} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {AuthorizationStatus} from "../../const.js";
-import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AppRoute} from "../../const.js";
+import {AuthorizationStatus} from "../../const";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {AppRoute} from "../../const";
 
-class Header extends PureComponent {
+class Header extends React.PureComponent {
   renderLoginBlock() {
     const {authorizationStatus} = this.props;
     let returnFragment;

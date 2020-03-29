@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import MovieCard from "../movie-card/movie-card.jsx";
+import MovieCard from "../movie-card/movie-card";
 import {connect} from "react-redux";
-import {getCardsToShow} from "../../reducer/app/selectors.js";
+import {getCardsToShow} from "../../reducer/app/selectors";
 
 const MoviesList = ({films, cardsToShow, activeItem, onActiveItemChange}) => {
   const showedFilms = films.slice(0, cardsToShow);

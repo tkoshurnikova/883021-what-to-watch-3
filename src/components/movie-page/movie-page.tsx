@@ -1,14 +1,14 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import Tabs from "../tabs/tabs.jsx";
-import MoviesList from "../movies-list/movies-list.jsx";
-import {getFilms} from "../../reducer/data/selectors.js";
+import Tabs from "../tabs/tabs";
+import MoviesList from "../movies-list/movies-list";
+import {getFilms} from "../../reducer/data/selectors";
 import {connect} from "react-redux";
-import {TabName} from "../../const.js";
-import Footer from "../footer/footer.jsx";
-import Header from "../header/header.jsx";
-import HeaderFilm from "../header-film/header-film.jsx";
-import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
+import {TabName} from "../../const";
+import Footer from "../footer/footer";
+import Header from "../header/header";
+import HeaderFilm from "../header-film/header-film";
+import withActiveItem from "../../hocs/with-active-item/with-active-item";
 
 const WrappedMoviesList = withActiveItem(MoviesList);
 

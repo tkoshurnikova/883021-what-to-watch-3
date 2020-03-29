@@ -1,13 +1,13 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
-import MoviesList from "../movies-list/movies-list.jsx";
-import Footer from "../footer/footer.jsx";
-import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
-import {getFavoriteFilms} from "../../reducer/data/selectors.js";
-import {AppRoute} from "../../const.js";
+import MoviesList from "../movies-list/movies-list";
+import Footer from "../footer/footer";
+import withActiveItem from "../../hocs/with-active-item/with-active-item";
+import {getFavoriteFilms} from "../../reducer/data/selectors";
+import {AppRoute} from "../../const";
 
 const WrappedMoviesList = withActiveItem(MoviesList);
 

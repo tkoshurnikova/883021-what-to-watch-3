@@ -1,8 +1,8 @@
-import React, {PureComponent} from "react";
-import {CommentLength} from "../../const.js";
+import * as React from "react";
+import {CommentLength} from "../../const";
 
 const withReviewValidation = (Component) => {
-  class WithReviewValidation extends PureComponent {
+  class WithReviewValidation extends React.PureComponent {
     constructor(props) {
       super(props);
 
