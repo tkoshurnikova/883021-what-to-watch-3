@@ -1,4 +1,4 @@
-import {reducer, ActionType} from "./data.js";
+import {reducer, ActionType, ActionCreator} from "./data.js";
 import {FilmDetails, films} from "../../mocks-for-tests.js";
 
 it(`Reducer without additional parameters should return initial state`, () => {
@@ -45,3 +45,54 @@ it(`Reducer should load favorite films`, () => {
       {type: ActionType.LOAD_FAVORITE_FILMS, payload: films[0]}
   )).toEqual({favoriteFilms: films[0]});
 });
+
+it(`Action creator for loading films should return correct action`, () => {
+  expect(ActionCreator.loadFilms(films)).toEqual({
+    type: ActionType.LOAD_FILMS,
+    payload: films
+  });
+});
+
+it(`Action creator for loading promo film should return correct action`, () => {
+  expect(ActionCreator.loadPromoFilm(FilmDetails)).toEqual({
+    type: ActionType.LOAD_PROMO_FILM,
+    payload: FilmDetails
+  });
+});
+
+it(`Action creator for changing from block should return correct action`, () => {
+  expect(ActionCreator.changeFormBlock(true)).toEqual({
+    type: ActionType.CHANGE_FORM_BLOCK,
+    payload: true
+  });
+});
+
+it(`Action creator for sending text should return correct action`, () => {
+  expect(ActionCreator.setSendingStatusText(`Hello`)).toEqual({
+    type: ActionType.SET_SENDING_STATUS_TEXT,
+    payload: `Hello`
+  });
+});
+
+it(`Action creator for loading favorite films should return correct action`, () => {
+  expect(ActionCreator.loadFavoriteFilms(films[0])).toEqual({
+    type: ActionType.LOAD_FAVORITE_FILMS,
+    payload: films[0]
+  });
+});
+
+it(`Action creator for changing favourite films should return correct action`, () => {
+  expect(ActionCreator.changeFavoriteFilmsOnServer(3)).toEqual({
+    type: ActionType.CHANGE_FAVORITE_FILMS_ON_SERVER,
+    payload: 3
+  });
+});
+
+it(`Action creator for changing favourite status should return correct action`, () => {
+  expect(ActionCreator.changeFavoriteStatus(5)).toEqual({
+    type: ActionType.CHANGE_FAVORITE_STATUS,
+    payload: 5
+  });
+});
+
+
