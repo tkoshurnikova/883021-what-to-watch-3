@@ -15,7 +15,7 @@ interface Props {
   PromoFilm: Film;
   filteredFilms: Film[];
   cardsToShow: number;
-};
+}
 
 const WrappedMoviesList = withActiveItem(MoviesList);
 

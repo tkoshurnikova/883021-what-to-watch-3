@@ -35,12 +35,11 @@ class Tabs extends React.PureComponent<Props, {}> {
       <li
         key={tab}
         className="movie-nav__item movie-nav__item"
-        onClick={(evt) => {
+        onClick={() => {
           onTabClick(tab);
           if (document.querySelector(`.movie-nav__item--active`)) {
             document.querySelector(`.movie-nav__item--active`).classList.remove(`movie-nav__item--active`);
           }
-          // evt.target.parentNode.classList.add(`movie-nav__item--active`);
         }}
       >
         <a href="#" className="movie-nav__link">

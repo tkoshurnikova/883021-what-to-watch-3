@@ -1,6 +1,5 @@
 import * as React from "react";
 import {Subtract} from "utility-types";
-import {Film} from "../../types"
 
 interface InjectingProps {
   isPlaying: boolean;

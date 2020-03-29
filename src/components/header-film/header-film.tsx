@@ -11,7 +11,7 @@ interface Props {
   film: Film;
   authorizationStatus: AuthorizationStatus.AUTH | AuthorizationStatus.NO_AUTH;
   onFavoriteButtonClick: (film: Film, id: number, status: number) => void;
-};
+}
 
 const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
   const {film, authorizationStatus, onFavoriteButtonClick} = props;

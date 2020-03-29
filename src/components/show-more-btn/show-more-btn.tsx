@@ -4,7 +4,7 @@ import {ActionCreator} from "../../reducer/app/app";
 
 interface Props {
   onShowMoreBtnClick: () => void;
-};
+}
 
 const ShowMoreBtn: React.FunctionComponent<Props> = (props: Props) => {
   const {onShowMoreBtnClick} = props;

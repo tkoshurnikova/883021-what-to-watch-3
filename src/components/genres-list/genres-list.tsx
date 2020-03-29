@@ -9,7 +9,7 @@ interface Props {
   films: Film[];
   genre: string;
   onGenreChange: (genre: string, films: Film[]) => void;
-};
+}
 
 const GenresList: React.FunctionComponent<Props> = (props: Props) => {
   const {films, genre, onGenreChange} = props;

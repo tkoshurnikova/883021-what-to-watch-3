@@ -15,8 +15,8 @@ interface Props {
   activeItem: TabName.OVERVIEW | TabName.DETAILS | TabName.REVIEWS;
   onActiveItemChange: () => void;
   chosenFilm?: Film;
-  films: Film[]
-};
+  films: Film[];
+}
 
 const WrappedMoviesList = withActiveItem(MoviesList);
 

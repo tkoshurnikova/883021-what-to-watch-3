@@ -10,8 +10,8 @@ import {AppRoute} from "../../const";
 import {Film} from "../../types";
 
 interface Props {
-  favoriteFilms?: Film[]
-};
+  favoriteFilms?: Film[];
+}
 
 const WrappedMoviesList = withActiveItem(MoviesList);
 

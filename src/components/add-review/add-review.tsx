@@ -13,7 +13,7 @@ interface Props {
   reviewText?: string;
   isCommentValid: boolean;
   onChange: () => void;
-};
+}
 
 class AddReview extends React.PureComponent<Props, {}> {
   private ratingInputRef: React.RefObject<HTMLInputElement>

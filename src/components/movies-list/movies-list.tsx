@@ -9,10 +9,10 @@ interface Props {
   cardsToShow: number;
   activeItem?: Film;
   onActiveItemChange: () => void;
-};
+}
 
 const MoviesList: React.FunctionComponent<Props> = (props: Props) => {
-  const {films, cardsToShow, activeItem, onActiveItemChange} = props
+  const {films, cardsToShow, activeItem, onActiveItemChange} = props;
   const showedFilms = films.slice(0, cardsToShow);
 
   return (

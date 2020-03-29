@@ -7,9 +7,9 @@ import {Film} from "../../types";
 interface Props {
   onCardHover: (film: Film) => void;
   onCardHoverOut: (film: {}) => void;
-  film: Film,
+  film: Film;
   activeCard?: Film;
-};
+}
 
 const MovieCard: React.FunctionComponent<Props> = (props: Props) => {
   const {film, onCardHover, onCardHoverOut, activeCard} = props;

@@ -35,7 +35,7 @@ interface Props {
   login: () => void;
   sendReview: () => void;
   error: boolean;
-};
+}
 
 const App: React.FunctionComponent<Props> = (props: Props) => {
 
@@ -45,7 +45,7 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
     sendReview,
     login,
     error
-  } = this.props;
+  } = props;
 
   if (error) {
     return <Error/>;
@@ -77,8 +77,8 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
         <Route
           exact
           path={`${AppRoute.FILMS}/:id`}
-          render={(props) => {
-            const {id} = props.match.params;
+          render={(routeProps) => {
+            const {id} = routeProps.match.params;
             const film = getFilmByID(films, id);
             return (
               <WrappedMoviePage
@@ -91,8 +91,8 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
         <PrivateRoute
           exact
           path={`${AppRoute.FILMS}/:id/review`}
-          render={(props) => {
-            const {id} = props.match.params;
+          render={(routeProps) => {
+            const {id} = routeProps.match.params;
             const film = getFilmByID(films, id);
             return (
               <WrappedAddReview
@@ -105,8 +105,8 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
         <Route
           exact
           path={`${AppRoute.PLAYER}/:id`}
-          render={(props) => {
-            const {id} = props.match.params;
+          render={(routeProps) => {
+            const {id} = routeProps.match.params;
             const film = getFilmByID(films, id);
             return (
               <WrappedFullscreenPlayer
@@ -127,7 +127,7 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
       </Switch>
     </Router>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   films: getFilms(state),
