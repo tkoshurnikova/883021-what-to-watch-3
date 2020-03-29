@@ -10,6 +10,7 @@ import MoviePage from "../movie-page/movie-page.jsx";
 import FullscreenPlayer from "../fullscreen-player/fullscreen-player.jsx";
 import AddReview from "../add-review/add-review.jsx";
 import MyList from "../my-list/my-list.jsx";
+import Error from "../error/error.jsx";
 import PrivateRoute from "../private-route/private-route.jsx";
 
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx";
@@ -17,6 +18,7 @@ import withFullscreenVideo from "../../hocs/with-fullscreen-video/with-fullscree
 import withReviewValidation from "../../hocs/with-review-validation/with-review-validation.jsx";
 
 import {getFilms, getPromoFilm} from "../../reducer/data/selectors.js";
+import {getErrorStatus} from "../../reducer/app/selectors.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {Operation as DataOperations} from "../../reducer/data/data.js";
 
@@ -34,7 +36,12 @@ class App extends PureComponent {
       promoFilm,
       sendReview,
       login,
+      error
     } = this.props;
+
+    if (error) {
+      return <Error/>;
+    }
 
     return (
       <Router history={history}>
@@ -119,12 +126,14 @@ App.propTypes = {
   films: PropTypes.array.isRequired,
   promoFilm: PropTypes.object.isRequired,
   login: PropTypes.func.isRequired,
-  sendReview: PropTypes.func.isRequired
+  sendReview: PropTypes.func.isRequired,
+  error: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
   films: getFilms(state),
   promoFilm: getPromoFilm(state),
+  error: getErrorStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

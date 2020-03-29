@@ -4,12 +4,14 @@ import {extend} from "../../utils.js";
 const initialState = {
   genre: Genre.ALL_GENRES,
   cardsToShow: CARDS_TO_SHOW,
+  error: false
 };
 
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   SHOW_MORE_FILMS: `SHOW_MORE_FILMS`,
   RESET_CARDS_COUNT: `RESET_CARDS_COUNT`,
+  REQUEST_FAIL: `REQUEST_FAIL`
 };
 
 export const ActionCreator = {
@@ -24,6 +26,10 @@ export const ActionCreator = {
   resetCardsCount: () => ({
     type: ActionType.RESET_CARDS_COUNT,
   }),
+  requestFail: () => ({
+    type: ActionType.REQUEST_FAIL,
+    payload: true
+  })
 };
 
 export const reducer = (state = initialState, action) => {
@@ -41,6 +47,11 @@ export const reducer = (state = initialState, action) => {
     case ActionType.RESET_CARDS_COUNT:
       return extend(state, {
         cardsToShow: CARDS_TO_SHOW
+      });
+
+    case ActionType.REQUEST_FAIL:
+      return extend(state, {
+        error: action.payload
       });
   }
 

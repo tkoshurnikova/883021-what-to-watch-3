@@ -11,7 +11,8 @@ it(`Render App`, () => {
   const store = mockStore({
     APP: {
       genre: ``,
-      cardsToShow: 8
+      cardsToShow: 8,
+      error: false
     },
     DATA: {
       films,

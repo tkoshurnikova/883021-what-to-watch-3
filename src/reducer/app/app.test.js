@@ -4,6 +4,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     genre: `All genres`,
     cardsToShow: 8,
+    error: false
   });
 });
 
@@ -26,4 +27,11 @@ it(`Reducer should reset films count`, () => {
       {cardsToShow: 16},
       {type: ActionType.RESET_CARDS_COUNT}
   )).toEqual({cardsToShow: 8});
+});
+
+it(`Reducer should change error status`, () => {
+  expect(reducer(
+      {error: false},
+      {type: ActionType.REQUEST_FAIL, payload: true}
+  )).toEqual({error: true});
 });

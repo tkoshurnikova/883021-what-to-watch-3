@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Error 1`] = `
+<div
+  className="user-page"
+>
+  <h1>
+    Sorry, something went wrong!
+  </h1>
+  <p>
+    Please, try again later
+  </p>
+</div>
+`;
