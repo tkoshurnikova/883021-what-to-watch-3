@@ -1,10 +1,13 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import withFullscreenVideo from "./with-fullscreen-video.jsx";
-import PropTypes from "prop-types";
-import {FilmDetails} from "../../mocks-for-tests.js";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import withFullscreenVideo from "./with-fullscreen-video";
+import {FilmDetails} from "../../mocks-for-tests";
 
-const MockComponent = (props) => {
+interface MockComponentProps {
+  children: React.ReactNode;
+}
+
+const MockComponent = (props: MockComponentProps) => {
   const {children} = props;
 
   return (
@@ -12,13 +15,6 @@ const MockComponent = (props) => {
       {children}
     </div>
   );
-};
-
-MockComponent.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
 };
 
 const MockComponentWrapped = withFullscreenVideo(MockComponent);

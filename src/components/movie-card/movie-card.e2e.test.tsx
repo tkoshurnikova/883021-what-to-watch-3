@@ -1,10 +1,11 @@
-import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import MovieCard from "./movie-card.jsx";
-import {films} from "../../mocks-for-tests.js";
+import * as React from "react";
+import {configure, shallow} from "enzyme";
+import * as Adapter from "enzyme-adapter-react-16";
+import MovieCard from "./movie-card";
+import {films} from "../../mocks-for-tests";
+import {noop} from "../../utils";
 
-Enzyme.configure({
+configure({
   adapter: new Adapter(),
 });
 
@@ -15,7 +16,7 @@ it(`Should film details be shown`, () => {
       <MovieCard
         film={films[0]}
         onCardHover={onCardHover}
-        onCardHoverOut={() => {}}
+        onCardHoverOut={noop}
         activeCard={films[0]}
       />
   );

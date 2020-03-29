@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Error from "./error.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import Error from "./error";
 
 
 it(`Render Error`, () => {

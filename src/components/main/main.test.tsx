@@ -1,11 +1,12 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Main from "./main.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import Main from "./main";
 import {Provider} from "react-redux";
 import configureMockStore from "redux-mock-store";
-import {films, FilmDetails} from "../../mocks-for-tests.js";
+import {films, FilmDetails} from "../../mocks-for-tests";
 import {Router} from "react-router-dom";
 import history from "../../history";
+import {noop} from "../../utils";
 
 const mockStore = configureMockStore([]);
 
@@ -30,7 +31,7 @@ it(`Render Main`, () => {
             <Main
               PromoFilm={FilmDetails}
               filteredFilms={films}
-              onCardClick={() => {}}
+              onCardClick={noop}
               cardsToShow={8}
             />
           </Router>

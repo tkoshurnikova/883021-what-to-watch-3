@@ -1,15 +1,16 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import MoviesList from "./movies-list.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import MoviePage from "./movie-page";
 import {Provider} from "react-redux";
 import configureMockStore from "redux-mock-store";
-import {films} from "../../mocks-for-tests.js";
+import {films} from "../../mocks-for-tests";
 import {Router} from "react-router-dom";
 import history from "../../history";
+import {noop} from "../../utils";
 
 const mockStore = configureMockStore([]);
 
-it(`Render MoviesList`, () => {
+it(`Render MoviePage`, () => {
   const store = mockStore({
     APP: {
       genre: ``,
@@ -26,11 +27,10 @@ it(`Render MoviesList`, () => {
     .create(
         <Provider store={store}>
           <Router history={history}>
-            <MoviesList
-              films={films}
-              cardsToShow={8}
-              activeItem={films[0]}
-              onActiveItemChange={() => {}}
+            <MoviePage
+              film={films[0]}
+              onActiveItemChange={noop}
+              activeItem={``}
             />
           </Router>
         </Provider>, {

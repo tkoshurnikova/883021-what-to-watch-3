@@ -1,5 +1,5 @@
-import {extend, getFilmByID} from "../../utils.js";
-import dataAdapter, {commentsAdapter} from "./adapter.js";
+import {extend, getFilmByID} from "../../utils";
+import dataAdapter, {commentsAdapter} from "./adapter";
 import history from "../../history";
 
 const initialState = {

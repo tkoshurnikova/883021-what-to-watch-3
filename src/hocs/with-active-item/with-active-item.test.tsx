@@ -1,7 +1,7 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import withActiveItem from "./with-active-item.jsx";
-import {FilmDetails} from "../../mocks-for-tests.js";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import withActiveItem from "./with-active-item";
+import {FilmDetails} from "../../mocks-for-tests";
 
 const MockComponent = () => <div />;
 const MockComponentWrapped = withActiveItem(MockComponent);

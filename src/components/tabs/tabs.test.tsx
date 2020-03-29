@@ -1,7 +1,8 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Tabs from "./tabs.jsx";
-import {films} from "../../mocks-for-tests.js";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import Tabs from "./tabs";
+import {films} from "../../mocks-for-tests";
+import {noop} from "../../utils";
 
 const activeTab = `Overview`;
 
@@ -10,7 +11,7 @@ it(`Render Tabs`, () => {
     .create(<Tabs
       film={films[0]}
       activeTab={activeTab}
-      onTabClick={() => {}}
+      onTabClick={noop}
     />)
     .toJSON();
 

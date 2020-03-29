@@ -1,7 +1,7 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import MyList from "./my-list.jsx";
-import {films} from "../../mocks-for-tests.js";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import MyList from "./my-list";
+import {films} from "../../mocks-for-tests";
 import {Provider} from "react-redux";
 import configureMockStore from "redux-mock-store";
 import {Router} from "react-router-dom";

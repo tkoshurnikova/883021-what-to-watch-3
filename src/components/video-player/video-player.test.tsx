@@ -1,7 +1,7 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import VideoPlayer from "./video-player.jsx";
-import {films} from "../../mocks-for-tests.js";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import VideoPlayer from "./video-player";
+import {films} from "../../mocks-for-tests";
 
 it(`Render VideoPlayer`, () => {
   const tree = renderer

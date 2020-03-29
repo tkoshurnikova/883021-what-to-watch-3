@@ -1,15 +1,24 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Header from "./header.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import MoviesList from "./movies-list";
 import {Provider} from "react-redux";
 import configureMockStore from "redux-mock-store";
+import {films} from "../../mocks-for-tests";
 import {Router} from "react-router-dom";
 import history from "../../history";
+import {noop} from "../../utils";
 
 const mockStore = configureMockStore([]);
 
-it(`Render Header`, () => {
+it(`Render MoviesList`, () => {
   const store = mockStore({
+    APP: {
+      genre: ``,
+      cardsToShow: 8
+    },
+    DATA: {
+      films
+    },
     USER: {
       authorizationStatus: `NO_AUTH`
     }
@@ -18,7 +27,12 @@ it(`Render Header`, () => {
     .create(
         <Provider store={store}>
           <Router history={history}>
-            <Header />
+            <MoviesList
+              films={films}
+              cardsToShow={8}
+              activeItem={films[0]}
+              onActiveItemChange={noop}
+            />
           </Router>
         </Provider>, {
           createNodeMock: () => {

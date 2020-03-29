@@ -1,5 +1,5 @@
-import {reducer, ActionType, ActionCreator} from "./data.js";
-import {FilmDetails, films} from "../../mocks-for-tests.js";
+import {reducer, ActionType, ActionCreator} from "./data";
+import {FilmDetails, films} from "../../mocks-for-tests";
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({

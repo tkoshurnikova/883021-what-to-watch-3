@@ -11,3 +11,5 @@ export const convertSecondsToHours = (time) => {
 };
 
 export const getFilmByID = (films, id) => films.find((film) => film.id === Number(id));
+
+export const noop = () => {};

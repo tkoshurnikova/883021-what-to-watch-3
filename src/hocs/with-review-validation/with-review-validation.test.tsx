@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import withReviewValidation from "./with-review-validation.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import withReviewValidation from "./with-review-validation";
 
 const MockComponent = () => <div />;
 const MockComponentWrapped = withReviewValidation(MockComponent);

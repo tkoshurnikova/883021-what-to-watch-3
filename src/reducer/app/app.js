@@ -1,5 +1,5 @@
-import {Genre, CARDS_TO_SHOW} from "../../const.js";
-import {extend} from "../../utils.js";
+import {Genre, CARDS_TO_SHOW} from "../../const";
+import {extend} from "../../utils";
 
 const initialState = {
   genre: Genre.ALL_GENRES,

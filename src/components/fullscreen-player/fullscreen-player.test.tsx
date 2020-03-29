@@ -1,7 +1,8 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import FullscreenPlayer from "./fullscreen-player.jsx";
-import {films} from "../../mocks-for-tests.js";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import FullscreenPlayer from "./fullscreen-player";
+import {films} from "../../mocks-for-tests";
+import {noop} from "../../utils";
 
 it(`Render FullscreenPlayer`, () => {
   const tree = renderer
@@ -11,8 +12,8 @@ it(`Render FullscreenPlayer`, () => {
       isFullscreen={false}
       timeProgressInPercents={0}
       timeLeft={0}
-      onFullscreenButtonClick={() => {}}
-      onPlayButtonClick={() => {}}
+      onFullscreenButtonClick={noop}
+      onPlayButtonClick={noop}
     >
       <video/>
     </FullscreenPlayer>

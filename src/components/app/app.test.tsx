@@ -1,22 +1,23 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import MoviePage from "./movie-page.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import App from "./app";
 import {Provider} from "react-redux";
 import configureMockStore from "redux-mock-store";
-import {films} from "../../mocks-for-tests.js";
-import {Router} from "react-router-dom";
-import history from "../../history";
+import {films, FilmDetails} from "../../mocks-for-tests";
+import {noop} from "../../utils";
 
 const mockStore = configureMockStore([]);
 
-it(`Render MoviePage`, () => {
+it(`Render App`, () => {
   const store = mockStore({
     APP: {
       genre: ``,
-      cardsToShow: 8
+      cardsToShow: 8,
+      error: false
     },
     DATA: {
-      films
+      films,
+      promoFilm: FilmDetails
     },
     USER: {
       authorizationStatus: `NO_AUTH`
@@ -25,13 +26,10 @@ it(`Render MoviePage`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <Router history={history}>
-            <MoviePage
-              film={films[0]}
-              onActiveItemChange={() => {}}
-              activeItem={``}
-            />
-          </Router>
+          <App
+            clickedCard={films[0]}
+            login={noop}
+          />
         </Provider>, {
           createNodeMock: () => {
             return {};

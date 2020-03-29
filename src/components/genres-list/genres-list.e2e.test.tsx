@@ -1,10 +1,11 @@
-import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import {GenresList} from "./genres-list.jsx";
-import {films} from "../../mocks-for-tests.js";
+import * as React from "react";
+import {configure, shallow} from "enzyme";
+import * as Adapter from "enzyme-adapter-react-16";
+import {GenresList} from "./genres-list";
+import {films} from "../../mocks-for-tests";
+import {noop} from "../../utils";
 
-Enzyme.configure({
+configure({
   adapter: new Adapter(),
 });
 
@@ -13,7 +14,7 @@ it(`Change chosen genre`, () => {
       <GenresList
         films={films}
         genre={`Dramas`}
-        onGenreChange={() => {}}
+        onGenreChange={noop}
       />
   );
 

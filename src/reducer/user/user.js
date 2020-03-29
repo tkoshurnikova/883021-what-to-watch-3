@@ -1,7 +1,7 @@
-import {extend} from "../../utils.js";
-import {AuthorizationStatus} from "../../const.js";
+import {extend} from "../../utils";
+import {AuthorizationStatus} from "../../const";
 import history from "../../history";
-import {Operation as DataOperation} from "../data/data.js";
+import {Operation as DataOperation} from "../data/data";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,

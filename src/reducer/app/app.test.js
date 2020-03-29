@@ -1,4 +1,4 @@
-import {reducer, ActionType, ActionCreator} from "./app.js";
+import {reducer, ActionType, ActionCreator} from "./app";
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
