@@ -8,8 +8,6 @@ export const Genre = {
   ALL_GENRES: `All genres`,
 };
 
-export const CARDS_TO_SHOW = 8;
-
 export const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
@@ -27,3 +25,21 @@ export const AppRoute = {
   PLAYER: `/player`,
   MAIN: `/`,
 };
+
+export const HeaderFilmType = {
+  MAIN_PAGE: `Main page`,
+  MOVIE_PAGE: `Movie Page`
+};
+
+export const FilmsCount = {
+  NO_FILMS: 0,
+  SIMILAR_FILMS: 4,
+  MAIN_PAGE_FILMS: 8
+};
+
+export const FavoriteFilmStatus = {
+  REMOVE: 0,
+  ADD: 1
+};
+
+export const TRAILER_DELAY = 1000;

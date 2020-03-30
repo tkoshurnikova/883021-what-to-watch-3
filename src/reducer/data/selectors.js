@@ -1,7 +1,7 @@
 import {createSelector} from "reselect";
-import {Genre} from "../../const.js";
-import {getGenre} from "../app/selectors.js";
-import NameSpace from "../name-space.js";
+import {Genre} from "../../const";
+import {getGenre} from "../app/selectors";
+import NameSpace from "../name-space";
 
 const NAME_SPACE = NameSpace.DATA;
 
