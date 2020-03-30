@@ -27,6 +27,9 @@ const MovieCard: React.FunctionComponent<Props> = (props: Props) => {
         clearTimeout(timerForPreviewPlaying);
         onCardHoverOut({});
       }}
+      onClick={() => {
+        clearTimeout(timerForPreviewPlaying);
+      }}
     >
       <Link to={`${AppRoute.FILMS}/${film.id}`}>
         <div className="small-movie-card__image">
