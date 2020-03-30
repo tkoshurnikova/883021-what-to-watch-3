@@ -16,7 +16,7 @@ interface Props {
 }
 
 class AddReview extends React.PureComponent<Props, {}> {
-  private ratingInputRef: React.RefObject<HTMLInputElement>
+  private ratingInputRef: React.RefObject<HTMLFormElement>
 
   constructor(props) {
     super(props);
@@ -27,10 +27,12 @@ class AddReview extends React.PureComponent<Props, {}> {
 
   handleSubmit(evt) {
     const {onSubmit, film, reviewText} = this.props;
+    const inputValue = (this.ratingInputRef.current.querySelector(`input:checked`) as HTMLInputElement).value;
+
     evt.preventDefault();
 
     onSubmit({
-      rating: this.ratingInputRef.current.value,
+      rating: inputValue,
       comment: reviewText
     }, film.id);
   }
@@ -77,18 +79,18 @@ class AddReview extends React.PureComponent<Props, {}> {
           </div>
         </div>
         <div className="add-review">
-          <form action="#" className="add-review__form" onSubmit={this.handleSubmit}>
+          <form action="#" className="add-review__form" onSubmit={this.handleSubmit} ref={this.ratingInputRef}>
             <div className="rating">
               <div className="rating__stars">
-                <input className="rating__input" id="star-1" type="radio" name="rating" defaultValue={1} ref={this.ratingInputRef} />
+                <input className="rating__input" id="star-1" type="radio" name="rating" defaultValue={1} />
                 <label className="rating__label" htmlFor="star-1">Rating 1</label>
-                <input className="rating__input" id="star-2" type="radio" name="rating" defaultValue={2} ref={this.ratingInputRef} />
+                <input className="rating__input" id="star-2" type="radio" name="rating" defaultValue={2} />
                 <label className="rating__label" htmlFor="star-2">Rating 2</label>
-                <input className="rating__input" id="star-3" type="radio" name="rating" defaultValue={3} ref={this.ratingInputRef} defaultChecked />
+                <input className="rating__input" id="star-3" type="radio" name="rating" defaultValue={3} defaultChecked />
                 <label className="rating__label" htmlFor="star-3">Rating 3</label>
-                <input className="rating__input" id="star-4" type="radio" name="rating" defaultValue={4} ref={this.ratingInputRef} />
+                <input className="rating__input" id="star-4" type="radio" name="rating" defaultValue={4} />
                 <label className="rating__label" htmlFor="star-4">Rating 4</label>
-                <input className="rating__input" id="star-5" type="radio" name="rating" defaultValue={5} ref={this.ratingInputRef} />
+                <input className="rating__input" id="star-5" type="radio" name="rating" defaultValue={5} />
                 <label className="rating__label" htmlFor="star-5">Rating 5</label>
               </div>
             </div>
