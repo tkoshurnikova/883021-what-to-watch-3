@@ -24,6 +24,14 @@ const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
   const {film, activeItem = TabName.OVERVIEW, onActiveItemChange, films} = props;
   const similarFilms = films.filter((item) => item.genre === film.genre && item.name !== film.name).slice(0, 4);
 
+  if (films.length === 0) {
+    return (
+      <section className="movie-card movie-card--full">
+        <p>Loaging... Please, wait</p>
+      </section>
+    );
+  }
+
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full" style={{backgroundColor: `${film.background_color}`}}>
