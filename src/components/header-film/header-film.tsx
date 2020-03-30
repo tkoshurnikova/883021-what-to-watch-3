@@ -2,7 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
-import {AuthorizationStatus, AppRoute, HeaderFilmType} from "../../const";
+import {AuthorizationStatus, AppRoute, HeaderFilmType, FavoriteFilmStatus} from "../../const";
 import history from "../../history";
 import {Operation as DataOperation, ActionCreator} from "../../reducer/data/data";
 import {Film} from "../../types";
@@ -44,9 +44,9 @@ const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
               history.push(AppRoute.LOGIN);
             } else {
               if (favorite) {
-                onFavoriteButtonClick(film, id, 0);
+                onFavoriteButtonClick(film, id, FavoriteFilmStatus.REMOVE);
               } else {
-                onFavoriteButtonClick(film, id, 1);
+                onFavoriteButtonClick(film, id, FavoriteFilmStatus.ADD);
               }
             }
           }}

@@ -3,7 +3,7 @@ import Tabs from "../tabs/tabs";
 import MoviesList from "../movies-list/movies-list";
 import {getFilms} from "../../reducer/data/selectors";
 import {connect} from "react-redux";
-import {TabName, HeaderFilmType} from "../../const";
+import {TabName, HeaderFilmType, FilmsCount} from "../../const";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import HeaderFilm from "../header-film/header-film";
@@ -22,9 +22,9 @@ const WrappedMoviesList = withActiveItem(MoviesList);
 
 const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
   const {film, activeItem = TabName.OVERVIEW, onActiveItemChange, films} = props;
-  const similarFilms = films.filter((item) => item.genre === film.genre && item.name !== film.name).slice(0, 4);
+  const similarFilms = films.filter((item) => item.genre === film.genre && item.name !== film.name).slice(0, FilmsCount.SIMILAR_FILMS);
 
-  if (films.length === 0) {
+  if (films.length === FilmsCount.NO_FILMS) {
     return (
       <section className="movie-card movie-card--full">
         <p>Loaging... Please, wait</p>

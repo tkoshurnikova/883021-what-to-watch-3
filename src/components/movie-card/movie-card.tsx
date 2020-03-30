@@ -1,7 +1,7 @@
 import * as React from "react";
 import VideoPlayer from "../video-player/video-player";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../const";
+import {AppRoute, TRAILER_DELAY} from "../../const";
 import {Film} from "../../types";
 
 interface Props {
@@ -21,7 +21,7 @@ const MovieCard: React.FunctionComponent<Props> = (props: Props) => {
       onMouseOver={() => {
         timerForPreviewPlaying = setTimeout(() => {
           onCardHover(film);
-        }, 1000);
+        }, TRAILER_DELAY);
       }}
       onMouseOut={() => {
         clearTimeout(timerForPreviewPlaying);

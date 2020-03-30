@@ -1,9 +1,9 @@
-import {Genre, CARDS_TO_SHOW} from "../../const";
+import {Genre, FilmsCount} from "../../const";
 import {extend} from "../../utils";
 
 const initialState = {
   genre: Genre.ALL_GENRES,
-  cardsToShow: CARDS_TO_SHOW,
+  cardsToShow: FilmsCount.MAIN_PAGE_FILMS,
   error: false
 };
 
@@ -21,7 +21,7 @@ export const ActionCreator = {
   }),
   showMoreFilms: () => ({
     type: ActionType.SHOW_MORE_FILMS,
-    payload: CARDS_TO_SHOW
+    payload: FilmsCount.MAIN_PAGE_FILMS
   }),
   resetCardsCount: () => ({
     type: ActionType.RESET_CARDS_COUNT,
@@ -46,7 +46,7 @@ export const reducer = (state = initialState, action) => {
 
     case ActionType.RESET_CARDS_COUNT:
       return extend(state, {
-        cardsToShow: CARDS_TO_SHOW
+        cardsToShow: FilmsCount.MAIN_PAGE_FILMS
       });
 
     case ActionType.REQUEST_FAIL:
