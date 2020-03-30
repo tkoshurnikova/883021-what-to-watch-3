@@ -2,7 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
-import {AuthorizationStatus, AppRoute} from "../../const";
+import {AuthorizationStatus, AppRoute, HeaderFilmType} from "../../const";
 import history from "../../history";
 import {Operation as DataOperation, ActionCreator} from "../../reducer/data/data";
 import {Film} from "../../types";
@@ -11,10 +11,11 @@ interface Props {
   film: Film;
   authorizationStatus: AuthorizationStatus.AUTH | AuthorizationStatus.NO_AUTH;
   onFavoriteButtonClick: (film: Film, id: number, status: number) => void;
+  page: HeaderFilmType.MAIN_PAGE | HeaderFilmType.MOVIE_PAGE;
 }
 
 const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
-  const {film, authorizationStatus, onFavoriteButtonClick} = props;
+  const {film, authorizationStatus, onFavoriteButtonClick, page} = props;
   const {name, genre, released, id, favorite} = film;
 
   return (
@@ -62,9 +63,13 @@ const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
 
           <span>My list</span>
         </button>
-        <Link to={`${AppRoute.FILMS}/${id}/review`} className="btn movie-card__button">
-        Add review
-        </Link>
+        {page === HeaderFilmType.MOVIE_PAGE ?
+          <Link to={`${AppRoute.FILMS}/${id}/review`} className="btn movie-card__button">
+            Add review
+          </Link>
+          :
+          ``
+        }
       </div>
     </div>
   );

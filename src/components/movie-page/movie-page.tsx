@@ -3,7 +3,7 @@ import Tabs from "../tabs/tabs";
 import MoviesList from "../movies-list/movies-list";
 import {getFilms} from "../../reducer/data/selectors";
 import {connect} from "react-redux";
-import {TabName} from "../../const";
+import {TabName, HeaderFilmType} from "../../const";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import HeaderFilm from "../header-film/header-film";
@@ -47,6 +47,7 @@ const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
           <div className="movie-card__wrap">
             <HeaderFilm
               film={film}
+              page={HeaderFilmType.MOVIE_PAGE}
             />
           </div>
         </div>

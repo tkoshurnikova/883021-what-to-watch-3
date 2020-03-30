@@ -27,3 +27,8 @@ export const AppRoute = {
   PLAYER: `/player`,
   MAIN: `/`,
 };
+
+export const HeaderFilmType = {
+  MAIN_PAGE: `Main page`,
+  MOVIE_PAGE: `Movie Page`
+};

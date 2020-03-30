@@ -10,6 +10,7 @@ import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import {getFilteredFilms} from "../../reducer/data/selectors";
 import {getCardsToShow} from "../../reducer/app/selectors";
 import {Film} from "../../types";
+import {HeaderFilmType} from "../../const";
 
 interface Props {
   PromoFilm: Film;
@@ -40,6 +41,7 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
             </div>
             <HeaderFilm
               film={PromoFilm}
+              page={HeaderFilmType.MAIN_PAGE}
             />
           </div>
         </div>
