@@ -29,17 +29,14 @@ class Tabs extends React.PureComponent<Props, {}> {
   }
 
   _getNavigationItem(tab) {
-    const {onTabClick} = this.props;
+    const {activeTab, onTabClick} = this.props;
 
     return (
       <li
         key={tab}
-        className="movie-nav__item movie-nav__item"
+        className={tab === activeTab ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}
         onClick={() => {
           onTabClick(tab);
-          if (document.querySelector(`.movie-nav__item--active`)) {
-            document.querySelector(`.movie-nav__item--active`).classList.remove(`movie-nav__item--active`);
-          }
         }}
       >
         <a href="#" className="movie-nav__link">
