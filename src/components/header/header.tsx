@@ -9,48 +9,32 @@ interface Props {
   authorizationStatus: AuthorizationStatus.AUTH | AuthorizationStatus.NO_AUTH;
 }
 
-class Header extends React.PureComponent<Props, {}> {
-  renderLoginBlock() {
-    const {authorizationStatus} = this.props;
-    let returnFragment;
+const Header: React.FunctionComponent<Props> = (props: Props) => {
+  const {authorizationStatus} = props;
 
-    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      returnFragment = (
-        <div className="user-block">
-          <Link to={AppRoute.LOGIN} className="user-block__link">Sign in</Link>
-        </div>
-      );
-    } else if (authorizationStatus === AuthorizationStatus.AUTH) {
-      returnFragment = (
-        <div className="user-block">
-          <Link to={AppRoute.MY_LIST}>
-            <div className="user-block__avatar">
-              <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </Link>
-        </div>
-      );
-    }
-    return returnFragment;
-  }
-
-  render() {
-    const loginBlock = this.renderLoginBlock();
-
-    return (
-      <header className="page-header movie-card__head">
-        <div className="logo">
-          <Link to={AppRoute.MAIN} className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </Link>
-        </div>
-        {loginBlock}
-      </header>
-    );
-  }
-}
+  return (
+    <header className="page-header movie-card__head">
+      <div className="logo">
+        <Link to={AppRoute.MAIN} className="logo__link">
+          <span className="logo__letter logo__letter--1">W</span>
+          <span className="logo__letter logo__letter--2">T</span>
+          <span className="logo__letter logo__letter--3">W</span>
+        </Link>
+      </div>
+      <div className="user-block">
+        {
+          authorizationStatus === AuthorizationStatus.AUTH ?
+            <Link to={AppRoute.MY_LIST}>
+              <div className="user-block__avatar">
+                <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              </div>
+            </Link> :
+            <Link to={AppRoute.LOGIN} className="user-block__link">Sign in</Link>
+        }
+      </div>
+    </header>
+  );
+};
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state)
