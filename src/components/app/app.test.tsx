@@ -20,7 +20,7 @@ it(`Render App`, () => {
       promoFilm: FilmDetails
     },
     USER: {
-      authorizationStatus: `NO_AUTH`
+      isAuthorized: false
     }
   });
   const tree = renderer

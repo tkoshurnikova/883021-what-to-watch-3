@@ -20,7 +20,7 @@ it(`Render MoviePage`, () => {
       films
     },
     USER: {
-      authorizationStatus: `NO_AUTH`
+      isAuthorized: false
     }
   });
   const tree = renderer

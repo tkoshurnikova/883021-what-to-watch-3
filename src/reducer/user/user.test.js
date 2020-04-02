@@ -2,20 +2,20 @@ import {reducer, ActionType, ActionCreator} from "./user";
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
-    authorizationStatus: `NO_AUTH`
+    isAuthorized: false
   });
 });
 
 it(`Reducer should change authorization status`, () => {
   expect(reducer(
-      {authorizationStatus: `NO_AUTH`},
-      {type: ActionType.REQUIRED_AUTHORIZATION, payload: `AUTH`}
-  )).toEqual({authorizationStatus: `AUTH`});
+      {isAuthorized: false},
+      {type: ActionType.REQUIRED_AUTHORIZATION, payload: true}
+  )).toEqual({isAuthorized: true});
 });
 
 it(`Action creator for requiring authorization should return correct action`, () => {
-  expect(ActionCreator.requireAuthorization(`AUTH`)).toEqual({
+  expect(ActionCreator.requireAuthorization(true)).toEqual({
     type: ActionType.REQUIRED_AUTHORIZATION,
-    payload: `AUTH`
+    payload: true
   });
 });

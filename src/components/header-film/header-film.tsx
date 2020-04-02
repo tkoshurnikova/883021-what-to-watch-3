@@ -2,20 +2,20 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
-import {AuthorizationStatus, AppRoute, HeaderFilmType, FavoriteFilmStatus} from "../../const";
+import {AppRoute, HeaderFilmType, FavoriteFilmStatus} from "../../const";
 import history from "../../history";
 import {Operation as DataOperation, ActionCreator} from "../../reducer/data/data";
 import {Film} from "../../types";
 
 interface Props {
   film: Film;
-  authorizationStatus: AuthorizationStatus.AUTH | AuthorizationStatus.NO_AUTH;
+  isAuthorized: boolean;
   onFavoriteButtonClick: (film: Film, id: number, status: number) => void;
   page: HeaderFilmType.MAIN_PAGE | HeaderFilmType.MOVIE_PAGE;
 }
 
 const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
-  const {film, authorizationStatus, onFavoriteButtonClick, page} = props;
+  const {film, isAuthorized, onFavoriteButtonClick, page} = props;
   const {name, genre, released, id, favorite} = film;
 
   return (
@@ -40,7 +40,7 @@ const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
           className="btn btn--list movie-card__button"
           type="button"
           onClick={() => {
-            if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+            if (!isAuthorized) {
               history.push(AppRoute.LOGIN);
             } else {
               if (favorite) {
@@ -76,7 +76,7 @@ const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
 };
 
 const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state)
+  isAuthorized: getAuthorizationStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

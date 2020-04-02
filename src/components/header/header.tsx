@@ -1,16 +1,15 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {AuthorizationStatus} from "../../const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {AppRoute} from "../../const";
 
 interface Props {
-  authorizationStatus: AuthorizationStatus.AUTH | AuthorizationStatus.NO_AUTH;
+  isAuthorized: boolean;
 }
 
 const Header: React.FunctionComponent<Props> = (props: Props) => {
-  const {authorizationStatus} = props;
+  const {isAuthorized} = props;
 
   return (
     <header className="page-header movie-card__head">
@@ -23,7 +22,7 @@ const Header: React.FunctionComponent<Props> = (props: Props) => {
       </div>
       <div className="user-block">
         {
-          authorizationStatus === AuthorizationStatus.AUTH ?
+          (isAuthorized) ?
             <Link to={AppRoute.MY_LIST}>
               <div className="user-block__avatar">
                 <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
@@ -37,7 +36,7 @@ const Header: React.FunctionComponent<Props> = (props: Props) => {
 };
 
 const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state)
+  isAuthorized: getAuthorizationStatus(state)
 });
 
 export {Header};

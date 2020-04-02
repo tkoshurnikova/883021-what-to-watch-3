@@ -11,7 +11,7 @@ const mockStore = configureMockStore([]);
 it(`Render Header`, () => {
   const store = mockStore({
     USER: {
-      authorizationStatus: `NO_AUTH`
+      isAuthorized: false
     }
   });
   const tree = renderer
