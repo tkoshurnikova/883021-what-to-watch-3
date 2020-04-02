@@ -2,7 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list";
 import GenresList from "../genres-list/genres-list";
-import ShowMoreBtn from "../show-more-btn/show-more-btn";
+import ShowMoreButton from "../show-more-button/show-more-button";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import HeaderFilm from "../header-film/header-film";
@@ -55,7 +55,7 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
           <WrappedMoviesList
             films={filteredFilms}
           />
-          {cardsToShow >= filteredFilms.length || <ShowMoreBtn/>}
+          {cardsToShow >= filteredFilms.length || <ShowMoreButton/>}
 
         </section>
         <Footer/>

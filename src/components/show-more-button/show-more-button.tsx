@@ -3,28 +3,28 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/app/app";
 
 interface Props {
-  onShowMoreBtnClick: () => void;
+  onShowMoreButtonClick: () => void;
 }
 
-const ShowMoreBtn: React.FunctionComponent<Props> = (props: Props) => {
-  const {onShowMoreBtnClick} = props;
+const ShowMoreButton: React.FunctionComponent<Props> = (props: Props) => {
+  const {onShowMoreButtonClick} = props;
 
   return (
     <div className="catalog__more">
       <button
         className="catalog__button"
         type="button"
-        onClick={onShowMoreBtnClick}
+        onClick={onShowMoreButtonClick}
       >Show more</button>
     </div>
   );
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onShowMoreBtnClick() {
+  onShowMoreButtonClick() {
     dispatch(ActionCreator.showMoreFilms());
   }
 });
 
-export {ShowMoreBtn};
-export default connect(null, mapDispatchToProps)(ShowMoreBtn);
+export {ShowMoreButton};
+export default connect(null, mapDispatchToProps)(ShowMoreButton);
