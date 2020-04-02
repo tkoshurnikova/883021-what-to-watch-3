@@ -85,7 +85,10 @@ export const Operation = {
       .then((response) => {
         if (response.status === 200) {
           dispatch(ActionCreator.setSendingStatusText(`Comment was sent`));
-          dispatch(Operation.loadReviews(getFilmByID(getState().DATA.films, id)));
+
+          const reviewedFilm = getFilmByID(getState().DATA.films, id);
+          reviewedFilm.reviews = response.data.map(((review) => commentsAdapter(review)));
+
           history.push(`/films/${id}`);
         } else {
           dispatch(ActionCreator.setSendingStatusText(`Something went wrong, please try again`));
