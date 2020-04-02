@@ -51,22 +51,18 @@ export const ActionCreator = {
   })
 };
 
-const loadReviews = (item) => (dispatch, _, api) => {
-  return api.get(`/comments/${item.id}`)
+export const Operation = {
+  loadReviews: (item) => (dispatch, _, api) => {
+    return api.get(`/comments/${item.id}`)
     .then((response) => {
       item.reviews = response.data.map(((review) => commentsAdapter(review)));
     });
-};
+  },
 
-export const Operation = {
   loadFilms: () => (dispatch, _, api) => {
     return api.get(`/films`)
       .then((response) => {
         const adaptedData = dataAdapter(response.data);
-        adaptedData.map((item) => {
-          dispatch(loadReviews(item));
-          return item;
-        });
         dispatch(ActionCreator.loadFilms(adaptedData));
       });
   },
@@ -89,7 +85,7 @@ export const Operation = {
       .then((response) => {
         if (response.status === 200) {
           dispatch(ActionCreator.setSendingStatusText(`Comment was sent`));
-          dispatch(loadReviews(getFilmByID(getState().DATA.films, id)));
+          dispatch(Operation.loadReviews(getFilmByID(getState().DATA.films, id)));
           history.push(`/films/${id}`);
         } else {
           dispatch(ActionCreator.setSendingStatusText(`Something went wrong, please try again`));

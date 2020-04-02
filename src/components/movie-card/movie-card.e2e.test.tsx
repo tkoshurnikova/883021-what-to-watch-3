@@ -18,6 +18,7 @@ it(`Should film details be shown`, () => {
         onCardHover={onCardHover}
         onCardHoverOut={noop}
         activeCard={films[0]}
+        loadReviews={noop}
       />
   );
 
