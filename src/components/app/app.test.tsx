@@ -17,7 +17,8 @@ it(`Render App`, () => {
     },
     DATA: {
       films,
-      promoFilm: FilmDetails
+      promoFilm: FilmDetails,
+      favoriteFilms: []
     },
     USER: {
       isAuthorized: false

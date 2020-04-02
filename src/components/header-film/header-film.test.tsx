@@ -13,6 +13,9 @@ it(`Render HeaderFilm`, () => {
   const store = mockStore({
     USER: {
       isAuthorized: false
+    },
+    DATA: {
+      favoriteFilms: []
     }
   });
   const tree = renderer

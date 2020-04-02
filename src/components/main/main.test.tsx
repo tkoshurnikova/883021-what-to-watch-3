@@ -18,7 +18,8 @@ it(`Render Main`, () => {
     },
     DATA: {
       films,
-      promoFilm: FilmDetails
+      promoFilm: FilmDetails,
+      favoriteFilms: []
     },
     USER: {
       isAuthorized: false

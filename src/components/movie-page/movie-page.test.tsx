@@ -17,7 +17,8 @@ it(`Render MoviePage`, () => {
       cardsToShow: 8
     },
     DATA: {
-      films
+      films,
+      favoriteFilms: []
     },
     USER: {
       isAuthorized: false

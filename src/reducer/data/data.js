@@ -16,7 +16,6 @@ export const ActionType = {
   CHANGE_FORM_BLOCK: `CHANGE_BLOCK_FORM`,
   SET_SENDING_STATUS_TEXT: `SET_SENDING_STATUS_TEXT`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
-  // CHANGE_FAVORITE_STATUS: `CHANGE_FAVORITE_STATUS`
 };
 
 export const ActionCreator = {
@@ -40,10 +39,6 @@ export const ActionCreator = {
     type: ActionType.LOAD_FAVORITE_FILMS,
     payload: films
   }),
-  // changeFavoriteStatus: (film) => ({
-  //   type: ActionType.CHANGE_FAVORITE_STATUS,
-  //   payload: film
-  // })
 };
 
 export const Operation = {
@@ -105,25 +100,8 @@ export const Operation = {
       });
   },
 
-  changeFavoriteFilms: (id, status) => (dispatch, getState, api) => {
-    return api.post(`/favorite/${id}/${status}`)
-      .then(() => {
-        const promoFilm = getState().DATA.promoFilm;
-        const films = getState().DATA.films;
-
-        if (promoFilm.id === id) {
-          promoFilm.favorite = !promoFilm.favorite;
-          dispatch(ActionCreator.loadPromoFilm(promoFilm));
-        }
-
-        const updatedFilms = films.map((item) => {
-          if (item.id === id) {
-            item.favorite = !item.favorite;
-          }
-          return item;
-        });
-        dispatch(ActionCreator.loadFilms(updatedFilms));
-      });
+  changeFavoriteFilms: (id, status) => (dispatch, _, api) => {
+    return api.post(`/favorite/${id}/${status}`);
   }
 };
 
