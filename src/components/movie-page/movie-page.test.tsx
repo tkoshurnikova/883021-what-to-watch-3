@@ -17,10 +17,11 @@ it(`Render MoviePage`, () => {
       cardsToShow: 8
     },
     DATA: {
-      films
+      films,
+      favoriteFilms: []
     },
     USER: {
-      authorizationStatus: `NO_AUTH`
+      isAuthorized: false
     }
   });
   const tree = renderer

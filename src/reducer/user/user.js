@@ -1,10 +1,9 @@
 import {extend} from "../../utils";
-import {AuthorizationStatus} from "../../const";
 import history from "../../history";
 import {Operation as DataOperation} from "../data/data";
 
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  isAuthorized: false,
 };
 
 export const ActionType = {
@@ -22,7 +21,7 @@ export const Operation = {
   checkAuth: () => (dispatch, _, api) => {
     return api.get(`/login`)
       .then(() => {
-        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.requireAuthorization(true));
         dispatch(DataOperation.loadFavoriteFilms());
       })
       .catch((err) => {
@@ -36,7 +35,7 @@ export const Operation = {
       password: authData.password
     })
       .then(() => {
-        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.requireAuthorization(true));
         history.goBack();
       });
   }
@@ -46,7 +45,7 @@ export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.REQUIRED_AUTHORIZATION:
       return extend(state, {
-        authorizationStatus: action.payload
+        isAuthorized: action.payload
       });
   }
 

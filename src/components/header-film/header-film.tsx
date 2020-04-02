@@ -2,21 +2,34 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
-import {AuthorizationStatus, AppRoute, HeaderFilmType, FavoriteFilmStatus} from "../../const";
+import {getFavoriteFilms} from "../../reducer/data/selectors";
+import {AppRoute, HeaderFilmType, FavoriteFilmStatus} from "../../const";
 import history from "../../history";
-import {Operation as DataOperation, ActionCreator} from "../../reducer/data/data";
+import {Operation as DataOperation} from "../../reducer/data/data";
 import {Film} from "../../types";
 
 interface Props {
   film: Film;
-  authorizationStatus: AuthorizationStatus.AUTH | AuthorizationStatus.NO_AUTH;
-  onFavoriteButtonClick: (film: Film, id: number, status: number) => void;
+  isAuthorized: boolean;
+  onFavoriteButtonClick: (id: number, status: number) => void;
   page: HeaderFilmType.MAIN_PAGE | HeaderFilmType.MOVIE_PAGE;
+  favoriteFilms?: Film[];
 }
 
 const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
-  const {film, authorizationStatus, onFavoriteButtonClick, page} = props;
-  const {name, genre, released, id, favorite} = film;
+  const {film, isAuthorized, onFavoriteButtonClick, page, favoriteFilms} = props;
+  const {name, genre, released, id} = film;
+  let {favorite} = film;
+
+  if (favoriteFilms.length > 0) {
+    favoriteFilms.map((item) => {
+      if (item.id === id) {
+        favorite = true;
+      } else {
+        favorite = false;
+      }
+    });
+  }
 
   return (
     <div className="movie-card__desc">
@@ -40,13 +53,13 @@ const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
           className="btn btn--list movie-card__button"
           type="button"
           onClick={() => {
-            if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+            if (!isAuthorized) {
               history.push(AppRoute.LOGIN);
             } else {
               if (favorite) {
-                onFavoriteButtonClick(film, id, FavoriteFilmStatus.REMOVE);
+                onFavoriteButtonClick(id, FavoriteFilmStatus.REMOVE);
               } else {
-                onFavoriteButtonClick(film, id, FavoriteFilmStatus.ADD);
+                onFavoriteButtonClick(id, FavoriteFilmStatus.ADD);
               }
             }
           }}
@@ -76,14 +89,14 @@ const HeaderFilm: React.FunctionComponent<Props> = (props: Props) => {
 };
 
 const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state)
+  isAuthorized: getAuthorizationStatus(state),
+  favoriteFilms: getFavoriteFilms(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onFavoriteButtonClick(film, id, status) {
-    dispatch(DataOperation.changeFavoriteFilmsOnServer(id, status));
+  onFavoriteButtonClick(id, status) {
+    dispatch(DataOperation.changeFavoriteFilms(id, status));
     dispatch(DataOperation.loadFavoriteFilms());
-    dispatch(ActionCreator.changeFavoriteStatus(film));
   },
 });
 

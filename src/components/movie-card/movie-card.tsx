@@ -1,6 +1,6 @@
 import * as React from "react";
-import VideoPlayer from "../video-player/video-player";
 import {Link} from "react-router-dom";
+import VideoPlayer from "../video-player/video-player";
 import {AppRoute, TRAILER_DELAY} from "../../const";
 import {Film} from "../../types";
 
@@ -9,10 +9,11 @@ interface Props {
   onCardHoverOut: (film: {}) => void;
   film: Film;
   activeCard?: Film;
+  loadReviews?: (film: {}) => void;
 }
 
 const MovieCard: React.FunctionComponent<Props> = (props: Props) => {
-  const {film, onCardHover, onCardHoverOut, activeCard} = props;
+  const {film, onCardHover, onCardHoverOut, activeCard, loadReviews} = props;
   let timerForPreviewPlaying;
 
   return (
@@ -29,6 +30,7 @@ const MovieCard: React.FunctionComponent<Props> = (props: Props) => {
       }}
       onClick={() => {
         clearTimeout(timerForPreviewPlaying);
+        loadReviews(film);
       }}
     >
       <Link to={`${AppRoute.FILMS}/${film.id}`}>

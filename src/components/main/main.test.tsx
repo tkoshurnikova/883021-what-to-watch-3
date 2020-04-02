@@ -18,10 +18,11 @@ it(`Render Main`, () => {
     },
     DATA: {
       films,
-      promoFilm: FilmDetails
+      promoFilm: FilmDetails,
+      favoriteFilms: []
     },
     USER: {
-      authorizationStatus: `NO_AUTH`
+      isAuthorized: false
     }
   });
   const tree = renderer

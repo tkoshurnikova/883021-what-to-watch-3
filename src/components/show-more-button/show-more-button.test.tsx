@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {ShowMoreBtn} from "./show-more-btn";
+import {ShowMoreButton} from "./show-more-button";
 import {noop} from "../../utils";
 
-it(`Render ShowMoreBtn`, () => {
+it(`Render ShowMoreButton`, () => {
   const tree = renderer
-    .create(<ShowMoreBtn
-      onShowMoreBtnClick={noop}
+    .create(<ShowMoreButton
+      onShowMoreButtonClick={noop}
     />)
     .toJSON();
 

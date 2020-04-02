@@ -1,5 +1,5 @@
 import {extend, getFilmByID} from "../../utils";
-import dataAdapter, {commentsAdapter} from "./adapter";
+import {commentsAdapter, adaptFilmData} from "./adapter";
 import history from "../../history";
 
 const initialState = {
@@ -16,8 +16,6 @@ export const ActionType = {
   CHANGE_FORM_BLOCK: `CHANGE_BLOCK_FORM`,
   SET_SENDING_STATUS_TEXT: `SET_SENDING_STATUS_TEXT`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
-  CHANGE_FAVORITE_FILMS_ON_SERVER: `CHANGE_FAVORITE_FILMS_ON_SERVER`,
-  CHANGE_FAVORITE_STATUS: `CHANGE_FAVORITE_STATUS`
 };
 
 export const ActionCreator = {
@@ -41,32 +39,20 @@ export const ActionCreator = {
     type: ActionType.LOAD_FAVORITE_FILMS,
     payload: films
   }),
-  changeFavoriteFilmsOnServer: (id) => ({
-    type: ActionType.CHANGE_FAVORITE_FILMS_ON_SERVER,
-    payload: id
-  }),
-  changeFavoriteStatus: (film) => ({
-    type: ActionType.CHANGE_FAVORITE_STATUS,
-    payload: film
-  })
-};
-
-const loadReviews = (item) => (dispatch, _, api) => {
-  return api.get(`/comments/${item.id}`)
-    .then((response) => {
-      item.reviews = response.data.map(((review) => commentsAdapter(review)));
-    });
 };
 
 export const Operation = {
+  loadReviews: (item) => (dispatch, _, api) => {
+    return api.get(`/comments/${item.id}`)
+    .then((response) => {
+      item.reviews = response.data.map(((review) => commentsAdapter(review)));
+    });
+  },
+
   loadFilms: () => (dispatch, _, api) => {
     return api.get(`/films`)
       .then((response) => {
-        const adaptedData = dataAdapter(response.data);
-        adaptedData.map((item) => {
-          dispatch(loadReviews(item));
-          return item;
-        });
+        const adaptedData = response.data.map((item) => adaptFilmData(item));
         dispatch(ActionCreator.loadFilms(adaptedData));
       });
   },
@@ -74,7 +60,8 @@ export const Operation = {
   loadPromoFilm: () => (dispatch, _, api) => {
     return api.get(`films/promo`)
       .then((response) => {
-        dispatch(ActionCreator.loadPromoFilm(response.data));
+        const adaptedData = adaptFilmData(response.data);
+        dispatch(ActionCreator.loadPromoFilm(adaptedData));
       });
   },
 
@@ -89,7 +76,10 @@ export const Operation = {
       .then((response) => {
         if (response.status === 200) {
           dispatch(ActionCreator.setSendingStatusText(`Comment was sent`));
-          dispatch(loadReviews(getFilmByID(getState().DATA.films, id)));
+
+          const reviewedFilm = getFilmByID(getState().DATA.films, id);
+          reviewedFilm.reviews = response.data.map(((review) => commentsAdapter(review)));
+
           history.push(`/films/${id}`);
         } else {
           dispatch(ActionCreator.setSendingStatusText(`Something went wrong, please try again`));
@@ -105,16 +95,13 @@ export const Operation = {
   loadFavoriteFilms: () => (dispatch, _, api) => {
     return api.get(`/favorite`)
       .then((response) => {
-        const adaptedData = dataAdapter(response.data);
+        const adaptedData = response.data.map((item) => adaptFilmData(item));
         dispatch(ActionCreator.loadFavoriteFilms(adaptedData));
       });
   },
 
-  changeFavoriteFilmsOnServer: (id, status) => (dispatch, _, api) => {
-    return api.post(`/favorite/${id}/${status}`)
-      .then((response) => {
-        dispatch(ActionCreator.changeFavoriteStatus(response.data.id));
-      });
+  changeFavoriteFilms: (id, status) => (dispatch, _, api) => {
+    return api.post(`/favorite/${id}/${status}`);
   }
 };
 
@@ -143,19 +130,6 @@ export const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FAVORITE_FILMS:
       return extend(state, {
         favoriteFilms: action.payload
-      });
-
-    case ActionType.CHANGE_FAVORITE_STATUS:
-      return extend(state, {
-        films: state.films.map((item) => {
-          if (item.id === action.payload.id) {
-            return extend(item, {favorite: !item.favorite});
-          }
-          return item;
-        }),
-        promoFilm: extend(state.promoFilm, {
-          favorite: state.promoFilm.id === action.payload.id ? !state.promoFilm.favorite : state.promoFilm.favorite
-        })
       });
   }
 

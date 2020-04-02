@@ -15,6 +15,7 @@ it(`Render MovieCard`, () => {
             onCardHover={noop}
             onCardHoverOut={noop}
             activeCard={films[0]}
+            loadReviews={noop}
           />
         </Router>,
         {

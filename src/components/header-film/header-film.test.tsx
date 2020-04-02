@@ -12,7 +12,10 @@ const mockStore = configureMockStore([]);
 it(`Render HeaderFilm`, () => {
   const store = mockStore({
     USER: {
-      authorizationStatus: `NO_AUTH`
+      isAuthorized: false
+    },
+    DATA: {
+      favoriteFilms: []
     }
   });
   const tree = renderer

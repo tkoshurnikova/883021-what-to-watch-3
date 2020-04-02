@@ -1,17 +1,17 @@
 import * as React from "react";
 import {Route, Redirect, RouteProps} from "react-router-dom";
 import {connect} from "react-redux";
-import {AppRoute, AuthorizationStatus} from "../../const";
+import {AppRoute} from "../../const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
 type Props = RouteProps & {
-  authorizationStatus: AuthorizationStatus.AUTH | AuthorizationStatus.NO_AUTH;
+  isAuthorized: boolean;
   exact: boolean;
   path: string;
 }
 
 const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
-  const {render, path, exact, authorizationStatus} = props;
+  const {render, path, exact, isAuthorized} = props;
 
   return (
     <Route
@@ -19,9 +19,7 @@ const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
       exact={exact}
       render={(routeProps) => {
         return (
-          authorizationStatus === AuthorizationStatus.AUTH
-            ? render(routeProps)
-            : <Redirect to={AppRoute.LOGIN} />
+          isAuthorized ? render(routeProps) : <Redirect to={AppRoute.LOGIN} />
         );
       }}
     />
@@ -29,7 +27,7 @@ const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
 };
 
 const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state)
+  isAuthorized: getAuthorizationStatus(state)
 });
 
 export {PrivateRoute};

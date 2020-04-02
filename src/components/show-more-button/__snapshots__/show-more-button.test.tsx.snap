@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render ShowMoreBtn 1`] = `
+exports[`Render ShowMoreButton 1`] = `
 <div
   className="catalog__more"
 >
