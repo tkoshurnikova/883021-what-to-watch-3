@@ -80,19 +80,3 @@ it(`Action creator for loading favorite films should return correct action`, () 
     payload: films[0]
   });
 });
-
-it(`Action creator for changing favourite films should return correct action`, () => {
-  expect(ActionCreator.changeFavoriteFilmsOnServer(3)).toEqual({
-    type: ActionType.CHANGE_FAVORITE_FILMS_ON_SERVER,
-    payload: 3
-  });
-});
-
-it(`Action creator for changing favourite status should return correct action`, () => {
-  expect(ActionCreator.changeFavoriteStatus(5)).toEqual({
-    type: ActionType.CHANGE_FAVORITE_STATUS,
-    payload: 5
-  });
-});
-
-

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {AppRoute, HeaderFilmType, FavoriteFilmStatus} from "../../const";
 import history from "../../history";
-import {Operation as DataOperation, ActionCreator} from "../../reducer/data/data";
+import {Operation as DataOperation} from "../../reducer/data/data";
 import {Film} from "../../types";
 
 interface Props {
@@ -81,9 +81,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onFavoriteButtonClick(film, id, status) {
-    dispatch(DataOperation.changeFavoriteFilmsOnServer(id, status));
+    dispatch(DataOperation.changeFavoriteFilms(id, status));
     dispatch(DataOperation.loadFavoriteFilms());
-    dispatch(ActionCreator.changeFavoriteStatus(film));
+    // dispatch(ActionCreator.changeFavoriteStatus(film));
   },
 });
 
