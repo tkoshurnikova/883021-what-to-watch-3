@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Switch, Route, Router} from "react-router-dom";
+import {Switch, Route, HashRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import history from "../../history";
 
@@ -52,7 +52,7 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
   }
 
   return (
-    <Router history={history}>
+    <HashRouter>
       <Switch>
         <Route
           exact
@@ -125,7 +125,7 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
           }}
         />
       </Switch>
-    </Router>
+    </HashRouter>
   );
 };
 
